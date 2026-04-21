@@ -1,0 +1,1147 @@
+{
+  "_D": "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+  "_A": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+  "_B": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+  "Invoice": [
+    {
+      "ID": [
+        {
+          "_": "JSON-INV12345"
+        }
+      ],
+      "IssueDate": [
+        {
+          "_": "2025-02-06"
+        }
+      ],
+      "IssueTime": [
+        {
+          "_": "00:30:00Z"
+        }
+      ],
+      "InvoiceTypeCode": [
+        {
+          "_": "01",
+          "listVersionID": "1.0"
+        }
+      ],
+      "DocumentCurrencyCode": [
+        {
+          "_": "MYR"
+        }
+      ],
+      "TaxCurrencyCode": [
+        {
+          "_": "MYR"
+        }
+      ],
+      "InvoicePeriod": [
+        {
+          "StartDate": [
+            {
+              "_": "2025-01-01"
+            }
+          ],
+          "EndDate": [
+            {
+              "_": "2025-01-31"
+            }
+          ],
+          "Description": [
+            {
+              "_": "Monthly"
+            }
+          ]
+        }
+      ],
+      "BillingReference": [
+        {
+          "AdditionalDocumentReference": [
+            {
+              "ID": [
+                {
+                  "_": "E12345678912"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AdditionalDocumentReference": [
+        {
+          "ID": [
+            {
+              "_": "E23456789123,E98765432123"
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": "CustomsImportForm"
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "FTA"
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": "FreeTradeAgreement"
+            }
+          ],
+          "DocumentDescription": [
+            {
+              "_": "ASEAN-Australia-New Zealand FTA (AANZFTA)"
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "E12345678912,E23456789123"
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": "K2"
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "CIF"
+            }
+          ]
+        }
+      ],
+      "AccountingSupplierParty": [
+        {
+          "AdditionalAccountID": [
+            {
+              "_": "CPT-CCN-W-211111-KL-000002",
+              "schemeAgencyName": "CertEX"
+            }
+          ],
+          "Party": [
+            {
+              "IndustryClassificationCode": [
+                {
+                  "_": "46510",
+                  "name": "Wholesale of computer hardware, software and peripherals"
+                }
+              ],
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "Supplier's TIN",
+                      "schemeID": "TIN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "Supplier's BRN",
+                      "schemeID": "BRN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "SST"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "TTX"
+                    }
+                  ]
+                }
+              ],
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": "Kuala Lumpur"
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": "50480"
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": "10"
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": "Lot 66"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Bangunan Merdeka"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Persiaran Jaya"
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "MYS",
+                          "listID": "ISO3166-1",
+                          "listAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": "Supplier's Name"
+                    }
+                  ]
+                }
+              ],
+              "Contact": [
+                {
+                  "Telephone": [
+                    {
+                      "_": "+60123456789"
+                    }
+                  ],
+                  "ElectronicMail": [
+                    {
+                      "_": "supplier@email.com"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AccountingCustomerParty": [
+        {
+          "Party": [
+            {
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": "Kuala Lumpur"
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": "50480"
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": "10"
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": "Lot 66"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Bangunan Merdeka"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Persiaran Jaya"
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "MYS",
+                          "listID": "ISO3166-1",
+                          "listAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": "Buyer's Name"
+                    }
+                  ]
+                }
+              ],
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "Buyer's TIN",
+                      "schemeID": "TIN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "Buyer's BRN",
+                      "schemeID": "BRN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "SST"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "TTX"
+                    }
+                  ]
+                }
+              ],
+              "Contact": [
+                {
+                  "Telephone": [
+                    {
+                      "_": "+60123456789"
+                    }
+                  ],
+                  "ElectronicMail": [
+                    {
+                      "_": "buyer@email.com"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AllowanceCharge": [
+        {
+          "ChargeIndicator": [
+            {
+              "_": false
+            }
+          ],
+          "AllowanceChargeReason": [
+            {
+              "_": ""
+            }
+          ],
+          "Amount": [
+            {
+              "_": 0.00,
+              "currencyID": "MYR"
+            }
+          ]
+        },
+        {
+          "ChargeIndicator": [
+            {
+              "_": true
+            }
+          ],
+          "AllowanceChargeReason": [
+            {
+              "_": ""
+            }
+          ],
+          "Amount": [
+            {
+              "_": 0.00,
+              "currencyID": "MYR"
+            }
+          ]
+        }
+      ],
+      "TaxTotal": [
+        {
+          "TaxAmount": [
+            {
+              "_": 85.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxSubtotal": [
+            {
+              "TaxableAmount": [
+                {
+                  "_": 1000.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxAmount": [
+                {
+                  "_": 10.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxCategory": [
+                {
+                  "ID": [
+                    {
+                      "_": "01"
+                    }
+                  ],
+                  "TaxScheme": [
+                    {
+                      "ID": [
+                        {
+                          "_": "OTH",
+                          "schemeID": "UN/ECE 5153",
+                          "schemeAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "TaxSubtotal": [
+            {
+              "TaxableAmount": [
+                {
+                  "_": 1500.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxAmount": [
+                {
+                  "_": 75.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxCategory": [
+                {
+                  "ID": [
+                    {
+                      "_": "02"
+                    }
+                  ],
+                  "TaxScheme": [
+                    {
+                      "ID": [
+                        {
+                          "_": "OTH",
+                          "schemeID": "UN/ECE 5153",
+                          "schemeAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "TaxSubtotal": [
+            {
+              "TaxableAmount": [
+                {
+                  "_": 2000.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxAmount": [
+                {
+                  "_": 100.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxCategory": [
+                {
+                  "ID": [
+                    {
+                      "_": "E"
+                    }
+                  ],
+                  "TaxExemptionReason": [
+                    {
+                      "_": "Special case"
+                    }
+                  ],
+                  "TaxScheme": [
+                    {
+                      "ID": [
+                        {
+                          "_": "OTH",
+                          "schemeID": "UN/ECE 5153",
+                          "schemeAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "LegalMonetaryTotal": [
+        {
+          "LineExtensionAmount": [
+            {
+              "_": 4500.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxExclusiveAmount": [
+            {
+              "_": 4500.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxInclusiveAmount": [
+            {
+              "_": 4585.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "AllowanceTotalAmount": [
+            {
+              "_": 0.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "ChargeTotalAmount": [
+            {
+              "_": 0.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "PayableRoundingAmount": [
+            {
+              "_": 0.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "PayableAmount": [
+            {
+              "_": 4585.00,
+              "currencyID": "MYR"
+            }
+          ]
+        }
+      ],
+      "InvoiceLine": [
+        {
+          "ID": [
+            {
+              "_": "001"
+            }
+          ],
+          "InvoicedQuantity": [
+            {
+              "_": 1,
+              "unitCode": "C62"
+            }
+          ],
+          "LineExtensionAmount": [
+            {
+              "_": 1000.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "AllowanceCharge": [
+            {
+              "ChargeIndicator": [
+                {
+                  "_": false
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": ""
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0.00
+                }
+              ],
+              "Amount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            },
+            {
+              "ChargeIndicator": [
+                {
+                  "_": true
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": ""
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0.00
+                }
+              ],
+              "Amount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "TaxTotal": [
+            {
+              "TaxAmount": [
+                {
+                  "_": 10.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxSubtotal": [
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 1000.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 10.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "BaseUnitMeasure": [
+                    {
+                      "_": 1,
+                      "unitCode": "C62"
+                    }
+                  ],
+                  "PerUnitAmount": [
+                    {
+                      "_": 10.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "01"
+                        }
+                      ],                                           
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeID": "UN/ECE 5153",
+                              "schemeAgencyID": "6"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Item": [
+            {
+              "CommodityClassification": [
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "9800.00.0010",
+                      "listID": "PTC"
+                    }
+                  ]
+                },
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "003",
+                      "listID": "CLASS"
+                    }
+                  ]
+                }
+              ],
+              "Description": [
+                {
+                  "_": "Computer Monitor"
+                }
+              ],
+              "OriginCountry": [
+                {
+                  "IdentificationCode": [
+                    {
+                      "_": "MYS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Price": [
+            {
+              "PriceAmount": [
+                {
+                  "_": 1000.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "ItemPriceExtension": [
+            {
+              "Amount": [
+                {
+                  "_": 1000.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "002"
+            }
+          ],
+          "InvoicedQuantity": [
+            {
+              "_": 1,
+              "unitCode": "C62"
+            }
+          ],
+          "LineExtensionAmount": [
+            {
+              "_": 1500.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "AllowanceCharge": [
+            {
+              "ChargeIndicator": [
+                {
+                  "_": false
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": ""
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0.00
+                }
+              ],
+              "Amount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            },
+            {
+              "ChargeIndicator": [
+                {
+                  "_": true
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": ""
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0.00
+                }
+              ],
+              "Amount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "TaxTotal": [
+            {
+              "TaxAmount": [
+                {
+                  "_": 75.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxSubtotal": [
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 1500.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 75.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "Percent": [
+                    {
+                      "_": 5.00
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "02"
+                        }
+                      ],                                           
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeID": "UN/ECE 5153",
+                              "schemeAgencyID": "6"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Item": [
+            {
+              "CommodityClassification": [
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "9800.00.0011",
+                      "listID": "PTC"
+                    }
+                  ]
+                },
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "003",
+                      "listID": "CLASS"
+                    }
+                  ]
+                }
+              ],
+              "Description": [
+                {
+                  "_": "Laptop Peripherals"
+                }
+              ],
+              "OriginCountry": [
+                {
+                  "IdentificationCode": [
+                    {
+                      "_": "MYS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Price": [
+            {
+              "PriceAmount": [
+                {
+                  "_": 1500.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "ItemPriceExtension": [
+            {
+              "Amount": [
+                {
+                  "_": 1500.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "003"
+            }
+          ],
+          "InvoicedQuantity": [
+            {
+              "_": 1,
+              "unitCode": "C62"
+            }
+          ],
+          "LineExtensionAmount": [
+            {
+              "_": 2000.00,
+              "currencyID": "MYR"
+            }
+          ],
+          "AllowanceCharge": [
+            {
+              "ChargeIndicator": [
+                {
+                  "_": false
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": ""
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0.00
+                }
+              ],
+              "Amount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            },
+            {
+              "ChargeIndicator": [
+                {
+                  "_": true
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": ""
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0.00
+                }
+              ],
+              "Amount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "TaxTotal": [
+            {
+              "TaxAmount": [
+                {
+                  "_": 0.00,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxSubtotal": [
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 0.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 0.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "Percent": [
+                    {
+                      "_": 5.00
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "01"
+                        }
+                      ],
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeID": "UN/ECE 5153",
+                              "schemeAgencyID": "6"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 2000.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 100.00,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "E"
+                        }
+                      ],                                           
+                      "TaxExemptionReason": [
+                        {
+                          "_": "Special Case"
+                        }
+                      ],
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeID": "UN/ECE 5153",
+                              "schemeAgencyID": "6"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Item": [
+            {
+              "CommodityClassification": [
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "9800.00.0012",
+                      "listID": "PTC"
+                    }
+                  ]
+                },
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "003",
+                      "listID": "CLASS"
+                    }
+                  ]
+                }
+              ],
+              "Description": [
+                {
+                  "_": "Wireless Mouse"
+                }
+              ],
+              "OriginCountry": [
+                {
+                  "IdentificationCode": [
+                    {
+                      "_": "MYS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Price": [
+            {
+              "PriceAmount": [
+                {
+                  "_": 2000.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "ItemPriceExtension": [
+            {
+              "Amount": [
+                {
+                  "_": 2000.00,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

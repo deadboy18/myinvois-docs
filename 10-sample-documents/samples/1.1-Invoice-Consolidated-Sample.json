@@ -1,0 +1,787 @@
+{
+  "_D": "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+  "_A": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+  "_B": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+  "Invoice": [
+    {
+      "ID": [
+        {
+          "_": "JSON-INV12345"
+        }
+      ],
+      "IssueDate": [
+        {
+          "_": "2024-07-23"
+        }
+      ],
+      "IssueTime": [
+        {
+          "_": "00:30:00Z"
+        }
+      ],
+      "InvoiceTypeCode": [
+        {
+          "_": "01",
+          "listVersionID": "1.1"
+        }
+      ],
+      "DocumentCurrencyCode": [
+        {
+          "_": "MYR"
+        }
+      ],
+      "TaxCurrencyCode": [
+        {
+          "_": "MYR"
+        }
+      ],
+      "AccountingSupplierParty": [
+        {
+          "Party": [
+            {
+              "IndustryClassificationCode": [
+                {
+                  "_": "46510",
+                  "name": "Wholesale of computer hardware, software and peripherals"
+                }
+              ],
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "Supplier's TIN",
+                      "schemeID": "TIN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "Supplier's BRN",
+                      "schemeID": "BRN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "SST"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "TTX"
+                    }
+                  ]
+                }
+              ],
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": "Kuala Lumpur"
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": "50480"
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": "10"
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": "Lot 66"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Bangunan Merdeka"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Persiaran Jaya"
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "MYS",
+                          "listID": "ISO3166-1",
+                          "listAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": "Supplier's Name"
+                    }
+                  ]
+                }
+              ],
+              "Contact": [
+                {
+                  "Telephone": [
+                    {
+                      "_": "+60123456789"
+                    }
+                  ],
+                  "ElectronicMail": [
+                    {
+                      "_": "supplier@email.com"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AccountingCustomerParty": [
+        {
+          "Party": [
+            {
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": "NA"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "",
+                          "listID": "ISO3166-1",
+                          "listAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": "Consolidated Buyer's"
+                    }
+                  ]
+                }
+              ],
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "EI00000000010",
+                      "schemeID": "TIN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "BRN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "SST"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "TTX"
+                    }
+                  ]
+                }
+              ],
+              "Contact": [
+                {
+                  "Telephone": [
+                    {
+                      "_": "NA"
+                    }
+                  ],
+                  "ElectronicMail": [
+                    {
+                      "_": "NA"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "TaxTotal": [
+        {
+          "TaxAmount": [
+            {
+              "_": 3000,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxSubtotal": [
+            {
+              "TaxableAmount": [
+                {
+                  "_": 30000,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxAmount": [
+                {
+                  "_": 3000,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxCategory": [
+                {
+                  "ID": [
+                    {
+                      "_": "01"
+                    }
+                  ],
+                  "TaxScheme": [
+                    {
+                      "ID": [
+                        {
+                          "_": "OTH",
+                          "schemeID": "UN/ECE 5153",
+                          "schemeAgencyID": "6"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "LegalMonetaryTotal": [
+        {
+          "LineExtensionAmount": [
+            {
+              "_": 30000,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxExclusiveAmount": [
+            {
+              "_": 30000,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxInclusiveAmount": [
+            {
+              "_": 33000,
+              "currencyID": "MYR"
+            }
+          ],
+          "PayableAmount": [
+            {
+              "_": 33000,
+              "currencyID": "MYR"
+            }
+          ]
+        }
+      ],
+      "InvoiceLine": [
+        {
+          "ID": [
+            {
+              "_": "1"
+            }
+          ],
+          "InvoicedQuantity": [
+            {
+              "_": 1,
+              "unitCode": "C62"
+            }
+          ],
+          "LineExtensionAmount": [
+            {
+              "_": 10000,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxTotal": [
+            {
+              "TaxAmount": [
+                {
+                  "_": 1000,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxSubtotal": [
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 10000,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 1000,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "Percent": [
+                    {
+                      "_": 10
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "01"
+                        }
+                      ],
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeID": "UN/ECE 5153",
+                              "schemeAgencyID": "6"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Item": [
+            {
+              "CommodityClassification": [
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "004",
+                      "listID": "CLASS"
+                    }
+                  ]
+                }
+              ],
+              "Description": [
+                {
+                  "_": "Receipt 001 - 100"
+                }
+              ],
+              "OriginCountry": [
+                {
+                  "IdentificationCode": [
+                    {
+                      "_": "MYS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Price": [
+            {
+              "PriceAmount": [
+                {
+                  "_": 10000,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "ItemPriceExtension": [
+            {
+              "Amount": [
+                {
+                  "_": 10000,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "2"
+            }
+          ],
+          "InvoicedQuantity": [
+            {
+              "_": 1,
+              "unitCode": "C62"
+            }
+          ],
+          "LineExtensionAmount": [
+            {
+              "_": 20000,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxTotal": [
+            {
+              "TaxAmount": [
+                {
+                  "_": 2000,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxSubtotal": [
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 20000,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 2000,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "Percent": [
+                    {
+                      "_": 10
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "01"
+                        }
+                      ],
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeID": "UN/ECE 5153",
+                              "schemeAgencyID": "6"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Item": [
+            {
+              "CommodityClassification": [
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "004",
+                      "listID": "CLASS"
+                    }
+                  ]
+                }
+              ],
+              "Description": [
+                {
+                  "_": "Receipt 101 - 200"
+                }
+              ],
+              "OriginCountry": [
+                {
+                  "IdentificationCode": [
+                    {
+                      "_": "MYS"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Price": [
+            {
+              "PriceAmount": [
+                {
+                  "_": 20000,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "ItemPriceExtension": [
+            {
+              "Amount": [
+                {
+                  "_": 20000,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "UBLExtensions": [
+        {
+          "UBLExtension": [
+            {
+              "ExtensionURI": [
+                {
+                  "_": "urn:oasis:names:specification:ubl:dsig:enveloped:xades"
+                }
+              ],
+              "ExtensionContent": [
+                {
+                  "UBLDocumentSignatures": [
+                    {
+                      "SignatureInformation": [
+                        {
+                          "ID": [
+                            {
+                              "_": "urn:oasis:names:specification:ubl:signature:1"
+                            }
+                          ],
+                          "ReferencedSignatureID": [
+                            {
+                              "_": "urn:oasis:names:specification:ubl:signature:Invoice"
+                            }
+                          ],
+                          "Signature": [
+                            {
+                              "Id": "signature",
+                              "Object": [
+                                {
+                                  "QualifyingProperties": [
+                                    {
+                                      "Target": "signature",
+                                      "SignedProperties": [
+                                        {
+                                          "Id": "id-xades-signed-props",
+                                          "SignedSignatureProperties": [
+                                            {
+                                              "SigningTime": [
+                                                {
+                                                  "_": "2025-04-15T01:58:17Z"
+                                                }
+                                              ],
+                                              "SigningCertificate": [
+                                                {
+                                                  "Cert": [
+                                                    {
+                                                      "CertDigest": [
+                                                        {
+                                                          "DigestMethod": [
+                                                            {
+                                                              "_": "",
+                                                              "Algorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
+                                                            }
+                                                          ],
+                                                          "DigestValue": [
+                                                            {
+                                                              "_": "+kdLjFra9qRhG35bEKff9ZPjj6Bq6W6/j0NS0st/ves="
+                                                            }
+                                                          ]
+                                                        }
+                                                      ],
+                                                      "IssuerSerial": [
+                                                        {
+                                                          "X509IssuerName": [
+                                                            {
+                                                              "_": "C=MY, O=Raffcomm Technologies Sdn Bhd, OU=1000449-W, CN=CypherSign Pro Max"
+                                                            }
+                                                          ],
+                                                          "X509SerialNumber": [
+                                                            {
+                                                              "_": "1308502606566147853"
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "KeyInfo": [
+                                {
+                                  "X509Data": [
+                                    {
+                                      "X509Certificate": [
+                                        {
+                                          "_": "MIIFJzCCBA+gAwIBAgIIEii8MBwMRw0wDQYJKoZIhvcNAQELBQAwZjEbMBkGA1UEAwwSQ3lwaGVyU2lnbiBQcm8gTWF4MRIwEAYDVQQLDAkxMDAwNDQ5LVcxJjAkBgNVBAoMHVJhZmZjb21tIFRlY2hub2xvZ2llcyBTZG4gQmhkMQswCQYDVQQGEwJNWTAeFw0yNDA2MjEwMTExNTBaFw0yNTA2MjEwMTExNTBaMIGbMSQwIgYJKoZIhvcNAQkBFhV0ZXN0LmNlcnRAcmFmZmNvbW0ubXkxDjAMBgNVBAMMBUR1bW15MRIwEAYDVQQFEwlEMTIzNDU2NzgxGzAZBgNVBAsMElRlc3QgVW5pdCBlSW52b2ljZTEVMBMGA1UEYQwMQzI5NzAyNjM1MDYwMQ4wDAYDVQQKDAVEdW1teTELMAkGA1UEBhMCTVkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDi+PCSf8b/CNXyPrwrOsSRv9RlZnD3IR+k+5BbwYW6kKDa9ES5AHwSWibluBEZCT2BvcMjodnZUHDCPl1jUzS8TJ65YIBYe3p9nuQiE6v3mtwj53KcUEawDa6d2emTftenoRgIN6sx935elnI3+nHDTBDuHgaG6m7H118LlfEpU39I8aTv5AZotSezfmHfD5Vmysm8bkvLV0ibm4KQfj4aRqoTfiakQpFwamMJ+SSKUwzrYghF0OHUIuu0kNr21GMN7Q3wWZjPQRF484xeUhFaL+CsjeeIFzxEjvDs/kSNfUaQZPwAfyuG70adzMTul7gGo1Bzz4uJWz5znfomk2ZbAgMBAAGjggGhMIIBnTAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFGtOaNbCTehELL1jFh4g6YilI5ueMFYGCCsGAQUFBwEBBEowSDBGBggrBgEFBQcwAYY6aHR0cDovL29jc3AuY3lwaGVyc2lnbi5teTo4MDgwL2VqYmNhL3B1YmxpY3dlYi9zdGF0dXMvb2NzcDCBhAYDVR0gBH0wezA7BgUrBgEEATAyMDAGCCsGAQUFBwICMCQeIgAxAC4AMwAuADYALgAxAC4ANAAuADEALgA1ADEAMgAxADUwPAYIKwYBBQUHAgEwMDAuBggrBgEFBQcCARYiaHR0cHM6Ly93d3cucmFmZnRlY2gubXkvcmVwb3NpdG9yeTAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDA9BgNVHR8ENjA0MDKgMKAuhixodHRwczovL3d3dy5yYWZmdGVjaC5teS9jcmwvQ3lwaGVyU2lnblByb01heDAdBgNVHQ4EFgQULWvOw9mY47L3XKdMqla4XfzWQ2swDgYDVR0PAQH/BAQDAgTQMA0GCSqGSIb3DQEBCwUAA4IBAQCsf4enIwiYRm4DjmKBRic2uHkGCeMqQ4I/Q4J+vOkeH3qUFBhz/sfpNdFaLBAA8rukRi0y0kp4oHIEg4Rj9yjjVv1LTOCbZkzx5kmif9yhP2nzJig9A7WfDfh+QhMf0HBcby/WIJ7bedvIToLwrsyzhLFZryM4x4KGsS0HxiTA+2uSIhhbi+0Ol9PnuvLit08oD2hCD9UqB1t94KkbQafAlaIHsmoZTFiJP9iB7EWpLZyDEGEyMllh6rEBMPwU4j8wd08JLN46O29KLJMCmsqLNMoh412Ay/rLK7Y6mhgYse6zZmcrovZbYhHicQxwsbM3jHAtYzh9v/8oOgVTC6bR"
+                                        }
+                                      ],
+                                      "X509SubjectName": [
+                                        {
+                                          "_": "C=MY, O=Raffcomm Technologies Sdn Bhd, OU=1000449-W, CN=CypherSign Pro Max"
+                                        }
+                                      ],
+                                      "X509IssuerSerial": [
+                                        {
+                                          "X509IssuerName": [
+                                            {
+                                              "_": "C=MY, O=Raffcomm Technologies Sdn Bhd, OU=1000449-W, CN=CypherSign Pro Max"
+                                            }
+                                          ],
+                                          "X509SerialNumber": [
+                                            {
+                                              "_": "1308502606566147853"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "SignatureValue": [
+                                {
+                                  "_": "cWoNFm+Xa0IA1St5dPSo+Aku1dao9IVOp8ZX/9BgL2HqOyr6sQ+xY/VRji/rZapDtLd9nbSeh9EiQptkPtPWTZouCfUMUIzxfilhKmoGY2hszh95r47O3N4DS2vm4z1fVoH/xGRJB1YdQEKtUPZ2Mo7plKnkKakvJq+KTv9m5J+MiDW7scoGFKWG9oJeCBfKc7fiMIoAJA9hcv/KJn6FaeYZ29NGKCIJjRMJCHln73tx+Pd9mdFcLqN9QzvZ+wD4Xx1UZCGwDLmyuEZOotqSaEBPwfYZJb/Vkwvsc60Uhpm4pY1qtnVyO/Ag0r+FeZ4s5+1ZXxzr1HxgyFnwStl1LA=="
+                                }
+                              ],
+                              "SignedInfo": [
+                                {
+                                  "SignatureMethod": [
+                                    {
+                                      "_": "",
+                                      "Algorithm": "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+                                    }
+                                  ],
+                                  "Reference": [
+                                    {
+                                      "Type": "http://uri.etsi.org/01903/v1.3.2#SignedProperties",
+                                      "URI": "#id-xades-signed-props",
+                                      "DigestMethod": [
+                                        {
+                                          "_": "",
+                                          "Algorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
+                                        }
+                                      ],
+                                      "DigestValue": [
+                                        {
+                                          "_": "zlov8S643LiYbjuAnyjFvQ8ZyfqMqJxNweU2rsamcbg="
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Type": "",
+                                      "URI": "",
+                                      "DigestMethod": [
+                                        {
+                                          "_": "",
+                                          "Algorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
+                                        }
+                                      ],
+                                      "DigestValue": [
+                                        {
+                                          "_": "S9hSiRnk7q3pquLVHeXADHmimv7qcMq5MkGzgqwsUjU="
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "Signature": [
+        {
+          "ID": [
+            {
+              "_": "urn:oasis:names:specification:ubl:signature:Invoice"
+            }
+          ],
+          "SignatureMethod": [
+            {
+              "_": "urn:oasis:names:specification:ubl:dsig:enveloped:xades"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

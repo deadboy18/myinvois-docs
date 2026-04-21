@@ -1,0 +1,30 @@
+[
+  {
+    "Code": "01",
+    "Description": "Sales Tax"
+  },
+  {
+    "Code": "02",
+    "Description": "Service Tax"
+  },
+  {
+    "Code": "03",
+    "Description": "Tourism Tax"
+  },
+  {
+    "Code": "04",
+    "Description": "High-Value Goods Tax"
+  },
+  {
+    "Code": "05",
+    "Description": "Sales Tax on Low Value Goods"
+  },
+  {
+    "Code": "06",
+    "Description": "Not Applicable"
+  },
+  {
+    "Code": "E",
+    "Description": "Tax exemption (where applicable)"
+  }
+]

@@ -1,0 +1,403 @@
+<Invoice
+	xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<UBLExtensions
+		xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+		<UBLExtension>
+			<ExtensionURI>urn:oasis:names:specification:ubl:dsig:enveloped:xades</ExtensionURI>
+			<ExtensionContent>
+				<sig:UBLDocumentSignatures
+					xmlns:sig="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2"
+					xmlns:sac="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2"
+					xmlns:sbc="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2">
+					<sac:SignatureInformation>
+						<cbc:ID>urn:oasis:names:specification:ubl:signature:1</cbc:ID>
+						<sbc:ReferencedSignatureID>urn:oasis:names:specification:ubl:signature:Invoice</sbc:ReferencedSignatureID>
+						<ds:Signature
+							xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="signature">
+							<ds:SignedInfo>
+								<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+								<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+								<ds:Reference Id="id-doc-signed-data" URI="">
+									<ds:Transforms>
+										<ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+											<ds:XPath>not(//ancestor-or-self::ext:UBLExtensions)</ds:XPath>
+										</ds:Transform>
+										<ds:Transform Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116">
+											<ds:XPath>not(//ancestor-or-self::cac:Signature)</ds:XPath>
+										</ds:Transform>
+										<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+									</ds:Transforms>
+									<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+									<ds:DigestValue>9p4n6T7ymVueWEwQhVknzfoDQmpQaPxjZ770X2lRi4I=</ds:DigestValue>
+								</ds:Reference>
+								<ds:Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#id-xades-signed-props">
+									<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+									<ds:DigestValue>uiaMSgfy0SP60WwqlMm1O0yQzb02YYQK8WTD9A8N+b0=</ds:DigestValue>
+								</ds:Reference>
+							</ds:SignedInfo>
+							<ds:SignatureValue>NiAy5Ra77Pn/3WBUK7bu75P91USf9+jWVKO6V9v0/IXRax8TfbSrmhIfS/Q4Lib7qyED9za2RE501nQVKxpob6X4EN5Q98TyKDhDxJdWF8zIyifgWk6RleKYyZakkpSa1ITvwfIhCJw0i77oPMIDkBrf/A7PJT3OhSJEWl/wFLIJh/JwQ5adl/iTofhVH3sfujkT4aFqbBrv+smBG3wh1kfEJuUlAzv6iq0Ajz7T47E4oVGeIHKR9CVDstlOhkaTbVCVusBRP17ccLkfEku1At8WMVVuyQR/UdJkmtVVQ9mkQQ75UF0tN0Qx06xEXs3LXspHHDoOvCnZSkVQ109SUw==</ds:SignatureValue>
+							<ds:KeyInfo>
+								<ds:X509Data>
+									<ds:X509Certificate>MIIFJzCCBA+gAwIBAgIIEii8MBwMRw0wDQYJKoZIhvcNAQELBQAwZjEbMBkGA1UEAwwSQ3lwaGVyU2lnbiBQcm8gTWF4MRIwEAYDVQQLDAkxMDAwNDQ5LVcxJjAkBgNVBAoMHVJhZmZjb21tIFRlY2hub2xvZ2llcyBTZG4gQmhkMQswCQYDVQQGEwJNWTAeFw0yNDA2MjEwMTExNTBaFw0yNTA2MjEwMTExNTBaMIGbMSQwIgYJKoZIhvcNAQkBFhV0ZXN0LmNlcnRAcmFmZmNvbW0ubXkxDjAMBgNVBAMMBUR1bW15MRIwEAYDVQQFEwlEMTIzNDU2NzgxGzAZBgNVBAsMElRlc3QgVW5pdCBlSW52b2ljZTEVMBMGA1UEYQwMQzI5NzAyNjM1MDYwMQ4wDAYDVQQKDAVEdW1teTELMAkGA1UEBhMCTVkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDi+PCSf8b/CNXyPrwrOsSRv9RlZnD3IR+k+5BbwYW6kKDa9ES5AHwSWibluBEZCT2BvcMjodnZUHDCPl1jUzS8TJ65YIBYe3p9nuQiE6v3mtwj53KcUEawDa6d2emTftenoRgIN6sx935elnI3+nHDTBDuHgaG6m7H118LlfEpU39I8aTv5AZotSezfmHfD5Vmysm8bkvLV0ibm4KQfj4aRqoTfiakQpFwamMJ+SSKUwzrYghF0OHUIuu0kNr21GMN7Q3wWZjPQRF484xeUhFaL+CsjeeIFzxEjvDs/kSNfUaQZPwAfyuG70adzMTul7gGo1Bzz4uJWz5znfomk2ZbAgMBAAGjggGhMIIBnTAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFGtOaNbCTehELL1jFh4g6YilI5ueMFYGCCsGAQUFBwEBBEowSDBGBggrBgEFBQcwAYY6aHR0cDovL29jc3AuY3lwaGVyc2lnbi5teTo4MDgwL2VqYmNhL3B1YmxpY3dlYi9zdGF0dXMvb2NzcDCBhAYDVR0gBH0wezA7BgUrBgEEATAyMDAGCCsGAQUFBwICMCQeIgAxAC4AMwAuADYALgAxAC4ANAAuADEALgA1ADEAMgAxADUwPAYIKwYBBQUHAgEwMDAuBggrBgEFBQcCARYiaHR0cHM6Ly93d3cucmFmZnRlY2gubXkvcmVwb3NpdG9yeTAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDA9BgNVHR8ENjA0MDKgMKAuhixodHRwczovL3d3dy5yYWZmdGVjaC5teS9jcmwvQ3lwaGVyU2lnblByb01heDAdBgNVHQ4EFgQULWvOw9mY47L3XKdMqla4XfzWQ2swDgYDVR0PAQH/BAQDAgTQMA0GCSqGSIb3DQEBCwUAA4IBAQCsf4enIwiYRm4DjmKBRic2uHkGCeMqQ4I/Q4J+vOkeH3qUFBhz/sfpNdFaLBAA8rukRi0y0kp4oHIEg4Rj9yjjVv1LTOCbZkzx5kmif9yhP2nzJig9A7WfDfh+QhMf0HBcby/WIJ7bedvIToLwrsyzhLFZryM4x4KGsS0HxiTA+2uSIhhbi+0Ol9PnuvLit08oD2hCD9UqB1t94KkbQafAlaIHsmoZTFiJP9iB7EWpLZyDEGEyMllh6rEBMPwU4j8wd08JLN46O29KLJMCmsqLNMoh412Ay/rLK7Y6mhgYse6zZmcrovZbYhHicQxwsbM3jHAtYzh9v/8oOgVTC6bR</ds:X509Certificate>
+								</ds:X509Data>
+							</ds:KeyInfo>
+							<ds:Object>
+								<xades:QualifyingProperties
+									xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" Target="signature">
+									<xades:SignedProperties Id="id-xades-signed-props">
+										<xades:SignedSignatureProperties>
+											<xades:SigningTime>2025-04-15T02:00:22Z</xades:SigningTime>
+											<xades:SigningCertificate>
+												<xades:Cert>
+													<xades:CertDigest>
+														<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+														<ds:DigestValue>+kdLjFra9qRhG35bEKff9ZPjj6Bq6W6/j0NS0st/ves=</ds:DigestValue>
+													</xades:CertDigest>
+													<xades:IssuerSerial>
+														<ds:X509IssuerName>C=MY, O=Raffcomm Technologies Sdn Bhd, OU=1000449-W, CN=CypherSign Pro Max</ds:X509IssuerName>
+														<ds:X509SerialNumber>1308502606566147853</ds:X509SerialNumber>
+													</xades:IssuerSerial>
+												</xades:Cert>
+											</xades:SigningCertificate>
+										</xades:SignedSignatureProperties>
+									</xades:SignedProperties>
+								</xades:QualifyingProperties>
+							</ds:Object>
+						</ds:Signature>
+					</sac:SignatureInformation>
+				</sig:UBLDocumentSignatures>
+			</ExtensionContent>
+		</UBLExtension>
+	</UBLExtensions>
+	<cbc:ID>XML-INV12345</cbc:ID>
+	<cbc:IssueDate>2025-02-06</cbc:IssueDate>
+	<cbc:IssueTime>00:30:00Z</cbc:IssueTime>
+	<cbc:InvoiceTypeCode listVersionID="1.1">01</cbc:InvoiceTypeCode>
+	<cbc:DocumentCurrencyCode>MYR</cbc:DocumentCurrencyCode>
+	<cbc:TaxCurrencyCode>MYR</cbc:TaxCurrencyCode>
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2025-01-01</cbc:StartDate>
+		<cbc:EndDate>2025-01-31</cbc:EndDate>
+		<cbc:Description>Monthly</cbc:Description>
+	</cac:InvoicePeriod>
+	<cac:BillingReference>
+		<cac:AdditionalDocumentReference>
+			<cbc:ID>E12345678912</cbc:ID>
+		</cac:AdditionalDocumentReference>
+	</cac:BillingReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>E23456789123,E98765432123</cbc:ID>
+		<cbc:DocumentType>CustomsImportForm</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>FTA</cbc:ID>
+		<cbc:DocumentType>FreeTradeAgreement</cbc:DocumentType>
+		<cbc:DocumentDescription>ASEAN-Australia-New Zealand FTA (AANZFTA)</cbc:DocumentDescription>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>E12345678912,E23456789123</cbc:ID>
+		<cbc:DocumentType>K2</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>CIF</cbc:ID>
+	</cac:AdditionalDocumentReference>
+	<cac:Signature>
+		<cbc:ID>urn:oasis:names:specification:ubl:signature:Invoice</cbc:ID>
+		<cbc:SignatureMethod>urn:oasis:names:specification:ubl:dsig:enveloped:xades</cbc:SignatureMethod>
+	</cac:Signature>
+	<cac:AccountingSupplierParty>
+		<cbc:AdditionalAccountID schemeAgencyName="CertEX">CPT-CCN-W-211111-KL-000002</cbc:AdditionalAccountID>
+		<cac:Party>
+			<cbc:IndustryClassificationCode name="Wholesale of computer hardware, software and peripherals">46510</cbc:IndustryClassificationCode>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="TIN">Supplier's TIN</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="BRN">Supplier's BRN</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="SST">NA</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="TTX">NA</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:CityName>Kuala Lumpur</cbc:CityName>
+				<cbc:PostalZone>50480</cbc:PostalZone>
+				<cbc:CountrySubentityCode>14</cbc:CountrySubentityCode>
+				<cac:AddressLine>
+					<cbc:Line>Lot 66</cbc:Line>
+				</cac:AddressLine>
+				<cac:AddressLine>
+					<cbc:Line>Bangunan Merdeka</cbc:Line>
+				</cac:AddressLine>
+				<cac:AddressLine>
+					<cbc:Line>Persiaran Jaya</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode listAgencyID="6" listID="ISO3166-1">MYS</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Supplier's Name</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+60123456789</cbc:Telephone>
+				<cbc:ElectronicMail>supplier@email.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="TIN">Buyer's TIN</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="BRN">Buyer's BRN</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="SST">NA</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="TTX">NA</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:CityName>Kuala Lumpur</cbc:CityName>
+				<cbc:PostalZone>50480</cbc:PostalZone>
+				<cbc:CountrySubentityCode>14</cbc:CountrySubentityCode>
+				<cac:AddressLine>
+					<cbc:Line>Lot 66</cbc:Line>
+				</cac:AddressLine>
+				<cac:AddressLine>
+					<cbc:Line>Bangunan Merdeka</cbc:Line>
+				</cac:AddressLine>
+				<cac:AddressLine>
+					<cbc:Line>Persiaran Jaya</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode listAgencyID="6" listID="ISO3166-1">MYS</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Buyer's Name</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+60123456780</cbc:Telephone>
+				<cbc:ElectronicMail>buyer@email.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+		<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+		<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="MYR">85.00</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="MYR">1000.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="MYR">10.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>01</cbc:ID>
+				<cac:TaxScheme>
+					<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="MYR">1500.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="MYR">75.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>02</cbc:ID>
+				<cac:TaxScheme>
+					<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="MYR">2000.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="MYR">100.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>E</cbc:ID>
+				<cac:TaxScheme>
+					<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="MYR">4500.00</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="MYR">4500.00</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="MYR">4585.00</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="MYR">0.00</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="MYR">0.00</cbc:ChargeTotalAmount>
+		<cbc:PayableRoundingAmount currencyID="MYR">0.00</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="MYR">4585.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>001</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="MYR">1000.00</cbc:LineExtensionAmount>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="MYR">10.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="MYR">1000.00</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="MYR">10.00</cbc:TaxAmount>
+				<cbc:BaseUnitMeasure unitCode="C62">1</cbc:BaseUnitMeasure>
+				<cbc:PerUnitAmount currencyID="MYR">10.00</cbc:PerUnitAmount>
+				<cac:TaxCategory>
+					<cbc:ID>01</cbc:ID>
+					<cac:TaxScheme>
+						<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Laptop Peripherals</cbc:Description>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>MYS</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="PTC">9800.00.0010</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="CLASS">003</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="MYR">1000.00</cbc:PriceAmount>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="MYR">1000.00</cbc:Amount>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>002</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="MYR">1500.00</cbc:LineExtensionAmount>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="MYR">75.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="MYR">1500.00</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="MYR">75.00</cbc:TaxAmount>
+				<cbc:Percent>5.00</cbc:Percent>
+				<cac:TaxCategory>
+					<cbc:ID>02</cbc:ID>
+					<cac:TaxScheme>
+						<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Computer Monitor</cbc:Description>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>MYS</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="PTC">9800.00.0011</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="CLASS">003</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="MYR">1500.00</cbc:PriceAmount>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="MYR">1500.00</cbc:Amount>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>003</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="MYR">2000.00</cbc:LineExtensionAmount>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReason></cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="MYR">0.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="MYR">0.00</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="MYR">0.00</cbc:TaxAmount>
+				<cbc:Percent>5.00</cbc:Percent>
+				<cac:TaxCategory>
+					<cbc:ID>01</cbc:ID>
+					<cac:TaxScheme>
+						<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="MYR">2000.00</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="MYR">100.00</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cbc:ID>E</cbc:ID>
+					<cbc:TaxExemptionReason>Special Case</cbc:TaxExemptionReason>
+					<cac:TaxScheme>
+						<cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Wireless Mouse</cbc:Description>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>MYS</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="PTC">9800.00.0012</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="CLASS">003</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="MYR">2000.00</cbc:PriceAmount>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="MYR">2000.00</cbc:Amount>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>
