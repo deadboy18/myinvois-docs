@@ -1,6 +1,6 @@
 # 10 — Implementation Timeline & Scope
 
-**Source:** IRBM e-Invoice General Guideline v4.6 (published 7 December 2025)
+**Source:** IRBM e-Invoice General Guideline v4.7 (published 7 July 2026)
 
 This section answers the first question anyone asks: **am I in scope, and
 when do I have to comply?**
@@ -85,7 +85,7 @@ All B2B, B2C, and B2G transactions are in scope (B2G flows work like B2B).
 
 ## Exemptions — who is NOT required to issue e-Invoice
 
-Per Section 1.6 of the General Guideline v4.6, these persons are **currently
+Per Section 1.6 of the General Guideline v4.7, these persons are **currently
 exempted** from issuing e-Invoice (including self-billed e-Invoice):
 
 ### Entity / person exemptions
@@ -129,7 +129,7 @@ otherwise would be required to issue one:
 
 ## List of exempted international organisations
 
-Per Appendix 3 of the General Guideline v4.6. Relevant if you supply to any
+Per Appendix 3 of the General Guideline v4.7. Relevant if you supply to any
 of these (you still issue e-Invoice; the org is exempt from issuing theirs
 for pre-1 July 2025 transactions).
 
@@ -195,15 +195,41 @@ exactly any threshold boundary), you fall in the **higher** bracket. The
 thresholds are strictly "greater than" / "up to" (inclusive of the upper
 bound). Read the table again carefully if you're near a boundary.
 
+## Special Voluntary Disclosure Programme (SVDP)
+
+> **NEW — added in Specific Guideline v4.8 (7 July 2026), Section 17, pp.123–126.**
+
+IRBM launched a penalty-free amnesty window for taxpayers to catch up on
+missed or non-compliant e-Invoices:
+
+| Detail | Value |
+|---|---|
+| **Window** | 7 July 2026 – 31 December 2027 |
+| **Who qualifies** | Any taxpayer who missed, partially submitted, or submitted non-compliant e-Invoices since their mandatory date; including those already under compliance review |
+| **Version tags** | Must use **"SVDP 1.2"** (no digital signature) or **"SVDP 1.3"** (with digital signature) — not for regular submissions |
+| **Consolidated catch-up** | Must submit **month-by-month**, not lumped across months |
+| **Protection** | No compliance reviews, penalties, or prosecution on disclosed e-Invoices |
+| **Exceptions** | Does NOT protect fraud, wilful default, negligence, or submissions that themselves don't comply |
+
+This is especially relevant for **Phase 4 taxpayers** (up to RM5M / new
+businesses from 1 July 2026) who are only now starting, as well as earlier-phase
+taxpayers who have gaps.
+
+For full details, worked examples, and rules, see
+[Specific Guideline v4.8 — Section 17](../11-irbm-specific-guideline/README.md#17-e-invoice-special-voluntary-disclosure-programme-svdp).
+
 ## Practical take
 
 If you're reading this in 2026 and don't know your mandatory date, **you are
 almost certainly past it**. Contact your accountant or IRBM to confirm.
 The latest voluntary-adoption path is for businesses that haven't crossed
-RM 1M yet.
+RM 1M yet. If you have gaps in your e-Invoice compliance, the **SVDP
+window (7 July 2026 – 31 December 2027)** lets you catch up without
+penalty — see the section above.
 
 ## Reference
 
-- [IRBM e-Invoice General Guideline v4.6 (7 Dec 2025)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
+- [IRBM e-Invoice General Guideline v4.7 (7 July 2026)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
+- [IRBM e-Invoice Specific Guideline v4.8 (7 July 2026)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
 - [e-Invoice implementation information page](https://www.hasil.gov.my/en/e-invoice/implementation-of-e-invoicing-in-malaysia/)
 - [MyTax Portal (for TIN lookup / e-Daftar)](https://mytax.hasil.gov.my/)

@@ -1,12 +1,12 @@
 <!--
-Source: IRBM e-Invoice Specific Guideline (Version 4.7)
-Published: 20 April 2026 by Lembaga Hasil Dalam Negeri Malaysia (IRBM)
+Source: IRBM e-Invoice Specific Guideline (Version 4.8)
+Published: 7 July 2026 by Lembaga Hasil Dalam Negeri Malaysia (IRBM)
 Official source: https://www.hasil.gov.my/en/e-invoice/
 -->
 
-# IRBM e-Invoice Specific Guideline (Version 4.7)
+# IRBM e-Invoice Specific Guideline (Version 4.8)
 
-> **Published:** 20 April 2026
+> **Published:** 7 July 2026
 > **Issued by:** Inland Revenue Board of Malaysia (IRBM) / Lembaga Hasil Dalam Negeri Malaysia
 > **Legal basis:** Issued under section 134A of the Income Tax Act 1967.
 
@@ -32,6 +32,7 @@ Official source: https://www.hasil.gov.my/en/e-invoice/
 - [14. E-Commerce Transactions](#14-e-commerce-transactions)
 - [15. Cybersecurity](#15-cybersecurity)
 - [16. e-Invoice Treatment During Interim Relaxation Period](#16-e-invoice-treatment-during-interim-relaxation-period)
+- [17. e-Invoice Special Voluntary Disclosure Programme (SVDP)](#17-e-invoice-special-voluntary-disclosure-programme-svdp)
 - [Appendix 1 – List of General TIN](#appendix-1-list-of-general-tin)
 - [Appendix 2 – Buyer's Details in Consolidated e-Invoice](#appendix-2-buyers-details-in-consolidated-e-invoice)
 - [Appendix 3 – Parties of Self-Billed e-Invoice](#appendix-3-parties-of-self-billed-e-invoice)
@@ -3704,6 +3705,136 @@ on non-compliance of the e-Invoice requirements, provided that taxpayers
 comply with the requirements mentioned under Section 16.2 (a) and (b) of
 this e-Invoice Specific Guideline.
 
+
+## 17. e-Invoice Special Voluntary Disclosure Programme (SVDP)
+
+> **NEW in Version 4.8 (7 July 2026).** Source: Specific Guideline v4.8, Section 17, pp.123–126.
+
+**17.1** As part of the Government's ongoing efforts to facilitate the implementation
+of e-Invoice and support taxpayers in regularising their e-Invoice
+compliance without any penalty, IRBM has introduced an e-Invoice Special
+Voluntary Disclosure Programme ("SVDP") starting from **7 July 2026 until
+31 December 2027**. The e-Invoice SVDP applies to:
+
+(a) taxpayers who have not submitted or have missed out in submitting
+e-Invoices for any period commencing from their mandatory e-Invoice
+implementation date;
+
+(b) taxpayers who have submitted e-Invoices but the e-Invoices contain
+errors or information that do not comply with the specifications and
+requirements prescribed under the relevant tax legislation, e-Invoice
+Guideline and this e-Invoice Specific Guideline;
+
+(c) taxpayers who have not submitted any e-Invoices for any period or
+transaction commencing from their mandatory e-Invoice
+implementation date; and
+
+(d) taxpayers who are currently undergoing or have been notified by the
+IRBM that they will be undergoing an e-Invoice compliance review.
+
+**17.2** Voluntary disclosures made under the e-Invoice SVDP will be accepted by
+IRBM, subject to taxpayers acting in good faith and complying with the
+requirements prescribed for the purpose of the e-Invoice SVDP. Taxpayers
+are responsible for ensuring that the voluntary disclosures made are
+accurate and properly submitted in accordance with the requirements
+prescribed by IRBM.
+
+**17.3** e-Invoice compliance reviews and enforcement actions (including
+imposition of penalties and prosecution actions) will not be undertaken by
+IRBM in relation to the e-Invoices disclosed under the e-Invoice SVDP.
+
+**17.4** Section 17.3 shall not apply where:
+
+(a) the e-Invoices submitted under the e-Invoice SVDP do not comply with
+the specifications and requirements prescribed under the relevant tax
+legislation, e-Invoice Guideline and this e-Invoice Specific Guideline; or
+
+(b) the voluntary disclosure involves fraud, wilful default or negligence.
+
+**17.5** Taxpayers participating in the e-Invoice SVDP are required to use the
+e-Invoice version designated as **"SVDP 1.2"** (for taxpayers who are
+submitting without digital signature) or **"SVDP 1.3"** (for taxpayers who are
+submitting with digital signature) when submitting e-Invoices under the
+e-Invoice SVDP. The "SVDP 1.2" or "SVDP 1.3" e-Invoice versions shall
+only be used for the purpose of making voluntary disclosures under the
+e-Invoice SVDP and shall not be used for the submission of e-Invoices
+outside the e-Invoice SVDP.
+
+**17.6** Where the voluntary disclosure involves consolidated e-Invoices that were
+not previously submitted, the consolidated e-Invoices shall be submitted
+according to the relevant month of transaction and not on a lump sum basis
+covering multiple months.
+
+### Example 23
+
+Starship Sdn Bhd has failed to submit consolidated e-Invoices for
+transactions undertaken in January to April 2026.
+
+During the e-Invoice SVDP period, Starship Sdn Bhd intends to regularise
+its e-Invoice compliance by submitting the relevant consolidated e-Invoices
+to IRBM.
+
+Starship Sdn Bhd is required to submit **four (4) separate consolidated
+e-Invoices**, which represent one (1) consolidated e-Invoice for each of the
+month (provided no transactional e-Invoice request from buyers), and
+Starship Sdn Bhd is not allowed to aggregate all transactions for the four
+(4) months into a single consolidated e-Invoice submission.
+
+The consolidated e-Invoices submitted under the e-Invoice SVDP are
+required to use the "SVDP 1.2" (for taxpayers who are submitting without
+digital signature) or "SVDP 1.3" (for taxpayers who are submitting with
+digital signature) e-Invoice version.
+
+### Example 24
+
+Nutrion Sdn Bhd failed to submit e-Invoices for transactions undertaken in
+February 2026. The transactions comprise 10 transactions with a value
+below RM10,000 each and Transaction Z with a value of RM12,000.
+
+During the e-Invoice SVDP period, Nutrion Sdn Bhd intends to regularise its
+e-Invoice compliance.
+
+As Transaction Z exceeds RM10,000 in value, Nutrion Sdn Bhd is required
+to issue a **transactional e-Invoice** for Transaction Z. For the remaining 10
+transactions with a value below RM10,000 each, Nutrion Sdn Bhd is
+allowed to issue **consolidated e-Invoice** (provided no transactional
+e-Invoice request from buyers).
+
+The transactional e-Invoice for Transaction Z and the consolidated
+e-Invoice for the remaining 10 transactions are required to be submitted
+using the "SVDP 1.2" (for taxpayers who are submitting without digital
+signature) or "SVDP 1.3" (for taxpayers who are submitting with digital
+signature) e-Invoice version for the purposes of the e-Invoice SVDP.
+
+### Example 25
+
+Rich Kitten Sdn Bhd has an annual turnover exceeding RM100 million and
+was required to implement e-Invoice from 1 August 2024 (i.e., Phase 1).
+The interim relaxation period for phase 1 taxpayers ended on 31 January
+2025.
+
+Rich Kitten Sdn Bhd subsequently identified that certain self-billed
+e-Invoices relating to transactions undertaken from January to March 2026
+were not submitted to IRBM.
+
+During the e-Invoice SVDP period, Rich Kitten Sdn Bhd intends to
+regularise its e-Invoice compliance by submitting the relevant self-billed
+e-Invoices to IRBM.
+
+As the transactions were undertaken after the interim relaxation period,
+Rich Kitten Sdn Bhd is required to submit the self-billed e-Invoices in
+accordance with the requirements prescribed under the relevant tax
+legislation, e-Invoice Guideline and this e-Invoice Specific Guideline.
+Accordingly, Rich Kitten Sdn Bhd is required to issue transactional
+self-billed e-Invoices, save for exceptions listed under Section 3.6.5 of this
+e-Invoice Specific Guideline.
+
+The self-billed e-Invoices are required to be submitted using the "SVDP
+1.2" (for taxpayers who are submitting without digital signature) or "SVDP
+1.3" (for taxpayers who are submitting with digital signature) e-Invoice
+version for the purposes of the e-Invoice SVDP.
+
+---
 
 ## Appendix 1 – List of General TIN
 

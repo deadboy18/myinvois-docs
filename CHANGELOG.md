@@ -3,6 +3,44 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.1.0] — 2026-07-09
+
+**Update for IRBM Guideline revisions published 7 July 2026.**
+
+### Sources updated
+
+- **IRBM e-Invoice General Guideline** — v4.6 → **v4.7** (published 7 July 2026)
+- **IRBM e-Invoice Specific Guideline** — v4.7 → **v4.8** (published 7 July 2026)
+
+### Changes
+
+- **General Guideline v4.7** (minor clarifications):
+  - Abbreviation table: added FTA (Free Trade Agreement) — p.4
+  - Section 2.1 (e-Invoice Overview Workflow): additional clarification text — p.17
+  - Appendix 1 & 2 (required fields / annexure fields): field description amendments — pp.43–54
+- **Specific Guideline v4.8** (major addition):
+  - **NEW Section 17: e-Invoice Special Voluntary Disclosure Programme (SVDP)** — pp.123–126
+    - Penalty-free amnesty window: 7 July 2026 to 31 December 2027
+    - Covers missed, incomplete, or non-compliant e-Invoices
+    - Requires special version tags: "SVDP 1.2" (without digital signature) or "SVDP 1.3" (with digital signature)
+    - Consolidated e-Invoices must be submitted month-by-month, not lumped
+    - Three new worked examples (Examples 23, 24, 25)
+  - Example 23 (p.124): missed consolidated e-Invoices — submit per month
+  - Example 24 (p.125): mixed high/low-value transactions under SVDP
+  - Example 25 (pp.125–126): self-billed catch-up after interim relaxation period
+
+### Files modified
+
+- `CHANGELOG.md` — this entry
+- `README.md` — version badges, freshness section
+- `11-irbm-specific-guideline/README.md` — added Section 17 (SVDP) + ToC entry
+- `12-cookbook/irbm-general-guideline/README.md` — bumped to v4.7, updated summary-of-changes table
+- `12-cookbook/10-implementation-timeline.md` — updated source reference to v4.7, added SVDP cross-reference
+- `12-cookbook/13-required-fields-reference.md` — updated source reference to v4.7
+- `12-cookbook/14-validation-status-lifecycle.md` — updated source references to v4.7
+
+---
+
 ## [1.0.0] — 2026-04-21
 
 **Initial public release.**

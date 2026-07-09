@@ -1,6 +1,6 @@
 # 13 — Required Fields Reference (55 Fields)
 
-**Source:** IRBM e-Invoice General Guideline v4.6 — Appendix 1 & 2
+**Source:** IRBM e-Invoice General Guideline v4.7 (7 July 2026) — Appendix 1 & 2
 
 Every e-Invoice must contain at least 55 fields grouped into 8 categories.
 Some are always mandatory, some conditionally mandatory, some optional.
@@ -185,7 +185,7 @@ When goods are shipped to someone other than the buyer:
 
 ## Reference
 
-- [IRBM e-Invoice General Guideline v4.6 — Appendix 1 & 2](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
+- [IRBM e-Invoice General Guideline v4.7 (7 July 2026) — Appendix 1 & 2](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
 - [Document Types (schema)](https://sdk.myinvois.hasil.gov.my/types/)
 - [Code tables](https://sdk.myinvois.hasil.gov.my/codes/)
 - [Field validation rules — this cookbook](06-field-validation-rules.md)

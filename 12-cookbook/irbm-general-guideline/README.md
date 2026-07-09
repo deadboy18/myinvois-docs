@@ -1,8 +1,8 @@
-# E-Invoice Guideline (Version 4.6)
+# E-Invoice Guideline (Version 4.7)
 
 **Inland Revenue Board of Malaysia (IRBM / LHDN)**
 Issued under Section 134A of the Income Tax Act 1967
-**Date of publication: 7 December 2025**
+**Date of publication: 7 July 2026**
 
 This file is a markdown rendering of the official IRBM **General Guideline**
 (not to be confused with the Specific Guideline which drills into per-scenario
@@ -22,7 +22,15 @@ the `11-irbm-specific-guideline/` folder in the parent `myinvois-docs` repo.
 
 ---
 
-## Summary of changes from v4.5 → v4.6
+## Summary of changes from v4.6 → v4.7
+
+| Paragraph (v4.6) | Paragraph (v4.7) | Change type | Notes |
+|---|---|---|---|
+| Abbreviation Table | Abbreviation Table | Addition | Added FTA (Free Trade Agreement) — p.4 |
+| 2.1 | 2.1 | Addition | Clarification of e-Invoice Overview Workflow — p.17 |
+| Appendix 1, Appendix 2 | Appendix 1, Appendix 2 | Amendment | Field description clarifications — pp.43–54 |
+
+### Previous changes (v4.5 → v4.6)
 
 | Paragraph (v4.5) | Change in v4.6 | Notes |
 |---|---|---|

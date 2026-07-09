@@ -5,7 +5,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 [![Docs](https://img.shields.io/badge/docs-92%20markdown%20files-blue.svg)](#-whats-inside)
-[![Last verified](https://img.shields.io/badge/last%20verified-April%202026-green.svg)](#-freshness--versioning)
+[![Last verified](https://img.shields.io/badge/last%20verified-July%202026-green.svg)](#-freshness--versioning)
 [![Links](https://img.shields.io/badge/links-853%2F853%20resolved-brightgreen.svg)](#)
 
 This repository is a comprehensive, developer-focused reference for integrating
@@ -37,8 +37,8 @@ operations runbooks), and keeps everything cross-linked.
 | [`08-faq/`](08-faq/) | Official IRBM FAQ | 1 |
 | [`09-postman/`](09-postman/) | Postman collection + sandbox/production environments | 4 |
 | [`10-sample-documents/`](10-sample-documents/) | 44 real XML/JSON sample payloads + 9 code-table JSONs + Digital Signature User Guide PDF | 55 |
-| [`11-irbm-specific-guideline/`](11-irbm-specific-guideline/) | **Specific Guideline v4.7** as markdown — cross-border, self-billed, e-commerce, employment perks, foreign income, cybersecurity, appendices | 1 (3,989 lines) |
-| [`12-cookbook/`](12-cookbook/) | **Error cookbook + operations playbook + General Guideline v4.6 + community SDK survey** | 26 |
+| [`11-irbm-specific-guideline/`](11-irbm-specific-guideline/) | **Specific Guideline v4.8** as markdown — cross-border, self-billed, e-commerce, employment perks, foreign income, cybersecurity, **SVDP**, appendices | 1 |
+| [`12-cookbook/`](12-cookbook/) | **Error cookbook + operations playbook + General Guideline v4.7 + community SDK survey** | 26 |
 | [`release-notes/`](release-notes/) | Archived release notes | 3 |
 
 ---
@@ -200,10 +200,10 @@ Full contact directory: [`contacts.md`](contacts.md)
 
 ## 📅 Freshness & versioning
 
-This is a **snapshot** as of **April 2026**, including:
+This is a **snapshot** as of **July 2026**, including:
 
-- **e-Invoice General Guideline v4.6** (published 7 December 2025)
-- **e-Invoice Specific Guideline v4.7**
+- **e-Invoice General Guideline v4.7** (published 7 July 2026)
+- **e-Invoice Specific Guideline v4.8** (published 7 July 2026)
 - **MyInvois SDK** as published at that date
 - **Digital Signature User Guide** (PosDigicert Rev 1.2, July 2024)
 - Community SDK versions (klsheng 1.0.14, ERPGulf 3.0.1, etc.)
@@ -241,7 +241,7 @@ drift, please contribute — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - Survey all major community SDK implementations
 - Provide a production-readiness checklist
 - Include 44 sample invoice payloads covering normal, foreign currency, consolidated, multi-line, and self-billed variants
-- Render both IRBM guideline PDFs (General v4.6, Specific v4.7) as searchable markdown
+- Render both IRBM guideline PDFs (General v4.7, Specific v4.8) as searchable markdown
 
 ### ⚠️ Does not
 
@@ -305,7 +305,7 @@ guidelines. Particularly valuable contributions:
 ├── 08-faq/                                     ← official IRBM FAQ
 ├── 09-postman/                                 ← Postman collection + envs
 ├── 10-sample-documents/                        ← 44 sample payloads + code JSONs + PDF
-├── 11-irbm-specific-guideline/                 ← Specific Guideline v4.7 as markdown
+├── 11-irbm-specific-guideline/                 ← Specific Guideline v4.8 as markdown
 │
 ├── 12-cookbook/                                ← Error + operations playbook
 │   ├── README.md
@@ -333,7 +333,7 @@ guidelines. Particularly valuable contributions:
 │   │   ├── 04-syukrandev-nodejs.md
 │   │   └── 05-pyhoon-b4x.md
 │   └── irbm-general-guideline/
-│       └── README.md                           (General Guideline v4.6 as markdown)
+│       └── README.md                           (General Guideline v4.7 as markdown)
 │
 └── release-notes/
     ├── README.md

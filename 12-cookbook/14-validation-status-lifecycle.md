@@ -5,7 +5,7 @@ Understanding the states — and the 72-hour window that controls several of
 them — is critical for designing your retry logic, UI flows, and
 reconciliation processes.
 
-**Source:** IRBM e-Invoice General Guideline v4.6, Sections 2.3, 2.4, 2.5.
+**Source:** IRBM e-Invoice General Guideline v4.7 (7 July 2026), Sections 2.3, 2.4, 2.5.
 
 ## The four states
 
@@ -214,7 +214,7 @@ check individual doc statuses, not just `overallStatus`.
 
 ## The system-downtime concession
 
-Per Section 2.5.4 of the General Guideline v4.6:
+Per Section 2.5.4 of the General Guideline v4.7:
 
 > In cases where the MyInvois System is down due to maintenance or technical
 > issues, and taxpayers are able to demonstrate their evidence of their
@@ -319,7 +319,7 @@ def poll_until_complete(submission_uid, max_wait=timedelta(minutes=30)):
 
 ## Reference
 
-- [IRBM e-Invoice General Guideline v4.6](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/) — Sections 2.3, 2.4, 2.5
+- [IRBM e-Invoice General Guideline v4.7 (7 July 2026)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/) — Sections 2.3, 2.4, 2.5
 - [Document Validation Rules (SDK)](https://sdk.myinvois.hasil.gov.my/document-validation-rules/)
 - Related cookbook pages:
   - [09-duplicate-detection.md](09-duplicate-detection.md) — 2-hour duplicate window
