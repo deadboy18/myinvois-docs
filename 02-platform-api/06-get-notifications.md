@@ -79,22 +79,22 @@ The resulting structure is part of a single object containing `result` structure
 
 #### Notification
 
-| Output parameter | Type | Description | Value example | Â |
+| Output parameter | Type | Description | Value example |  |
 | --- | --- | --- | --- | --- |
-| notificationId | String | Unique ID of the notification. | 73DKLJHH78NJUHQ | Â |
-| receiverName | String | Receiver Name of the notification. | KXXX\_XXXXPS BHD | Â |
-| notificationDeliveryId | String | Unique ID of the notification Delivery. | 73DKLJHH78NJUHQ | Â |
-| creationDateTime | DateTime | The date and time when notification was created | 2015-02-13T14:20:10Z | Â |
-| receivedDateTime | DateTime | The date and time when notification was sent out | 2015-02-13T14:20:10Z | Â |
+| notificationId | String | Unique ID of the notification. | 73DKLJHH78NJUHQ |  |
+| receiverName | String | Receiver Name of the notification. | KXXX\_XXXXPS BHD |  |
+| notificationDeliveryId | String | Unique ID of the notification Delivery. | 73DKLJHH78NJUHQ |  |
+| creationDateTime | DateTime | The date and time when notification was created | 2015-02-13T14:20:10Z |  |
+| receivedDateTime | DateTime | The date and time when notification was sent out | 2015-02-13T14:20:10Z |  |
 | notificationSubject | String | Subject of the notification. | Documents Submitted | 73DKLJHH78NJUHQ |
-| deliveredDateTime | DateTime | Optional date time when notification was delivered | 2015-02-13T14:23:10Z | Â |
-| typeId | String | Id of the type of the message | 34 | Â |
-| typeName | String | Type name of the message | Invoice received | Â |
-| finalMessage | String | Optional: final message that was sent out - depends on the channel | Taxpayer 893838273 has received new documents | Â |
-| address | String | Channel address that was used to deliver the message | test@test.com | Â |
-| language | String | Language used for delivery. Values:`ms`,`en` | en | Â |
-| status | String | Status of the notification delivery. Values - [Notification Status](#notification-status) | delivered | Â |
-| deliveryAttempts | [Delivery Attempt[]](#delivery-attempt) | Structure containing information about delivery attempts of the notification or its batch (if batched with others and delivered together) | See structure. | Â |
+| deliveredDateTime | DateTime | Optional date time when notification was delivered | 2015-02-13T14:23:10Z |  |
+| typeId | String | Id of the type of the message | 34 |  |
+| typeName | String | Type name of the message | Invoice received |  |
+| finalMessage | String | Optional: final message that was sent out - depends on the channel | Taxpayer 893838273 has received new documents |  |
+| address | String | Channel address that was used to deliver the message | test@test.com |  |
+| language | String | Language used for delivery. Values:`ms`,`en` | en |  |
+| status | String | Status of the notification delivery. Values - [Notification Status](#notification-status) | delivered |  |
+| deliveryAttempts | [Delivery Attempt[]](#delivery-attempt) | Structure containing information about delivery attempts of the notification or its batch (if batched with others and delivered together) | See structure. |  |
 
 #### Delivery Attempt
 

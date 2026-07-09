@@ -10,7 +10,7 @@ List of country codes allowed as part of the address information as part of the 
 
 Country codes are used to supply precise country information when providing address information as part of the document submission. Country codes used in documents are following [ISO-3166 alpha-3 approach](https://www.iso.org/iso-3166-country-codes.html).
   
-Country codes are also used for the âCountry of Originâ data field.
+Country codes are also used for the "Country of Origin" data field.
 
 # List
 
@@ -61,7 +61,7 @@ Country codes are also used for the âCountry of Originâ data field.
 | CHE | SWITZERLAND |
 | CHL | CHILE |
 | CHN | CHINA |
-| CIV | COTE DâIVOIRE |
+| CIV | COTE D'IVOIRE |
 | CMR | CAMEROON |
 | COD | CONGO, THE DEMOCRATIC REPUBLIC |
 | COG | CONGO |

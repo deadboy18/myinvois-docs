@@ -41,7 +41,7 @@ Output list of Document Types contains:
 | description | String | Description of the document type | Invoice |
 | activeFrom | Date | Date when the activity of the document type started | 2015-02-13T13:15:00Z |
 | activeTo | Date | Optional: date when the activity of the document type ends | 2027-03-01T00:00:00Z |
-| documentTypeVersions | Array of document type version summary objects | 1 or more array values | Â |
+| documentTypeVersions | Array of document type version summary objects | 1 or more array values |  |
 
 Array of document type version summary objects contains:
 

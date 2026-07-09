@@ -36,19 +36,19 @@ URL parameters accepted:
 | --- | --- | --- | --- | --- |
 | pageNo | Number | Optional: number of the page to retrieve. Typically this parameter value is derived from initial parameter less call when caller learns total amount of page of certain size | 3 | Optional |
 | pageSize | Number | Optional: number of the documents to retrieve per page. Page size cannot exceed system configured maximum page size for this API | 20 | Optional |
-| submissionDateFrom | DateTime | Optional: The start date and time when the document was submitted to the e-Invoice API, Time to be supplied in UTC timezone. Mandatory when âsubmissionDateToâ is provided | 2022-11-25T01:59:10Z | Optional |
-| submissionDateTo | DateTime | Optional: The end date and time when the document was submitted to the e-Invoice API, Time to be supplied in UTC timezone. Mandatory when âsubmissionDateFromâ is provided | 2022-12-22T23:59:59Z | Optional |
-| issueDateFrom | DateTime | Optional: The start date and time when the document was issued. Mandatory when âissueDateToâ is provided | 2021-02-25T23:55:10Z | Optional |
-| issueDateTo | DateTime | Optional: The end date and time when the document was issued. Mandatory when âissueDateFromâ is provided | 2021-03-10T01:59:10Z | Optional |
+| submissionDateFrom | DateTime | Optional: The start date and time when the document was submitted to the e-Invoice API, Time to be supplied in UTC timezone. Mandatory when 'submissionDateTo' is provided | 2022-11-25T01:59:10Z | Optional |
+| submissionDateTo | DateTime | Optional: The end date and time when the document was submitted to the e-Invoice API, Time to be supplied in UTC timezone. Mandatory when 'submissionDateFrom' is provided | 2022-12-22T23:59:59Z | Optional |
+| issueDateFrom | DateTime | Optional: The start date and time when the document was issued. Mandatory when 'issueDateTo' is provided | 2021-02-25T23:55:10Z | Optional |
+| issueDateTo | DateTime | Optional: The end date and time when the document was issued. Mandatory when 'issueDateFrom' is provided | 2021-03-10T01:59:10Z | Optional |
 | InvoiceDirection | Text | Optional: direction of the document. Possible values: (`Sent`, `Received`) | Sent | Optional |
 | status | Text | Optional: status of the document. Possible values: (`Valid`, `Invalid`, `Cancelled`, `Submitted`) | Valid | Optional |
 | documentType | Text | Optional: Document type code. | 01 | Optional |
-| receiverId | Text | Optional: Document recipient identifier. Only can be used when âDirectionâ filter is set toÂ Sent. Possible values: (Business registration number, National ID(IC), Passport Number, Army ID) | BRN example: 201901234567 NRIC example: 770625015324 Passport number example: A12345678 Army number example: 551587706543 | Optional |
-| receiverIdType | Text | Optional: Document recipient identifier type. Only can be used when âDirectionâ filter is set toÂ Sent. Possible values: (BRN, PASSPORT, NRIC, ARMY) This is mandatory in case the receiverId is provided | PASSPORT | Optional |
-| issuerIdType | Text | Optional: Document issuer identifier type. Only can be used when âDirectionâ filter is set toÂ Received. Possible values: (BRN, PASSPORT, NRIC, ARMY) This is mandatory in case the issuerId is provided | PASSPORT | Optional |
-| receiverTin | Text | Optional: Document recipient TIN. Only can be used when âDirectionâ filter is set toÂ Sent. | C2584563200 | Optional |
-| issuerTin | Text | Optional: Document issuer identifier. Only can be used when âDirectionâ filter is set toÂ Received. | C2584563200 | Optional |
-| issuerId | Text | Optional: Document issuer identifier. Only can be used when âDirectionâ filter is set toÂ Received. Possible values: (Business registration number, National ID(IC), Passport Number, Army ID) | BRN example: 201901234567 NRIC example: 770625015324 Passport number example: A12345678 Army number example: 551587706543 | Optional |
+| receiverId | Text | Optional: Document recipient identifier. Only can be used when 'Direction' filter is set to Sent. Possible values: (Business registration number, National ID(IC), Passport Number, Army ID) | BRN example: 201901234567 NRIC example: 770625015324 Passport number example: A12345678 Army number example: 551587706543 | Optional |
+| receiverIdType | Text | Optional: Document recipient identifier type. Only can be used when 'Direction' filter is set to Sent. Possible values: (BRN, PASSPORT, NRIC, ARMY) This is mandatory in case the receiverId is provided | PASSPORT | Optional |
+| issuerIdType | Text | Optional: Document issuer identifier type. Only can be used when 'Direction' filter is set to Received. Possible values: (BRN, PASSPORT, NRIC, ARMY) This is mandatory in case the issuerId is provided | PASSPORT | Optional |
+| receiverTin | Text | Optional: Document recipient TIN. Only can be used when 'Direction' filter is set to Sent. | C2584563200 | Optional |
+| issuerTin | Text | Optional: Document issuer identifier. Only can be used when 'Direction' filter is set to Received. | C2584563200 | Optional |
+| issuerId | Text | Optional: Document issuer identifier. Only can be used when 'Direction' filter is set to Received. Possible values: (Business registration number, National ID(IC), Passport Number, Army ID) | BRN example: 201901234567 NRIC example: 770625015324 Passport number example: A12345678 Army number example: 551587706543 | Optional |
 
 ## Outputs
 
@@ -62,13 +62,13 @@ The resulting structure is part of a single object containing `result` structure
 | --- | --- | --- | --- |
 | uuid | String | Unique document ID in e-Invoice | 42S512YACQBRSRHYKBXBTGQG22 |
 | submissionUID | String | Unique ID of the submission that document was part of | XYE60M8ENDWA7V9TKBXBTGQG10 |
-| longId | String | Unique long temporary Id that can be used to query document data anonymously | YQH73576FY9VR57Bâ¦ |
+| longId | String | Unique long temporary Id that can be used to query document data anonymously | YQH73576FY9VR57B... |
 | internalId | String | Internal ID used in submission for the document | PZ-234-A |
 | typeName | String | Unique name of the document type that can be used in submission of the documents. | invoice |
 | typeVersionName | String | Name of the document type version within the document type that can be used in document submission to identify document type version being submitted | 1.0 |
 | issuerTin | String | TIN of issuer | C2584563200 |
 | receiverId | String | Optional: receiver registration number (can be national ID or foreigner ID). | BRN example: 201901234567 NRIC example: 770625015324 Passport number example: A12345678 Army number example: 551587706543 |
-| receiverName | String | Optional: receiver name (can be company name or personâs name) | AMS Setia Jaya Sdn. Bhd. |
+| receiverName | String | Optional: receiver name (can be company name or person's name) | AMS Setia Jaya Sdn. Bhd. |
 | dateTimeIssued | DateTime | The date and time when the document was issued. | 2015-02-13T13:15:00Z |
 | dateTimeReceived | DateTime | The date and time when the document was submitted. | 2015-02-13T14:20:00Z |
 | dateTimeValidated | DateTime | The date and time when the document passed all validations and moved to the valid state. | 2015-02-13T14:20:00Z |
@@ -77,8 +77,8 @@ The resulting structure is part of a single object containing `result` structure
 | netAmount | Decimal | Total net amount of the document in MYR. | 100.70 |
 | total | Decimal | Total amount of the document in MYR. | 124.09 |
 | status | String | Status of the document - `Submitted`, `Valid`, `Invalid`, `Cancelled` | Valid |
-| cancelDateTime | Date | Refer to the document cancellation that has been initiated by the taxpayer âissuerâ of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
-| rejectRequestDateTime | Date | Refer to the document rejection request that has been initiated by the taxpayer âreceiverâ of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
+| cancelDateTime | Date | Refer to the document cancellation that has been initiated by the taxpayer "issuer" of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
+| rejectRequestDateTime | Date | Refer to the document rejection request that has been initiated by the taxpayer "receiver" of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
 | documentStatusReason | String | Mandatory: Reason of the cancellation or rejection of the document. | Examples of reasons: Wrong buyer details or Wrong invoice details or any other reasons as appropriate |
 | createdByUserId | String | User created the document. Can be ERP ID or User Email | C1XXXXXXXX00:9e21b10c-41c4-9323-c590-95abcb6e4e4d  general.ams@supplier.com |
 | supplierTin | String | TIN of issuer | C2584563200 |
@@ -104,7 +104,7 @@ Error situations are reported back by this API through the [standard error respo
 
 ## Additional considerations
 
-This API is limited to retrieve only certain maximum number of documents and to query only certain âtime windowâ of the documents to prevent huge queries to be executed. These maximum parameters are defined by e-Invoice system administrators.
+This API is limited to retrieve only certain maximum number of documents and to query only certain "time window" of the documents to prevent huge queries to be executed. These maximum parameters are defined by e-Invoice system administrators.
 
 Time window is a configurable parameter configured by Tax Authuority. Current configuration is **31 days**.
 
@@ -122,11 +122,11 @@ where {envbaseurl} need to be replaced with e-Invoice portal Base URL
 
 **Important !**
 
-â¢ The 'Get Recent Document' API should be used for troubleshooting issues and it was not designed for reconciliation between your ERP system and the MyInvois system. Excessive use of this API may result in throttling. The system may impose limits on the usage policy of this API. Which will be based on each client ID and will be linked to the specific ERP system using the APIs.
+• The 'Get Recent Document' API should be used for troubleshooting issues and it was not designed for reconciliation between your ERP system and the MyInvois system. Excessive use of this API may result in throttling. The system may impose limits on the usage policy of this API. Which will be based on each client ID and will be linked to the specific ERP system using the APIs.
 
-â¢ Kindly note that the âGet Recent Documentsâ API is intended to assist with troubleshooting issues, rather than for reconciliation between your ERP system and the MyInvois system. Excessive use of this API for purposes other than troubleshooting may result in system throttling.
+• Kindly note that the 'Get Recent Documents' API is intended to assist with troubleshooting issues, rather than for reconciliation between your ERP system and the MyInvois system. Excessive use of this API for purposes other than troubleshooting may result in system throttling.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Reject Document](04-reject-document.md)
 [Get Submission](06-get-submission.md)

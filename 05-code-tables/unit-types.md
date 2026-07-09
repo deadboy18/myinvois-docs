@@ -982,16 +982,16 @@ Unit of measurement types are used as part of the document lines in document sub
 | J36 | microlitre per litre |
 | J38 | baud |
 | J39 | British thermal unit (mean) |
-| J40 | British thermal unit (international table) foot per hourÃÂ square foot degree Fahrenheit |
-| J41 | British thermal unit (international table) inch per hour squareÃÂ foot degree Fahrenheit |
-| J42 | British thermal unit (international table) inch per second squareÃÂ foot degree Fahrenheit |
+| J40 | British thermal unit (international table) foot per hour  square foot degree Fahrenheit |
+| J41 | British thermal unit (international table) inch per hour square  foot degree Fahrenheit |
+| J42 | British thermal unit (international table) inch per second square  foot degree Fahrenheit |
 | J43 | British thermal unit (international table) per pound degree Fahrenheit |
 | J44 | British thermal unit (international table) per minute |
 | J45 | British thermal unit (international table) per second |
-| J46 | British thermal unit (thermochemical) foot per hour squareÃÂ foot degree Fahrenheit |
+| J46 | British thermal unit (thermochemical) foot per hour square  foot degree Fahrenheit |
 | J47 | British thermal unit (thermochemical) per hour |
-| J48 | British thermal unit (thermochemical) inch per hour squareÃÂ foot degree Fahrenheit |
-| J49 | British thermal unit (thermochemical) inch per secondÃÂ square foot degree Fahrenheit |
+| J48 | British thermal unit (thermochemical) inch per hour square  foot degree Fahrenheit |
+| J49 | British thermal unit (thermochemical) inch per second  square foot degree Fahrenheit |
 | J50 | British thermal unit (thermochemical) per pound degree Fahrenheit |
 | J51 | British thermal unit (thermochemical) per minute |
 | J52 | British thermal unit (thermochemical) per second |
@@ -1427,18 +1427,18 @@ Unit of measurement types are used as part of the document lines in document sub
 | MTS | metre per second |
 | MTZ | milihertz |
 | MVA | megavolt - ampere |
-| MWH | megawatt hour (1000ÃÂ kW.h) |
+| MWH | megawatt hour (1000  kW.h) |
 | N1 | pen calorie |
 | N10 | pound foot per second |
 | N11 | pound inch per second |
 | N12 | Pferdestaerke |
-| N13 | centimetre of mercury (0 ÃÂºC) |
-| N14 | centimetre of water (4 ÃÂºC) |
-| N15 | foot of water (39.2 ÃÂºF) |
-| N16 | inch of mercury (32 ÃÂºF) |
-| N17 | inch of mercury (60 ÃÂºF) |
-| N18 | inch of water (39.2 ÃÂºF) |
-| N19 | inch of water (60 ÃÂºF) |
+| N13 | centimetre of mercury (0 ºC) |
+| N14 | centimetre of water (4 ºC) |
+| N15 | foot of water (39.2 ºF) |
+| N16 | inch of mercury (32 ºF) |
+| N17 | inch of mercury (60 ºF) |
+| N18 | inch of water (39.2 ºF) |
+| N19 | inch of water (60 ºF) |
 | N20 | kip per square inch |
 | N21 | poundal per square foot |
 | N22 | ounce (avoirdupois) per square inch |
@@ -1486,10 +1486,10 @@ Unit of measurement types are used as part of the document lines in document sub
 | N63 | British thermal unit (thermochemical) per degree Rankine |
 | N64 | British thermal unit (thermochemical) per pound degree Rankine |
 | N65 | kilocalorie (international table) per gram kelvin |
-| N66 | British thermal unit (39 ÃÂºF) |
-| N67 | British thermal unit (59 ÃÂºF) |
-| N68 | British thermal unit (60 ÃÂºF) |
-| N69 | calorie (20 ÃÂºC) |
+| N66 | British thermal unit (39 ºF) |
+| N67 | British thermal unit (59 ºF) |
+| N68 | British thermal unit (60 ºF) |
+| N69 | calorie (20 ºC) |
 | N70 | quad (1015 BtuIT) |
 | N71 | therm (EC) |
 | N72 | therm (U.S.) |
@@ -1632,8 +1632,8 @@ Unit of measurement types are used as part of the document lines in document sub
 | P88 | rhe |
 | P89 | pound-force foot per inch |
 | P90 | pound-force inch per inch |
-| P91 | perm (0 ÃÂºC) |
-| P92 | perm (23 ÃÂºC) |
+| P91 | perm (0 ºC) |
+| P92 | perm (23 ºC) |
 | P93 | byte per second |
 | P94 | kilobyte per second |
 | P95 | megabyte per second |
@@ -1765,7 +1765,7 @@ Unit of measurement types are used as part of the document lines in document sub
 | WM | working month |
 | WSD | standard |
 | WTT | watt |
-| X1 | Gunterâs chain |
+| X1 | Gunter's chain |
 | YDK | square yard |
 | YDQ | cubic yard |
 | YRD | yard |
@@ -1971,7 +1971,7 @@ Unit of measurement types are used as part of the document lines in document sub
 | XO4 | Oneway pallet ISO 1 - 1/1 EURO Pallet |
 | XO5 | Oneway pallet ISO 2 - 2/1 EURO Pallet |
 | XO6 | Pallet with exceptional dimensions |
-| XO7 | Wooden palletÂ  40 cm x 80 cm |
+| XO7 | Wooden pallet  40 cm x 80 cm |
 | XO8 | Plastic pallet SRS 60 cm x 80 cm |
 | XO9 | Plastic pallet SRS 80 cm x 120 cm |
 | XOA | Pallet, CHEP 40 cm x 60 cm |
@@ -1982,7 +1982,7 @@ Unit of measurement types are used as part of the document lines in document sub
 | XOF | Platform, unspecified weight or dimension |
 | XOG | Pallet ISO 0 - 1/2 EURO Pallet |
 | XOH | Pallet ISO 1 - 1/1 EURO Pallet |
-| XOI | Pallet ISO 2 Ã¢â¬â 2/1 EURO Pallet |
+| XOI | Pallet ISO 2 – 2/1 EURO Pallet |
 | XOJ | 1/4 EURO Pallet |
 | XOK | Block |
 | XOL | 1/8 EURO Pallet |
@@ -2091,17 +2091,17 @@ Unit of measurement types are used as part of the document lines in document sub
 | XUC | Uncaged |
 | XUN | Unit |
 | XVA | Vat |
-| XVG | Bulk, gas (at 1031 mbar and 15ÃÂ°C) |
+| XVG | Bulk, gas (at 1031 mbar and 15°C) |
 | XVI | Vial |
 | XVK | Vanpack |
 | XVL | Bulk, liquid |
 | XVN | Vehicle |
-| XVO | Bulk, solid, large particles (Ã¢â¬ÅnodulesÃ¢â¬Â) |
+| XVO | Bulk, solid, large particles ("nodules") |
 | XVP | Vacuum-packed |
 | XVQ | Bulk, liquefied gas (at abnormal temperature/pressure) |
-| XVR | Bulk, solid, granular particles (Ã¢â¬ÅgrainsÃ¢â¬Â) |
+| XVR | Bulk, solid, granular particles ("grains") |
 | XVS | Bulk, scrap metal |
-| XVY | Bulk, solid, fine particles (Ã¢â¬ÅpowdersÃ¢â¬Â) |
+| XVY | Bulk, solid, fine particles ("powders") |
 | XWA | Intermediate bulk container |
 | XWB | Wickerbottle |
 | XWC | Intermediate bulk container, steel |

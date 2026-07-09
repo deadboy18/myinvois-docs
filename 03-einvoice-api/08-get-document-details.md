@@ -51,7 +51,7 @@ Document Details contains:
 | issuerTin | String | TIN of issuer | C2584563200 |
 | issuerName | String | Issuer company name | AMS Setia Jaya Sdn. Bhd. |
 | receiverId | String | Optional: receiver registration number (can be national ID or foreigner ID). | 201901234567 |
-| receiverName | String | Optional: receiver name (can be company name or personâs name) | AMS Setia Jaya Sdn. Bhd. |
+| receiverName | String | Optional: receiver name (can be company name or person's name) | AMS Setia Jaya Sdn. Bhd. |
 | dateTimeIssued | DateTime | The date and time when the document was issued in the UTC timeformat | 2015-02-13T13:15:10Z |
 | dateTimeReceived | DateTime | The date and time when the document was submitted in the UTC timeformat. | 2015-02-13T13:15:10Z |
 | dateTimeValidated | DateTime | The date and time when the document passed all validations and moved to the valid state. | 2015-02-13T13:15:10Z |
@@ -60,8 +60,8 @@ Document Details contains:
 | totalNetAmount | Decimal | Total net amount of the document in MYR. | 100.70 |
 | totalPayableAmount | Decimal | Total amount of the document in MYR. | 124.09 |
 | status | String | Status of the document - `Submitted`, `Valid`, `Invalid`, `Cancelled` | Valid |
-| cancelDateTime | Date | Refer to the document cancellation that has been initiated by the taxpayer âissuerâ of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
-| rejectRequestDateTime | Date | Refer to the document rejection request that has been initiated by the taxpayer âreceiverâ of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
+| cancelDateTime | Date | Refer to the document cancellation that has been initiated by the taxpayer "issuer" of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
+| rejectRequestDateTime | Date | Refer to the document rejection request that has been initiated by the taxpayer "receiver" of the document on the system, will be in UTC format | 2021-02-25T01:59:10Z |
 | documentStatusReason | String | Mandatory: Reason of the cancellation or rejection of the document. | Examples of reasons: Wrong buyer details or Wrong invoice details or any other reasons as appropriate |
 | createdByUserId | String | User created the document. Can be ERP ID or User Email | 1XXXXXXXX00:9e21b10c-41c4-9323-c590-95abcb6e4e4d  general.ams@supplier.com |
 | validationResults | [Document Validation Results](#document-validation-results) | Object structure containing full validation results of the document. | See structure. |
@@ -89,7 +89,7 @@ Error situations are reported back by this API through the [standard error respo
 
 To get the unique ID that will be used to call this API, taxpayer system can first call API returning list of [recent documents](05-get-recent-documents.md).
 
-Receiver of the documents can retrieve documents that are in âValidâ or âCancelledâ status. If document exists, and is issued to given receiver, but status is âsubmittedâ or âinvalidâ, not found code will be returned.
+Receiver of the documents can retrieve documents that are in "Valid" or "Cancelled" status. If document exists, and is issued to given receiver, but status is "submitted" or "invalid", not found code will be returned.
 
 Issuer of the documents can retrieve documents in any status. The document validation or public URL can be created using below -
 
@@ -103,11 +103,11 @@ where {envbaseurl} need to be replaced with MyInvois portal Base URL
 
 **Important !**
 
-â¢ Use the Get Document Details API only to retrieve error details or exceptions in invalid documents. For checking submission status , utilise the 'Get Submission API' with a polling frequency of 3-5 seconds. Excessive requests for the same document may result in throttling. The system may impose usage limits on this API. Which will be based on each client ID and will therefore be linked to the specific ERP system utilising the APIs.
+• Use the Get Document Details API only to retrieve error details or exceptions in invalid documents. For checking submission status , utilise the 'Get Submission API' with a polling frequency of 3-5 seconds. Excessive requests for the same document may result in throttling. The system may impose usage limits on this API. Which will be based on each client ID and will therefore be linked to the specific ERP system utilising the APIs.
 
-â¢ Kindly note that the âGet Document Detailsâ API should be used exclusively for retrieving error information or exceptions related to invalid documents. For status updates, please use the âGet Submissionâ API and adhere to a polling frequency of 3-5 seconds to avoid system throttling.
+• Kindly note that the 'Get Document Details' API should be used exclusively for retrieving error information or exceptions related to invalid documents. For status updates, please use the 'Get Submission' API and adhere to a polling frequency of 3-5 seconds to avoid system throttling.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Get Document](07-get-document.md)
 [Search Documents](09-search-documents.md)

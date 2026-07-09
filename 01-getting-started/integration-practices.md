@@ -42,24 +42,24 @@ The following are key practices that should be avoided when implementing the int
    Received authentication tokens remain valid for a duration that is already specified in the response of the authentication API as per below.
 
    By default, these token are valid for 60 minutes and hence can be used by any system APIs that requires such a token while the token is still valid.
-2. Getting the status of the submission by checking the status of each document submitted within the submission by any of the APIs âGet Recent Documentsâ, âSearch Documentsâ, âGet Documentâ or âGet Document Detailsâ. These APIs are designed to be used for documents retrieval after submission and validation and not during the submission operation as per the above workflows.
+2. Getting the status of the submission by checking the status of each document submitted within the submission by any of the APIs "Get Recent Documents", "Search Documents", "Get Document" or "Get Document Details". These APIs are designed to be used for documents retrieval after submission and validation and not during the submission operation as per the above workflows.
 3. Re-submitting the same submission over and over again without regards to the results received from the submission APIs.
 
    The submission APIs returns results of initial processing of the submission and hence these should be used and checked before the submission is sent again.
 
    In fact, resending the same submission should not be performed in all cases except in case of error received from the submission APIs.
 
-   Otherwise, any of the 20x response statuses should be accepted by your system and in this case the submission shouldnât be resubmitted again as it will be automatically flagged as duplicate submission and in these cases the submission APIs might start to throttling calls being received from your ERP system.
-4. The calls to âGet Recent Documentsâ should be in most cases be fulfilled by the more optimized API âSearch Documentsâ.
+   Otherwise, any of the 20x response statuses should be accepted by your system and in this case the submission shouldn't be resubmitted again as it will be automatically flagged as duplicate submission and in these cases the submission APIs might start to throttling calls being received from your ERP system.
+4. The calls to "Get Recent Documents" should be in most cases be fulfilled by the more optimized API "Search Documents".
 
-   Calling the API âGet Recent Documentsâ is subject to being throttled as well.
-5. Calling of the authentication API on the path â/connect/tokenâ without supplying the required parameters such as the âclient\_idâ, âgrant\_typeâ, or âclient\_secretâ; would not add any value to your system as these calls will be automatically blocked by the system.
+   Calling the API "Get Recent Documents" is subject to being throttled as well.
+5. Calling of the authentication API on the path "/connect/token" without supplying the required parameters such as the "client\_id", "grant\_type", or "client\_secret"; would not add any value to your system as these calls will be automatically blocked by the system.
 
-   These include cases such as sending the âclient\_idâ with wrong (â0â or â**YOUR\_CLIENT\_ID**â) or empty values.
+   These include cases such as sending the "client\_id" with wrong ('0' or '**YOUR\_CLIENT\_ID**') or empty values.
 
 # Rate Limit
 
-Rate limiting controls API usage spikes by restricting the number of calls allowed within a specified time frame. If the limit is exceeded, a â429 Too Many Requestsâ response status code is returned to the caller. The information below outlines the intended limits and serves as an educational resource for your API integration.
+Rate limiting controls API usage spikes by restricting the number of calls allowed within a specified time frame. If the limit is exceeded, a "429 Too Many Requests" response status code is returned to the caller. The information below outlines the intended limits and serves as an educational resource for your API integration.
 
 | API | Requests Per Minute (RPM)/ Client Id |
 | --- | --- |
@@ -73,15 +73,15 @@ Rate limiting controls API usage spikes by restricting the number of calls allow
 | Get Document Details | 125 |
 | Get Recent Documents | 12 |
 | Search Documents | 12 |
-| Search Taxpayerâs TIN | 60 |
-| Taxpayerâs QR Code | 60 |
+| Search Taxpayer's TIN | 60 |
+| Taxpayer's QR Code | 60 |
 
 **What Happens When Limits Are Exceeded?**
 
 When the rate limit for an API endpoint is exceeded:
 
-â¢ The server will return a â429 Too Many Requestsâ status code. Please refer error response. [sdk.myinvois.hasil.gov.my/standard-error-response](error-responses.md)  
-â¢ The response will include a Retry-After header indicating how long to wait before retrying.
+• The server will return a "429 Too Many Requests" status code. Please refer error response. [sdk.myinvois.hasil.gov.my/standard-error-response](error-responses.md)  
+• The response will include a Retry-After header indicating how long to wait before retrying.
 
 **Note:** Please note that the sandbox environment is intended for functional testing and has a lower API rate limit compared to the production environment, effective 28 April 2025. Additionally, data in the sandbox environment will be retained for a maximum of 3 months, after which it will be permanently deleted. Please ensure to back up any important data before the retention period expires.
 

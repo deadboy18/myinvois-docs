@@ -49,8 +49,8 @@ Body of the request contains a single `documents` value that contains one or mor
 | Input parameter | Type | Description | Value example | Requirement |
 | --- | --- | --- | --- | --- |
 | format | String | XML, JSON | XML | Mandatory |
-| document | String | The base64 of the document JSON or XML | Â | Mandatory |
-| documentHash | String | The hash value of the document being submitted. Hashing can be performed using algorithms like SHA256 as mentioned [here](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.sha256). | Â | Mandatory |
+| document | String | The base64 of the document JSON or XML |  | Mandatory |
+| documentHash | String | The hash value of the document being submitted. Hashing can be performed using algorithms like SHA256 as mentioned [here](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.sha256). |  | Mandatory |
 | codeNumber | String | Document reference number used by Supplier for internal tracking purpose | INV12345, CN23456, DN34567 | Mandatory |
 
 Document can be either:
@@ -58,7 +58,7 @@ Document can be either:
 * [Invoice](../04-document-types/README.md#invoice) - Invoice is a commercial document issued by Supplier to itemise and record a transaction with Buyer.
 * [Credit Note](../04-document-types/README.md#Credit) - Credit note is the document issued by Suppliers to correct errors, apply discounts, or account for returns in a previously issued e-Invoice with the purpose of reducing the value of the original e-Invoice. This is used in situations where the reduction of the original e-Invoice does not involve return of monies to the Buyer.
 * [Debit Note](../04-document-types/README.md#Debit) - Debit note is the document issued to indicate additional charges on a previously issued e-Invoice.
-* [Refund Note](../04-document-types/README.md#Refund) - Refund note is the document issued by a Supplier to confirm the refund of the Buyerâs payment. This is used in situations where there is a return of monies to the Buyer.
+* [Refund Note](../04-document-types/README.md#Refund) - Refund note is the document issued by a Supplier to confirm the refund of the Buyer's payment. This is used in situations where there is a return of monies to the Buyer.
 * [Self-Billed Invoice](../04-document-types/README.md#Self-Billed%20Invoice) - There are certain circumstances where another party (other than the Supplier) will be allowed to issue a self-billed e-Invoice. Kindly refer to Section 8 of the e-Invoice Specific Guideline where self-billed e-Invoice will be allowed.   
   Self-Billed Invoice refers to the self-billed e-Invoice that will be issued by the Buyer for the transaction with the Supplier, based on the circumstances as specified in Section 8 of the e-Invoice Specific Guideline.
 * [Self-Billed Credit Note](../04-document-types/README.md#Self-Billed%20Credit) - Self-Billed Credit Note is issued by Buyers to correct errors, apply discounts, or account for returns in a previously issued Self-Billed e-Invoice with the purpose of reducing the value of the original Self-Billed e-Invoice. This is used in situations where the reduction of the original Self-Billed e-Invoice does not involve return of monies to the Buyer
@@ -75,9 +75,9 @@ Given that the process of validation is not complete when result is returned, AP
 
 | Output parameter | Type | Description | Value example |
 | --- | --- | --- | --- |
-| submissionUID | String | Unique ID of the submission. 26 Latin alphanumeric symbols. | Â |
-| acceptedDocuments | [acceptedDocuments[]](02-submit-documents.md#accepted-documents) | List of documents that are initially accepted (passed sync validations) together with their invoice code numbers and newly assigned IDs. | Â |
-| rejectedDocuments | [rejectedDocuments[]](02-submit-documents.md#rejected-documents) | List of documents that are not accepted together with their invoice code numbers and error information. | Â |
+| submissionUID | String | Unique ID of the submission. 26 Latin alphanumeric symbols. |  |
+| acceptedDocuments | [acceptedDocuments[]](02-submit-documents.md#accepted-documents) | List of documents that are initially accepted (passed sync validations) together with their invoice code numbers and newly assigned IDs. |  |
+| rejectedDocuments | [rejectedDocuments[]](02-submit-documents.md#rejected-documents) | List of documents that are not accepted together with their invoice code numbers and error information. |  |
 
 #### Accepted Documents
 
@@ -85,7 +85,7 @@ Accepted document response consists of:
 
 | Output parameter | Type | Description | Value example |
 | --- | --- | --- | --- |
-| uuid | String | Unique document ID assigned by e-Invoice. 26 Latin alphanumeric symbols. | Â |
+| uuid | String | Unique document ID assigned by e-Invoice. 26 Latin alphanumeric symbols. |  |
 | invoiceCodeNumber | String | Document reference number used by Supplier for internal tracking purpose | INV12345, CN23456, DN34567 |
 
 #### Rejected Documents
@@ -95,7 +95,7 @@ Rejected document response consists of:
 | Output parameter | Type | Description | Value example |
 | --- | --- | --- | --- |
 | invoiceCodeNumber | String | Document reference number used by Supplier for internal tracking purpose | INV12345, CN23456, DN34567 |
-| error | [Error](../01-getting-started/error-responses.md#error-response-structure) | Error information detailing why the document was not accepted in this submission. | Â |
+| error | [Error](../01-getting-started/error-responses.md#error-response-structure) | Error information detailing why the document was not accepted in this submission. |  |
 
 #### Error Response
 
@@ -126,7 +126,7 @@ In order to optimize document size and prevent potential validation errors, we r
 
 Minification serves two primary purposes:
 
-* â *Size Optimization:* By eliminating unnecessary whitespace, line breaks, and indentation, the size of XML and JSON documents can be significantly reduced. This is particularly beneficial when dealing with large datasets or documents, helping to minimize bandwidth usage and improve overall system performance.
+* *Size Optimization:* By eliminating unnecessary whitespace, line breaks, and indentation, the size of XML and JSON documents can be significantly reduced. This is particularly beneficial when dealing with large datasets or documents, helping to minimize bandwidth usage and improve overall system performance.
 * *Validation Error Prevention:* Minification can help mitigate the risk of encountering validation errors, such as the 1,000 lines limitation. By reducing the overall line count of the documents, the likelihood of hitting such limits is diminished, ensuring smoother processing and transmission of data.
 
 Implementing minification as part of the document submission process not only enhances the efficiency of data transfer but also contributes to a more robust and scalable system architecture. We encourage developers to incorporate minification techniques into their workflows when utilizing the Submit Document API, thereby optimizing performance and mitigating potential validation issues.
@@ -145,15 +145,15 @@ Given large amounts of submissions coming from multiple taxpayers, it is recomme
 
 **Important !**
 
-â¢ The ERP system can submit multiple documents using batch processing. Each batch is able handle up to 100 documents, with a total size limit of 5 MB and a maximum document size of 300 KB. Submitting documents in batches rather than individually is recommended for efficiency.
+• The ERP system can submit multiple documents using batch processing. Each batch is able handle up to 100 documents, with a total size limit of 5 MB and a maximum document size of 300 KB. Submitting documents in batches rather than individually is recommended for efficiency.
 
-â¢ The ERP system should not keep re-submit the same submission repeatedly without considering the results received from the submission API. The submission APIs return the results of the initial processing, which should be reviewed before resending a submission. The system may impose limits on the usage policy of this API, which will be based on each client ID and linked to the specific ERP system using the APIs.
+• The ERP system should not keep re-submit the same submission repeatedly without considering the results received from the submission API. The submission APIs return the results of the initial processing, which should be reviewed before resending a submission. The system may impose limits on the usage policy of this API, which will be based on each client ID and linked to the specific ERP system using the APIs.
 
-â¢ The system allows for batch submissions of documents, accommodating up to 100 documents per batch, with a combined size limit of 5 MB and a maximum of 300 KB per document. Batch submissions of documents are recommended over individual submissions for increased efficiency.
+• The system allows for batch submissions of documents, accommodating up to 100 documents per batch, with a combined size limit of 5 MB and a maximum of 300 KB per document. Batch submissions of documents are recommended over individual submissions for increased efficiency.
 
-â¢ Avoid repeated submissions of the same document without considering the results from the initial submission API. The API provides immediate processing results, which should be reviewed prior to any resubmission. A threshold of 100 request per minute (RPM) for this API is advised.
+• Avoid repeated submissions of the same document without considering the results from the initial submission API. The API provides immediate processing results, which should be reviewed prior to any resubmission. A threshold of 100 request per minute (RPM) for this API is advised.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Validate taxpayer TIN](01-validate-taxpayer-tin.md)
 [Cancel Document](03-cancel-document.md)

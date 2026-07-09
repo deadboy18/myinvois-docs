@@ -47,7 +47,7 @@ Document Type Version contains:
 | name | String | Name of the document type version within the document type that can be used in document submission to identify document type version being submitted | 1.0 |
 | description | String | Description of the document type version | Credit note version 1.0 |
 | versionNumber | Decimal | Unique version number of the document type version that can be sorted to find the latest version | 1.0 |
-| status | String | Status of the document type version - âpublishedâ, âdeactivatedâ | published |
+| status | String | Status of the document type version - "published", "deactivated" | published |
 | activeFrom | Date | Date when the activity of the document type version started | 2015-02-13T13:15:00Z |
 | activeTo | Date | Optional: date when the activity of the document type version sends/when it was deactivated | 2027-03-01T00:00:00Z |
 

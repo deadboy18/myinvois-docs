@@ -15,7 +15,7 @@ This API allows taxpayer's ERP system to search for a specific Tax Identificatio
 
 ## Overview
 
-This API allows taxpayerâs ERP system to search for a specific Tax Identification Number (TIN) using the supported search parameters. The supported search parameters are either:
+This API allows taxpayer's ERP system to search for a specific Tax Identification Number (TIN) using the supported search parameters. The supported search parameters are either:
 
 1) Taxpayer Name or  
 2) taxpayer, ID Type, ID Value or  
@@ -45,7 +45,7 @@ This API accepts [standard e-Invoice API header parameters](../01-getting-starte
 | taxpayerName | Query | The Taxpayer Name. | ABC XYZ | Mandatory if idType and idValue are not passed |
 | idType | Query | NRIC, Passport number, Business registration number, army number | NRIC ID type example: NRIC  Passport ID type example: PASSPORT | Mandatory if idValue is passed |
 | idValue | Query | The actual value of the ID Type selected. For example, if NRIC selected as ID Type, then pass the NRIC value here. | BRN example: 201901234567 NRIC example: 770625015324 Passport number example: A12345678 Army number example: 551587706543 | Mandatory if idType is passed |
-| fileType | Query | Value to differentiate between individual and non-individual taxpayers | â¢ 1 for IG TIN (individual)   â¢ 2 for non-IG TIN (non-individual) | Optional |
+| fileType | Query | Value to differentiate between individual and non-individual taxpayers | • 1 for IG TIN (individual)   • 2 for non-IG TIN (non-individual) | Optional |
 
 ## Output
 
@@ -54,9 +54,9 @@ This API accepts [standard e-Invoice API header parameters](../01-getting-starte
 This API returns HTTP status code `200`.
 The system would return one and only one Tax Identification Number (TIN) that is matching all the search criteria parameters. If more than one TIN was found matching the search criteria parameters, then an error would be returned to the caller.
 
-| Parameter | Type | Description | Value example | Â |
+| Parameter | Type | Description | Value example |  |
 | --- | --- | --- | --- | --- |
-| tin | String | Matching TIN for given search criteria | C1234567890 | Â |
+| tin | String | Matching TIN for given search criteria | C1234567890 |  |
 
 ### Error Response
 
@@ -72,15 +72,15 @@ This API returns HTTP status code `404` (Not Found) if no TIN is found for the g
 
 **Important !**
 
-â¢ This API should be used to Search for TIN before this is used to submit the documents. This should be cached from the ERP system side so that to reduce the calls occurring on this API. Excessive requests for this API may result in throttling and would be treated as malicious activity in this case. System may impose limits on the usage policy of this API. These limits will be based on each client ID and hence would be linked to the specific ERP system using the APIs.
+• This API should be used to Search for TIN before this is used to submit the documents. This should be cached from the ERP system side so that to reduce the calls occurring on this API. Excessive requests for this API may result in throttling and would be treated as malicious activity in this case. System may impose limits on the usage policy of this API. These limits will be based on each client ID and hence would be linked to the specific ERP system using the APIs.
 
-â¢ API would return one and only one search result and if more than one result can be found matching the search criteria then the API would return an error as described above to the caller.
+• API would return one and only one search result and if more than one result can be found matching the search criteria then the API would return an error as described above to the caller.
 
-â¢ It is advised to perform validation of buyer's TINs when the buyer entity is being defined in your ERP system and once validated reflect this in your ERP system to make sure there is no need to recall the same API repeatedly.
+• It is advised to perform validation of buyer's TINs when the buyer entity is being defined in your ERP system and once validated reflect this in your ERP system to make sure there is no need to recall the same API repeatedly.
 
-â¢ It is not advised to call this API before every document submission as in this case this may result in these calls being flagged and throttled as well.
+• It is not advised to call this API before every document submission as in this case this may result in these calls being flagged and throttled as well.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Search Documents](09-search-documents.md)
 [Taxpayer's QR Code](11-qr-code.md)

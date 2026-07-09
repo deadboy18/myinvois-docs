@@ -2,14 +2,14 @@
 
 # Taxpayer's QR Code
 
-This API allows taxpayerâs ERP system to search and retrieve the information for a specific Taxpayer based on the Base64 formatted string obtained from scanning the respective QR code.
+This API allows taxpayer's ERP system to search and retrieve the information for a specific Taxpayer based on the Base64 formatted string obtained from scanning the respective QR code.
 
 [Search Taxpayer's TIN](10-search-taxpayer-tin.md)
 [Full e-Invoice API list](README.md)
 
 ## Overview
 
-This API allows taxpayerâs ERP system to retrieve the information for a specific Taxpayer based on the Base64 formatted string obtained from scanning the respective QR code.
+This API allows taxpayer's ERP system to retrieve the information for a specific Taxpayer based on the Base64 formatted string obtained from scanning the respective QR code.
 
 ## Signature
 
@@ -24,7 +24,7 @@ To optimize the use of our APIs, a rate limit of 60 Requests Per Minute (RPM) / 
 
 ## Steps
 
-The following are the steps that any system would need to take in order to retrieve the taxpayerâs information.
+The following are the steps that any system would need to take in order to retrieve the taxpayer's information.
 
 * Scan the QR code to obtain the Base64 encoded string.  
   Example: NGUxYmM5MDctMjViNy00NWIxLTk2MjAtMmQ2NzFhNmY5Y2Fl
@@ -44,11 +44,11 @@ This API accepts [standard e-Invoice API header parameters](../01-getting-starte
 ### Successful Response
 
 This API returns HTTP status code `200`.
-The system would return one and only one Taxpayerâs information that is matching with the input parameter.
+The system would return one and only one Taxpayer's information that is matching with the input parameter.
 
 | Parameter | Type | Description | Value Example |
 | --- | --- | --- | --- |
-| tin | String | Taxpayerâs TIN | C25480996000 |
+| tin | String | Taxpayer's TIN | C25480996000 |
 | name | String | Name of the entity | KXXX\_XXXXPS BHD |
 | idType | String | Type of identification | BRN |
 | idNumber | String | Identification number | 201801011018 |

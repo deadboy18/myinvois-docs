@@ -28,16 +28,16 @@ Example error responses:
     "propertyPath": null,
     "errorCode": "Error03",
     "error": "Duplicated Submission Validator",
-    "errorMSï¼ "Penduaan Sub Validatormissionâ,
+    "errorMS: "Penduaan Sub Validatormission",
     "innerError": [
       {
         "propertyName": "document",
         "propertyPath": "document",
         "errorCode": "DS302",
-        "error": "Duplicated submitted document with UUID 132YBP1HE6GHJ0XSVNW0141J10 where the values of configured attributes match with values for the document with UUID: GJCGP9RWJF7961J8XNW0141J10â,
-        "errorMs": "MS-Duplicated submitted document with UUID 132YBP1HE6GHJ0XSVNW0141J10 where the values of configured attributes match with values for the document with UUID: GJCGP9RWJF7961J8XNW0141J10â,
+        "error": "Duplicated submitted document with UUID 132YBP1HE6GHJ0XSVNW0141J10 where the values of configured attributes match with values for the document with UUID: GJCGP9RWJF7961J8XNW0141J10",
+        "errorMs": "MS-Duplicated submitted document with UUID 132YBP1HE6GHJ0XSVNW0141J10 where the values of configured attributes match with values for the document with UUID: GJCGP9RWJF7961J8XNW0141J10",
         "innerError": null
-      ï½
+      }
     ]
   },
   "name": "Step03-Duplicated Submission Validator"

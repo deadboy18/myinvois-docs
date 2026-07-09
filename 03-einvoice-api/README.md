@@ -74,7 +74,7 @@ This API allows taxpayer's ERP system to search for a specific Tax Identificatio
 
 ## Taxpayer's QR Code
 
-This API allows taxpayerâs ERP system to search and retrieve the information for a specific Taxpayer based on the Base64 formatted string obtained from scanning the respective QR code.
+This API allows taxpayer's ERP system to search and retrieve the information for a specific Taxpayer based on the Base64 formatted string obtained from scanning the respective QR code.
 
 [Read more](11-qr-code.md)
 

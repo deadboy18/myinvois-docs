@@ -156,7 +156,7 @@ Currency codes are used to supply precise currency information when providing do
 | TJS | Somoni |
 | TMT | Turkmenistan New Manat |
 | TND | Tunisian Dinar |
-| TOP | Paâanga |
+| TOP | Pa'anga |
 | TRY | Turkish Lira |
 | TTD | Trinidad and Tobago Dollar |
 | TWD | New Taiwan Dollar |
@@ -169,8 +169,8 @@ Currency codes are used to supply precise currency information when providing do
 | UYU | Peso Uruguayo |
 | UYW | Unidad Previsional |
 | UZS | Uzbekistan Sum |
-| VED | BolÃ­var Soberano |
-| VES | BolÃ­var Soberano |
+| VED | Bolívar Soberano |
+| VES | Bolívar Soberano |
 | VND | Dong |
 | VUV | Vatu |
 | WST | Tala |

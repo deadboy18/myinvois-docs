@@ -3,6 +3,26 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.1.2] — 2026-07-09
+
+**Fix double-encoded Unicode (mojibake) across 49 markdown files.**
+
+All files originally scraped from the SDK portal had UTF-8 characters double-encoded
+through a Latin-1 intermediary, producing garbled output like `â€™` instead of `'`,
+`â€œ` instead of `"`, `Â` before spaces, etc. This commit fixes all 49 affected
+files with zero content changes — display-only fix.
+
+### What was fixed
+
+- Smart quotes (`'`, `'`, `"`, `"`) → ASCII equivalents
+- Bullets (`•`) → proper UTF-8 bullet
+- En dashes (`–`) → proper UTF-8 en dash
+- Non-breaking spaces → regular spaces
+- Triple-encoded sequences in unit-types.md and code tables
+- Standalone `Â` artifacts removed
+
+---
+
 ## [1.1.1] — 2026-07-09
 
 **SDK release notes catch-up + FAQ update.**

@@ -9,7 +9,7 @@ This API is used to authenticate the ERP system associated with an intermediary 
 
 ## Overview
 
-MyInvois APIs are protected except the Login APIs (Login as taxpayer and Login as Intermediary System) and made available only to relevant taxpayerâs representatives and their ERP systems.
+MyInvois APIs are protected except the Login APIs (Login as taxpayer and Login as Intermediary System) and made available only to relevant taxpayer's representatives and their ERP systems.
 
 This API is used to authenticate the ERP system calling and issue access token which allows ERP system to access those protected APIs. Note that each token is issued for a certain time period configured as part of MyInvois System, example can be found in [expires\_in](#successful-response). This means that compliant ERP systems integrating with the solution should expect that some calls will return unauthorised error codes (see more on [standard error responses](../01-getting-started/error-responses.md)) which means that most likely the token issued has expired and needs to be renewed (by another login).
 
@@ -40,9 +40,9 @@ When trying to login as intermediary, add an extra header parameter to the reque
 
 | Body parameter | Type | Description | Value example | Requirement |
 | --- | --- | --- | --- | --- |
-| client\_id | String | Client ID for the ERP system. | Â | Mandatory |
-| client\_secret | String | Client secret for the ERP system. | Â | Mandatory |
-| grant\_type | String | Must be âclient\_credentialsâ | client\_credentials | Mandatory |
+| client\_id | String | Client ID for the ERP system. |  | Mandatory |
+| client\_secret | String | Client secret for the ERP system. |  | Mandatory |
+| grant\_type | String | Must be "client\_credentials" | client\_credentials | Mandatory |
 | scope | String | Optional parameter asking for a specific access scope. In case of external access to e-Invoice APIs, this parameter can be omitted | InvoicingAPI | Optional |
 
 ## Outputs
@@ -64,7 +64,7 @@ This API returns HTTP status code `200`.
 | --- | --- | --- | --- |
 | error | String | Possible values: invalid\_request, invalid\_client, invalid\_grant, unauthorised\_client, unsupported\_grant\_type, invalid\_scope | invalid\_request |
 | error\_description | String | Optional human readable error message containing more details about error encountered. | User blocked |
-| error\_uri | URI | Optional URI containing more information about the error. Not used in MyInvois System | Â |
+| error\_uri | URI | Optional URI containing more information about the error. Not used in MyInvois System |  |
 
 ## Additional Considerations
 
@@ -80,9 +80,9 @@ Tokens issued as a result of this login operation are valid only for a pre-confi
 
 **Important !**
 
-â¢ It is advisable to use separate credentials for intermediary systems to avoid conflicts with taxpayer system credentials. To optimise performance, avoid making frequent login attempts. Instead, use session tokens to maintain active sessions. In the event of failed login attempts, implement retry mechanisms with exponential backoff to prevent overloading the system. Always ensure that credentials are securely stored, and use HTTPS for all API calls to safeguard sensitive data.
+• It is advisable to use separate credentials for intermediary systems to avoid conflicts with taxpayer system credentials. To optimise performance, avoid making frequent login attempts. Instead, use session tokens to maintain active sessions. In the event of failed login attempts, implement retry mechanisms with exponential backoff to prevent overloading the system. Always ensure that credentials are securely stored, and use HTTPS for all API calls to safeguard sensitive data.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Login as Taxpayer System](01-login-taxpayer.md)
 [Get All Document Types](03-get-document-types.md)

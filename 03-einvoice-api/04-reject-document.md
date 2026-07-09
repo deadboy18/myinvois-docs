@@ -48,8 +48,8 @@ This API accepts [standard e-Invoice API header parameters](../01-getting-starte
 | Parameter | Type | Description | Value example |
 | --- | --- | --- | --- |
 | uuid | String | Unique ID of the document | F9D425P6DS7D8IU |
-| status | String | Once a rejection request is received, a document is still considered âValidâ until the Seller âcancelsâ the document. | Requested for Rejection |
-| error | [Error](../01-getting-started/error-responses.md#error-response-structure) | Error if rejection of document failed. | Â |
+| status | String | Once a rejection request is received, a document is still considered "Valid" until the Seller "cancels" the document. | Requested for Rejection |
+| error | [Error](../01-getting-started/error-responses.md#error-response-structure) | Error if rejection of document failed. |  |
 
 ### Successful Response
 
@@ -72,9 +72,9 @@ Additional specialised error messages can be returned as a result of validation 
 
 **Important !**
 
-â¢ Thoroughly validate rejection criteria before invoking the rejection API to avoid incorrect rejections.
+• Thoroughly validate rejection criteria before invoking the rejection API to avoid incorrect rejections.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Cancel Document](03-cancel-document.md)
 [Get Recent Documents](05-get-recent-documents.md)

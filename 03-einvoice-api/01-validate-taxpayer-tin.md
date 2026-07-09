@@ -9,7 +9,7 @@ This API allows taxpayer's ERP system to validate specific Tax Identification Nu
 
 ## Overview
 
-Validate Taxpayerâs TIN API is used to validate specific Tax Identification Number (TIN) before adding this number to an invoice and issuing the invoice.
+Validate Taxpayer's TIN API is used to validate specific Tax Identification Number (TIN) before adding this number to an invoice and issuing the invoice.
 
 **Note!** When you are logged in as intermediary, permissions that are granted by the taxpayer will be applied on your profile and this will control the functionalities that you'll be able to executed on behalf of the taxpayer you are representing.
 
@@ -46,13 +46,13 @@ This API returns HTTP status code `404` (Not Found) if that TIN and ID combinati
 
 **Important !**
 
-â¢ This API should be used to validate buyer's TIN before this is used to submit the documents. This should be cached from the ERP system side so that to reduce the calls occurring on this API. Excessive requests for this API may result in throttling and would be treated as malicious activity in this case. System may impose limits on the usage policy of this API. These limits will be based on each client ID and hence would be linked to the specific ERP system using the APIs.
+• This API should be used to validate buyer's TIN before this is used to submit the documents. This should be cached from the ERP system side so that to reduce the calls occurring on this API. Excessive requests for this API may result in throttling and would be treated as malicious activity in this case. System may impose limits on the usage policy of this API. These limits will be based on each client ID and hence would be linked to the specific ERP system using the APIs.
 
-â¢ It is advised to perform validation of buyer's TINs when the buyer entity is being defined in your ERP system and once validated reflect this in your ERP system to make sure there is no need to recall the same API repeatedly.
+• It is advised to perform validation of buyer's TINs when the buyer entity is being defined in your ERP system and once validated reflect this in your ERP system to make sure there is no need to recall the same API repeatedly.
 
-â¢ It is not advised to call this API before every document submission as in this case this may result in these calls being flagged and throttled as well.
+• It is not advised to call this API before every document submission as in this case this may result in these calls being flagged and throttled as well.
 
-â¢ Always review the integration recommended practices here [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to make sure your ERP integration is implemented following them and following healthy integration patterns.
+• Always review the integration recommended practices here [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to make sure your ERP integration is implemented following them and following healthy integration patterns.
 
 [Full e-Invoice API list](README.md)
 [Submit Documents](02-submit-documents.md)

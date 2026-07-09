@@ -25,9 +25,9 @@ To install the environments file, follow these steps:
 2. A `Manage Environments` window will pop-up, click on the `Import` button and select the right environment file and click `Ok`
 3. A new environment named `Sandbox Env` or `Prod Env` should be added to the drop down list on the top right corner, click again on the `gear icon` and click on the newly added environment named `Sandbox Env` or `Prod Env` (Based on the environment you want to work on)
 
-**Note**: If you encounter an error message âSSL Error: Self signed certificate in certificate chainâ (see image below) on PostMan, click âDisable SSL Verificationâ.
+**Note**: If you encounter an error message "SSL Error: Self signed certificate in certificate chain" (see image below) on PostMan, click "Disable SSL Verification".
 
-Alternatively, click on the `Gear Icon` button at the top right-hand corner to open the Settings. Turn off âSSL Certificate Verificationâ as shown in the image below.
+Alternatively, click on the `Gear Icon` button at the top right-hand corner to open the Settings. Turn off "SSL Certificate Verification" as shown in the image below.
 
 [Digital Signature](../06-signature/README.md)
 [Integration Practices](../01-getting-started/integration-practices.md)

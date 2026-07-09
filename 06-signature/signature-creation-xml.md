@@ -77,8 +77,8 @@ Populate the properties gathered into the document as per the below table to gen
 | --- | --- | --- |
 | SignatureValue | Digital Signature property ref **Sig** | /Invoice /ext:UBLExtensions /ext:UBLExtension /ext:ExtensionContent /sig:UBLDocumentSignatures /sac:SignatureInformation /ds:Signature /ds:SignatureValue |
 | X509Certificate | Certificate | /Invoice /ext:UBLExtensions /ext:UBLExtension /ext:ExtensionContent /sig:UBLDocumentSignatures /sac:SignatureInformation /ds:Signature /ds:KeyInfo /ds:X509Data /ds:X509Certificate |
-| DigestValue | Encoded signed Properties hash property reference **PropsDigest** | /Invoice /ext:UBLExtensions /ext:UBLExtension /ext:ExtensionContent /sig:UBLDocumentSignatures /sac:SignatureInformation /ds:Signature /ds:SignedInfo /ds:Reference[@URI=â#id-xades-signed-propsâ] /ds:DigestValue |
-| DigestValue | Encoded invoice hash property reference **DocDigest** | /Invoice /ext:UBLExtensions /ext:UBLExtension /ext:ExtensionContent /sig:UBLDocumentSignatures /sac:SignatureInformation /ds:Signature /ds:SignedInfo /ds:Reference[@Id=âid-doc-signed-dataâ] /ds:DigestValue |
+| DigestValue | Encoded signed Properties hash property reference **PropsDigest** | /Invoice /ext:UBLExtensions /ext:UBLExtension /ext:ExtensionContent /sig:UBLDocumentSignatures /sac:SignatureInformation /ds:Signature /ds:SignedInfo /ds:Reference[@URI='#id-xades-signed-props'] /ds:DigestValue |
+| DigestValue | Encoded invoice hash property reference **DocDigest** | /Invoice /ext:UBLExtensions /ext:UBLExtension /ext:ExtensionContent /sig:UBLDocumentSignatures /sac:SignatureInformation /ds:Signature /ds:SignedInfo /ds:Reference[@Id='id-doc-signed-data'] /ds:DigestValue |
 | Signature | An electronic signature to authenticate the e-Invoice | / ubl:Invoice / cac:Signature |
 
 > **Note**: To ensure data transfer over network, potential newline symbols or spaces added removed between XML and JSON elements are not changing the signature value, the solution leverages specialized data document canonicalization approach to ensure only significant data (names and values of fields) is used as part of the signature.

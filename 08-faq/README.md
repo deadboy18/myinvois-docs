@@ -14,19 +14,19 @@ Answers to frequently asked questions about MyInvois system integration approach
 
 To facilitate the retrieval of Tax Identification Number (TIN), there are multiple channels available for taxpayers:
 
-â¢ Check the TIN via the [MyTax](https://mytax.hasil.gov.my/) Portal (e-Daftar or Your Profile Information).  
-â¢ Validate the TIN via the [Validate Taxpayerâs TIN](../03-einvoice-api/01-validate-taxpayer-tin.md) API before submitting e-Invoice.  
-â¢ Contact the HASiL Contact Centre (03-8911 1000); or visit the nearest LHDNM offices.
+• Check the TIN via the [MyTax](https://mytax.hasil.gov.my/) Portal (e-Daftar or Your Profile Information).  
+• Validate the TIN via the [Validate Taxpayer's TIN](../03-einvoice-api/01-validate-taxpayer-tin.md) API before submitting e-Invoice.  
+• Contact the HASiL Contact Centre (03-8911 1000); or visit the nearest LHDNM offices.
 
 **For Individual TIN (with prefix IG):**
 
-â¢ The new prefix for individual TIN is now âIGâ (replacing âOGâ or âSGâ). For example, if the TIN is âSG123456789â, please input it as âIG123456789â.  
-â¢ The numeric character within the TIN remains unchanged, with a maximum length of 14 characters including the prefix.
+• The new prefix for individual TIN is now 'IG' (replacing 'OG' or 'SG'). For example, if the TIN is 'SG123456789', please input it as 'IG123456789'.  
+• The numeric character within the TIN remains unchanged, with a maximum length of 14 characters including the prefix.
 
 **For Non-Individual TIN (with prefix C, CS, D, F, FA, PT, TA, TC, TN, TR, TP, J & LE):**
 
-â¢ If your TIN begins with a zero â0â after the prefix, please remove any initial zeros after the prefix for successful validation. For example, if the TIN is âC01234567890â, please input it as âC1234567890â.  
-â¢ If your TIN does not end with a zero â0â (e.g., C123456789), please ensure you add an additional zero â0â at the end (e.g., C1234567890). Please note that Non-Individual TIN always ends with zero â0â.
+• If your TIN begins with a zero '0' after the prefix, please remove any initial zeros after the prefix for successful validation. For example, if the TIN is 'C01234567890', please input it as 'C1234567890'.  
+• If your TIN does not end with a zero '0' (e.g., C123456789), please ensure you add an additional zero '0' at the end (e.g., C1234567890). Please note that Non-Individual TIN always ends with zero '0'.
 
 ## What are the environment URLs?
 
@@ -65,7 +65,7 @@ The rate limiting functionality implementation is using the standard HTTP rate l
 Common observations:
 
 1. Login Too Frequent - The system token is valid for 60 minutes. Use this token for API operations rather than generating a new one for each request. Kindly refer to [Login as Taxpayer Notes](../02-platform-api/01-login-taxpayer.md#notes) for more details.
-2. High Volume Submissions â To maintain system stability, usage limits will be enforced on the Submit Documents. It is therefore advisable to submit e-Invoices in batches and in accordance with the applicable rate limits to prevent potential disruptions. Kindly refer to [Submit Document Notes](../03-einvoice-api/02-submit-documents.md#notes) for more details.
+2. High Volume Submissions – To maintain system stability, usage limits will be enforced on the Submit Documents. It is therefore advisable to submit e-Invoices in batches and in accordance with the applicable rate limits to prevent potential disruptions. Kindly refer to [Submit Document Notes](../03-einvoice-api/02-submit-documents.md#notes) for more details.
 
 ## What are the Supplier/Buyer Information Field Validation?
 
@@ -77,8 +77,8 @@ Common observations:
 | iv | Address (Line 1-3) | 1) Maximum 150 characters for every line |
 | v | City Name | 1) Maximum 50 characters |
 | vi | Postal Code | 1) If country is Malaysia, maximum 5-digit numbers only  2) Country other than Malaysia, maximum is 50 alphanumeric characters including special characters |
-| vii | SST Number | 1) Maximum 35 characters  2) Only allows dash (-) and semicolon (;) special characters  3) Up to 2 SST numbers separated by semicolon (;)  4) Allows âNAâ value if no SST number |
-| viii | TTX Number | 1) Maximum 17 characters  2) Only allows dash (-) special character  3) Allows âNAâ value if no TTX number |
+| vii | SST Number | 1) Maximum 35 characters  2) Only allows dash (-) and semicolon (;) special characters  3) Up to 2 SST numbers separated by semicolon (;)  4) Allows 'NA' value if no SST number |
+| viii | TTX Number | 1) Maximum 17 characters  2) Only allows dash (-) special character  3) Allows 'NA' value if no TTX number |
 
 Kindly refer to [Document Type](../04-document-types/README.md) structure page for more details.
 
@@ -94,9 +94,9 @@ Kindly refer to [Document Type](../04-document-types/README.md) structure page f
 
 Taxpayers should use the Login as Taxpayer System when submitting their own documents. However, taxpayers who act as service providers, submitting documents on behalf of their customers, should use the Login as Intermediary System.
 
-## How to hash the âdocumentHashâ value and encode the âdocumentâ value?
+## How to hash the "documentHash" value and encode the "document" value?
 
-The XML/JSON document is hashed using SHA-256 to create the âdocumentHashâ value. The same XML/JSON document would need to be encoded in Base64 to generate the âdocumentâ value.
+The XML/JSON document is hashed using SHA-256 to create the "documentHash" value. The same XML/JSON document would need to be encoded in Base64 to generate the "document" value.
 
 ## How can the file size of an XML document be reduced if it exceeds the 300KB submission limit?
 
@@ -129,7 +129,7 @@ Yes, you will need to use a different Client ID and Client Secret for each envir
 
 ## How to obtain Client ID and Client Secret?
 
-Taxpayers may self-provision to obtain the client ID and client secret via the MyInvois Portal. The user guide available on the MyInvois Portal under âView and Register ERPâ provides guidance to taxpayers on how to perform the self-provisioning.
+Taxpayers may self-provision to obtain the client ID and client secret via the MyInvois Portal. The user guide available on the MyInvois Portal under "View and Register ERP" provides guidance to taxpayers on how to perform the self-provisioning.
 
 ## What is the reason for having two Client Secrets?
 
@@ -137,8 +137,8 @@ Maintaining two client secrets provides redundancy, with both expiring simultane
 
 ## What are UBL JSON Value Mappings?
 
-In the UBL JSON, every attribute value should be paired with a key â\_â to be compliant with UBL.  
-For Example: value for InvoiceTypeCode should be represented as â\_â : â02â which refers to the Credit Note Invoice Type code.
+In the UBL JSON, every attribute value should be paired with a key "\_" to be compliant with UBL.  
+For Example: value for InvoiceTypeCode should be represented as "\_" : "02" which refers to the Credit Note Invoice Type code.
 
 ## How to handle special characters in XML and JSON documents when submitting e-invoices?
 
@@ -149,21 +149,21 @@ For XML document, the following characters need to be replaced with their corres
 | < | `&lt;` | Less than |
 | > | `&gt;` | Greater than |
 | & | `&amp;` | Ampersand |
-| â | `&quot;` | Double quote |
-| â | `&apos;` | Single quote |
+| " | `&quot;` | Double quote |
+| ' | `&apos;` | Single quote |
 
 For JSON document, the following characters need to be replaced with their corresponding escape sequences:
 
 | JSON Special Characters | Syntax | Description |
 | --- | --- | --- |
-| â | `\"` | Double quote |
+| " | `\"` | Double quote |
 | \ | `\\` | Backslash |
 | / | `\/` | Forward slash |
-| Â | `\b` | Backspace |
-| Â | `\f` | Form feed |
-| Â | `\n` | Newline |
-| Â | `\r` | Carriage return |
-| Â | `\t` | Tab |
+|  | `\b` | Backspace |
+|  | `\f` | Form feed |
+|  | `\n` | Newline |
+|  | `\r` | Carriage return |
+|  | `\t` | Tab |
 
 ## Which Client ID and Client Secret should Intermediaries utilise to submit on behalf of Taxpayers?
 
@@ -187,7 +187,7 @@ You can download the JSON and XML [Sample](../10-sample-documents/README.md) pay
 
 ## How to test APIs via Postman?
 
-The guidance on how to test the APIâs can be found on the [Postman](../09-postman/README.md) Page.
+The guidance on how to test the API's can be found on the [Postman](../09-postman/README.md) Page.
 
 ## How to get sample response from each API?
 
@@ -195,17 +195,17 @@ You can download the JSON collection file from the [Postman](../09-postman/READM
 
 ## What are the code and value required for tax exemption?
 
-The Software Development Kit (SDK) page and Postman have been updated on 24 May 2024. Tax Exemption code âEâ is now added into SDK for Tax Type code. The real value should correspond to the tax type code available at [sdk.myinvois.hasil.gov.my/codes/tax-types](../05-code-tables/tax-types.md).
+The Software Development Kit (SDK) page and Postman have been updated on 24 May 2024. Tax Exemption code 'E' is now added into SDK for Tax Type code. The real value should correspond to the tax type code available at [sdk.myinvois.hasil.gov.my/codes/tax-types](../05-code-tables/tax-types.md).
 
-## What to do if an Error 400 code appears in API when validating taxpayersâ TIN number?
+## What to do if an Error 400 code appears in API when validating taxpayers' TIN number?
 
 This API returns HTTP status code `400`(BadArgument) if the TIN or any of the input parameters does not match the argument structure. Taxpayers need to check their TIN number format is correct.
 
-## What action should be taken if the API displays an error message stating âUnauthorizedâ or indicates a status of â401 Unauthorizedâ?
+## What action should be taken if the API displays an error message stating "Unauthorized" or indicates a status of "401 Unauthorized"?
 
-The error occurred because the generated access token expired after its one-hour validity period. To resolve this, a new access token must be generated using the âLogin as Taxpayerâ or âLogin as Intermediaryâ API once again.
+The error occurred because the generated access token expired after its one-hour validity period. To resolve this, a new access token must be generated using the "Login as Taxpayer" or "Login as Intermediary" API once again.
 
-## What action should be taken when I encounter Error Code 429 which indicates âToo many requestsâ on an API?
+## What action should be taken when I encounter Error Code 429 which indicates "Too many requests" on an API?
 
 This issue occurred because the system received too many requests on the API that the taxpayer is using. The taxpayer can resolve this by attempting to use the API again after a brief period.
 
@@ -242,8 +242,8 @@ The comprehensive guidance on Digital Signature creation and validation can be f
 The issuer of the documents will have to use a valid digital certificate that is issued by a certificate authority (CA) in Malaysia as documented here [List of Certification Authorities and Recognition](https://www.mcmc.gov.my/en/sectors/digital-signature/list-of-licensees).
 
 You may also obtain the digital signature sample from this link:  
-â¢ UBL 2.1 Invoice Sample XML with Signature: [https://sdk.myinvois.hasil.gov.my/files/one-doc-signed.xml](../10-sample-documents/samples/one-doc-signed.xml).  
-â¢ UBL 2.1 Invoice Sample JSON with Signature: [https://sdk.myinvois.hasil.gov.my/files/sample-ul-invoice-2.1-signed.min.json](../10-sample-documents/samples/sample-ul-invoice-2.1-signed.min.json).
+• UBL 2.1 Invoice Sample XML with Signature: [https://sdk.myinvois.hasil.gov.my/files/one-doc-signed.xml](../10-sample-documents/samples/one-doc-signed.xml).  
+• UBL 2.1 Invoice Sample JSON with Signature: [https://sdk.myinvois.hasil.gov.my/files/sample-ul-invoice-2.1-signed.min.json](../10-sample-documents/samples/sample-ul-invoice-2.1-signed.min.json).
 
 Disclaimer: The sample JSON file is for digital signature illustration purposes only. Taxpayers are advised to consult local laws and regulations for guidance on digital signature implementation.
 
@@ -265,7 +265,7 @@ Taxpayers are given the option to decide to submit documents in version 1.0 or v
 
 ## Is the submission using Document Version 1.0 allowed to be used for submission on 1 August 2024 onwards?
 
-Taxpayers may submit documents using document version 1.0 without the requirement for digital signature validation until such time as the Lembaga Hasil Dalam Negeri Malaysia (LHDNM) issues an official notice concerning the retirement of version 1.0. Nonetheless, it is strongly recommended that taxpayers adopt version 1.1, which incorporates digital signature validation, to ensure the authenticity of the supplierâs identity.
+Taxpayers may submit documents using document version 1.0 without the requirement for digital signature validation until such time as the Lembaga Hasil Dalam Negeri Malaysia (LHDNM) issues an official notice concerning the retirement of version 1.0. Nonetheless, it is strongly recommended that taxpayers adopt version 1.1, which incorporates digital signature validation, to ensure the authenticity of the supplier's identity.
 
 ## How do I ensure the digitally signed document created is valid?
 
@@ -291,7 +291,7 @@ The service provider can procure either Soft or Roaming certificates for MyInvoi
 
 No. Service providers can use their own certificate to submit document for all their customers.
 
-## Which digital certificate is required for document submission via API: an individualâs or an organisationâs?â
+## Which digital certificate is required for document submission via API: an individual's or an organisation's?"
 
 For submission through API, an organisation digital certificate is required.
 
@@ -303,44 +303,44 @@ Yes. The digital certificate has an expiration date. You would need to confirm w
 
 ---
 
-## What action should be taken when I encounter the submission error âIssuance date time value of the document is too old and cannot be submittedâ?
+## What action should be taken when I encounter the submission error "Issuance date time value of the document is too old and cannot be submitted"?
 
-If it pertains to the Submit Document API, review the âpropertyPathâ for detailed information and adjust the date to ensure it is within 72 hours before submission.
+If it pertains to the Submit Document API, review the "propertyPath" for detailed information and adjust the date to ensure it is within 72 hours before submission.
 
-## What should I do if I encounter the error âDocument issuance date and time is in the futureâ?
+## What should I do if I encounter the error "Document issuance date and time is in the future"?
 
 The provided date and time format does not comply with the required UTC standard. To resolve this issue, ensure that the issuance date and time in your document are formatted correctly according to the UTC standard.
 
-## What should be done if the submission error message âThe authenticated TIN and documents TIN is not matchingâ occurs?
+## What should be done if the submission error message "The authenticated TIN and documents TIN is not matching" occurs?
 
 Kindly verify the following scenarios:
 
 1. When using Login as Taxpayer API - the issuer TIN in the document must match with the TIN associated with the Client ID and Client Secret.
-2. When using Login as Intermediary System API â the issuer TIN in the document must match with the TIN of the taxpayer the intermediary is representing.
-3. For sole proprietors, taxpayers can now validate TINs starting with âIGâ along with their BRN. To do so, taxpayers must ensure the âBusiness Ownerâ role is assigned in their MyTax profile.
+2. When using Login as Intermediary System API – the issuer TIN in the document must match with the TIN of the taxpayer the intermediary is representing.
+3. For sole proprietors, taxpayers can now validate TINs starting with "IG" along with their BRN. To do so, taxpayers must ensure the "Business Owner" role is assigned in their MyTax profile.
 
-## Why am I receiving a â403 - Forbiddenâ error when trying to access the Sandbox Environment using the Login as Taxpayer API?
+## Why am I receiving a "403 - Forbidden" error when trying to access the Sandbox Environment using the Login as Taxpayer API?
 
-The â403 - Forbiddenâ error typically occurs when the incorrect Client ID and Client Secret are used. Please note that credentials from the production portal cannot be used in the sandbox environment. To resolve this issue, you need to register your company in the pre-production portal and then register your ERP system. This will allow you to obtain the correct Client ID and Client Secret for accessing the sandbox environment.
+The "403 - Forbidden" error typically occurs when the incorrect Client ID and Client Secret are used. Please note that credentials from the production portal cannot be used in the sandbox environment. To resolve this issue, you need to register your company in the pre-production portal and then register your ERP system. This will allow you to obtain the correct Client ID and Client Secret for accessing the sandbox environment.
 
-## Why am I receiving an error message âInvalid Structureâ when submitting e-Invoice through the API?
+## Why am I receiving an error message "Invalid Structure" when submitting e-Invoice through the API?
 
-The âInvalid Structureâ error message usually appears due to an incorrect sequence of elements in your submission. To resolve this issue, please ensure your submission adheres to the correct format. For reference, please refer to the following sections of the SDK:
+The "Invalid Structure" error message usually appears due to an incorrect sequence of elements in your submission. To resolve this issue, please ensure your submission adheres to the correct format. For reference, please refer to the following sections of the SDK:
 
 * MyInvois Sample Format:
   <https://sdk.myinvois.hasil.gov.my/sample/>
 * MyInvois Document Data Structure:
   <https://sdk.myinvois.hasil.gov.my/types/>
 
-## Why am I receiving the error stating âItemCode 00 was not active when document issuedâ?
+## Why am I receiving the error stating "ItemCode 00 was not active when document issued"?
 
-The error message âItemCode 00 was not active when document issuedâ indicates that the item code â00â was either not defined, inactive, or incorrectly configured in the systemâs item master data at the time the e-invoice was submitted. This means the system could not validate the item as active, which is a requirement for successful document processing.
+The error message "ItemCode 00 was not active when document issued" indicates that the item code '00' was either not defined, inactive, or incorrectly configured in the system's item master data at the time the e-invoice was submitted. This means the system could not validate the item as active, which is a requirement for successful document processing.
 
-Additionally, please note that the use of state code â00â is no longer valid for issuing e-invoices via API or Batch Upload and refer to the SDK at the following link for the correct list of state codes: https://sdk.myinvois.hasil.gov.my/codes/state-codes/
+Additionally, please note that the use of state code '00' is no longer valid for issuing e-invoices via API or Batch Upload and refer to the SDK at the following link for the correct list of state codes: https://sdk.myinvois.hasil.gov.my/codes/state-codes/
 
 ## How can I submit an e-Invoice with multiple tax types through the API?
 
-Multiple tax types can be included by repeating the âTaxSubtotalâ element within the line item section.
+Multiple tax types can be included by repeating the "TaxSubtotal" element within the line item section.
 
 ## Why am I receiving the error "Search criteria is not conclusive and more than one TIN can be found to match the search criteria provided, please revise the search criteria" when using the Search Taxpayer's TIN API, while the MyTax Search TIN function returns a single valid TIN?
 

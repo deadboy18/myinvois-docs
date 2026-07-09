@@ -45,7 +45,7 @@ This API accepts [standard e-Invoice API header parameters](../01-getting-starte
 | --- | --- | --- | --- |
 | uuid | String | Unique ID of the document | F9D425P6DS7D8IU |
 | status | String | Status if document has been cancelled | Cancelled |
-| error | [Error](../01-getting-started/error-responses.md#error-response-structure) | Error if cancellion of document failed. | Â |
+| error | [Error](../01-getting-started/error-responses.md#error-response-structure) | Error if cancellion of document failed. |  |
 
 ### Successful Response
 
@@ -72,9 +72,9 @@ In case of self-billed invoices, the buyer actually cancels the document, not th
 
 **Important !**
 
-â¢ Please ensure the UUID is correct before attempting to cancel a submission to avoid unnecessary API calls.
+• Please ensure the UUID is correct before attempting to cancel a submission to avoid unnecessary API calls.
 
-â¢ Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
+• Always review the integration recommended practices at [sdk.myinvois.hasil.gov.my/integration-practices](../01-getting-started/integration-practices.md) to ensure your ERP integration is in accordance with these guidelines and follows healthy integration patterns.
 
 [Submit Documents](02-submit-documents.md)
 [Reject Document](04-reject-document.md)
