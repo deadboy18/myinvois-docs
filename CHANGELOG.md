@@ -3,6 +3,20 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.1.1] — 2026-07-09
+
+**SDK release notes catch-up + FAQ update.**
+
+### Changes
+
+- **SDK Release Notes** (`release-notes/sdk-1-0.md`) — added 3 missing entries:
+  - **08 July 2026**: New document versions SVDP 1.2 and SVDP 1.3 for e-Invoice Special Voluntary Disclosure Programme
+  - **12 June 2026**: TIN + BRN validation coming 1 August 2026 for Validate Taxpayer's TIN API
+  - **30 April 2026**: State Code 17 restricted to consolidated/non-Malaysia e-Invoices; scientific notation banned in amount fields
+- **FAQ** (`08-faq/README.md`) — added new entry: "Search criteria is not conclusive" error when using Search Taxpayer's TIN API
+
+---
+
 ## [1.1.0] — 2026-07-09
 
 **Update for IRBM Guideline revisions published 7 July 2026.**

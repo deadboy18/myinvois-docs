@@ -12,6 +12,64 @@ In order for taxpayers to access the URLs for the various environments, please e
 
 # SDK Updates
 
+**08 July 2026**
+
+**Introduction to New Document Versions for e-Invoice Special Voluntary Disclosure Programme (SVDP)**
+
+• e-Invoice Special Voluntary Disclosure Programme (SVDP) has been introduced as an ongoing effort to support taxpayers in regularising their e-Invoice compliance, effective period until 31 December 2027.
+
+• To support the implementation of the programme, HASiL has introduced new document versions in the MyInvois Software Development Kit (SDK).
+
+  - SVDP 1.2 – without digital signature
+  - SVDP 1.3 – with digital signature
+
+Taxpayers and service providers are advised to update their systems in accordance with the latest SDK specifications and refer to the e-Invoice Guideline and Specific Guidelines for the applicable requirements and procedures under e-Invoice SVDP.
+
+• Taxpayers and service providers are advised to ensure the following:
+
+  a. Update your integration to support the new document versions (SVDP 1.2 and SVDP 1.3)
+
+  b. The document version SVDP 1.2 and SVDP 1.3 can only be used during the effective period of the e-Invoice SVDP.
+
+  c. For Batch Upload users, please download and use the latest version of the Batch Upload template that supports the document version SVDP 1.2 and SVDP 1.3 before submitting e-Invoices.
+
+  d. All existing document validation rules remain applicable unless otherwise specified in the SDK.
+
+Please refer to the sample below for reference:
+
+- Invoice SVDP 1.2 (without digital signature) Sample XML
+- Invoice SVDP 1.2 (without digital signature) Sample JSON
+- Invoice SVDP 1.3 (with digital signature) Sample XML
+- Invoice SVDP 1.3 (with digital signature) Sample JSON
+
+Please ensure your system is updated to support SVDP 1.2 or SVDP 1.3 to facilitate participation in the e-Invoice SVDP, enabling taxpayers to rectify inaccuracies and regularise compliance with HASiL's e-Invoice requirements.
+
+**12 June 2026**
+
+**Latest Update on Validate Taxpayer's TIN API**
+
+• To enhance data accuracy and quality, HASiL will introduce Taxpayer Identification Number (TIN) and Business Registration Number (BRN) validation starting **1 August 2026**.
+
+This validation will be implemented for the Validate Taxpayer's TIN API, and taxpayers are advised to follow the requirements outlined in the Software Development Kit (SDK) in preparation for this update.
+
+Taxpayers are advised to ensure the following:
+
+  a) Obtain updated and accurate BRN information from Buyers
+
+  b) Remind buyers to update their latest BRN information with HASiL to ensure consistency between the BRN provided to your company and HASiL records
+
+**30 April 2026**
+
+**Updates to Fields Validation**
+
+• Effectively immediately, State Code 17 can only be used in the following cases:
+
+  a) Consolidated e-Invoices issued in Malaysia, or
+
+  b) e-Invoices for transactions outside Malaysia.
+
+• Scientific notation is not supported in any amount fields. All amount values must be provided in standard numeric format using plain numbers with optional decimal points.
+
 **10 April 2026**
 
 **Other Updates**

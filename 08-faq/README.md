@@ -342,6 +342,10 @@ Additionally, please note that the use of state code â00â is no longer
 
 Multiple tax types can be included by repeating the âTaxSubtotalâ element within the line item section.
 
+## Why am I receiving the error "Search criteria is not conclusive and more than one TIN can be found to match the search criteria provided, please revise the search criteria" when using the Search Taxpayer's TIN API, while the MyTax Search TIN function returns a single valid TIN?
+
+You may need to refine or provide more specific search parameters when using the API to avoid ambiguous results. You may refer to the following link for the supported search parameters: https://sdk.myinvois.hasil.gov.my/einvoicingapi/10-search-taxpayer-tin/
+
 [Digital Signature](../06-signature/README.md)
 
 
