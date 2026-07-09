@@ -86,6 +86,16 @@ Start here, in this order:
 - [Integration Anti-Patterns](12-cookbook/08-integration-antipatterns.md) — five things that will get you throttled
 - [Validation Status Lifecycle](12-cookbook/14-validation-status-lifecycle.md) — state machine + 72-hour windows
 
+### "I want to keep this repo up to date."
+
+This repo ships with a **Claude Skill** that automates checking the live SDK
+portal for changes. See [Cookbook → Automated Update Checking](12-cookbook/17-automated-update-checking.md) for full setup instructions.
+
+**Quick start:** Upload `.claude/skills/myinvois-sdk-auditor/SKILL.md` to
+Claude (Settings → Skills), then say **"check for SDK updates"** in any
+conversation. Claude will scrape the live portal, compare against the repo,
+and generate patch files for anything that's changed.
+
 ---
 
 ## 🌐 Environment URLs (cheat sheet)
@@ -288,6 +298,11 @@ guidelines. Particularly valuable contributions:
 ├── LICENSE.md                                  ← MIT
 ├── ATTRIBUTION.md                              ← sources
 ├── contacts.md                                 ← IRBM + CA + community contacts
+│
+├── .claude/
+│   └── skills/
+│       └── myinvois-sdk-auditor/
+│           └── SKILL.md                        ← Claude Skill for automated update checking
 │
 ├── 01-getting-started/
 │   ├── README.md

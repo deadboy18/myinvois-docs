@@ -3,6 +3,28 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.2.0] — 2026-07-09
+
+**Added Claude Skill for automated SDK portal auditing.**
+
+### Added
+
+- `.claude/skills/myinvois-sdk-auditor/SKILL.md` — Claude Skill that maps
+  35+ SDK portal URLs to repo files, defines the audit workflow, encoding
+  fix patterns, and version baseline. Any Claude user can install this skill
+  and say "check for SDK updates" to automatically audit the repo.
+- `12-cookbook/17-automated-update-checking.md` — documentation page explaining
+  how to install and use the skill (Claude.ai, Claude Code, or manual).
+
+### Changed
+
+- `README.md` — added "keeping this repo updated" section, added `.claude/`
+  to file tree
+- `12-cookbook/README.md` — added entry 17 to table of contents, updated
+  General Guideline version reference to v4.7
+
+---
+
 ## [1.1.2] — 2026-07-09
 
 **Fix double-encoded Unicode (mojibake) across 49 markdown files.**

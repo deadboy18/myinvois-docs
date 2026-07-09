@@ -53,11 +53,12 @@ Community repositories surveyed:
 
 15. [Production readiness checklist](15-production-readiness.md) — **the single "am I ready to go live?" document**, synthesizing the rest of the cookbook
 16. [Observability & operations](16-observability-and-operations.md) — logging, metrics, alerts, runbooks for certs/outages/stuck submissions, DLQ pattern
+17. [Automated update checking with Claude](17-automated-update-checking.md) — **Claude Skill for auditing the repo against the live SDK portal and IRBM guidelines**
 
 ### Reference
 
 - [Official IRBM contacts](../contacts.md) — support emails, phones, portals, CA contacts
-- [IRBM e-Invoice General Guideline v4.6 (7 Dec 2025)](irbm-general-guideline/README.md) — complete markdown rendering
+- [IRBM e-Invoice General Guideline v4.7 (7 July 2026)](irbm-general-guideline/README.md) — complete markdown rendering
 
 ### Community SDKs
 
