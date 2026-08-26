@@ -12,6 +12,63 @@ In order for taxpayers to access the URLs for the various environments, please e
 
 # SDK Updates
 
+**06 August 2026**
+
+### Amount Field Validation & ID Type Character Limits
+
+A maximum length constraint of **26 digits** has been implemented for all
+monetary amount fields across invoice and line item levels.
+
+**Invoice-level fields affected:**
+
+- PrePayment Amount
+- Total Excluding Tax
+- Total Including Tax
+- Total Payable Amount
+- Total Net Amount
+- Total Discount Value
+- Total Fee/Charge Amount
+- Total Tax Amount
+- Rounding Amount
+- Total Taxable Amount Per Tax Type
+- Total Tax Amount Per Tax Type
+- Amount Exempted from Tax
+- Invoice Additional Discount Amount
+- Invoice Additional Fee Amount
+- Details of other charges
+
+**Line item-level fields affected:**
+
+- Unit Price
+- Tax Rate
+- Tax Amount
+- Amount Exempted from Tax
+- Subtotal
+- Total Excluding Tax
+- Discount Amount
+- Fee/Charge Amount
+
+**Additional validation:** ID Type `PASSPORT` entries are now limited to
+**12 characters**.
+
+> These changes will take effect in the Production environment on
+> **23 October 2026**.
+
+---
+
+**17 July 2026**
+
+### Tax Exemption Documentation Update
+
+Clarification added: the element `cbc:TaxAmount` is **not required to be
+0.00** for tax-exempt transactions. Taxpayers may report the actual tax
+liability that would have applied before the exemption was granted. Having
+a tax exemption reason element does not necessitate that the tax amount
+field equal zero.
+
+No validation rule changes were implemented. Existing integrations remain
+unaffected.
+
 **08 July 2026**
 
 **Introduction to New Document Versions for e-Invoice Special Voluntary Disclosure Programme (SVDP)**
