@@ -3,6 +3,29 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.2.1] — 2026-08-26
+
+**SDK release notes catch-up + community-discovered validation change.**
+
+### Added
+
+- **Common Pitfalls** (`12-cookbook/05-common-pitfalls.md`) — new section:
+  "Empty strings in optional date/time fields (DateExpected / TimeExpected)".
+  Documents an unannounced LHDN server-side validation tightening discovered
+  on 14 August 2026: empty strings (`""`) in `InvoicePeriod.StartDate`,
+  `InvoicePeriod.EndDate`, `PrepaidPayment.PaidDate`, and
+  `PrepaidPayment.PaidTime` are now rejected. Previously accepted. Fix:
+  omit optional blocks entirely when no data is available.
+
+### Changed
+
+- **SDK Release Notes** (`release-notes/sdk-1-0.md`) — added 2 missing entries:
+  - **06 August 2026**: Amount field validation (26-digit max for all monetary
+    fields) + Passport ID type 12-character limit, effective 23 October 2026
+  - **17 July 2026**: Tax exemption documentation update — `cbc:TaxAmount` not
+    required to be 0.00 for exempt transactions
+
+
 ## [1.2.0] — 2026-07-09
 
 **Added Claude Skill for automated SDK portal auditing.**
