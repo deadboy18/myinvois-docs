@@ -4,7 +4,7 @@
 > APIs, digital certificates, SDKs, validation errors, production playbooks — all in one place.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
-[![Docs](https://img.shields.io/badge/docs-92%20markdown%20files-blue.svg)](#-whats-inside)
+[![Docs](https://img.shields.io/badge/docs-93%20markdown%20files-blue.svg)](#-whats-inside)
 [![Last verified](https://img.shields.io/badge/last%20verified-August%202026-green.svg)](#-freshness--versioning)
 [![Links](https://img.shields.io/badge/links-853%2F853%20resolved-brightgreen.svg)](#)
 
@@ -38,7 +38,7 @@ operations runbooks), and keeps everything cross-linked.
 | [`09-postman/`](09-postman/) | Postman collection + sandbox/production environments | 4 |
 | [`10-sample-documents/`](10-sample-documents/) | 44 real XML/JSON sample payloads + 9 code-table JSONs + Digital Signature User Guide PDF | 55 |
 | [`11-irbm-specific-guideline/`](11-irbm-specific-guideline/) | **Specific Guideline v4.8** as markdown — cross-border, self-billed, e-commerce, employment perks, foreign income, cybersecurity, **SVDP**, appendices | 1 |
-| [`12-cookbook/`](12-cookbook/) | **Error cookbook + operations playbook + General Guideline v4.7 + community SDK survey** | 26 |
+| [`12-cookbook/`](12-cookbook/) | **Error cookbook + operations playbook + General Guideline v4.7 + community SDK survey** | 27 |
 | [`release-notes/`](release-notes/) | Archived release notes | 3 |
 
 ---
@@ -56,7 +56,8 @@ Start here, in this order:
 6. [Signature → Creation guide XML](06-signature/signature-creation-xml.md) / [JSON](06-signature/signature-creation-json.md) — sign your invoices
 7. [e-Invoice API → Submit Documents](03-einvoice-api/02-submit-documents.md) — submit
 8. [e-Invoice API → Get Submission](03-einvoice-api/06-get-submission.md) — poll for status
-9. [Cookbook → Production Readiness](12-cookbook/15-production-readiness.md) — pre-launch checklist
+9. [Cookbook → API Curl Reference](12-cookbook/18-api-curl-reference.md) — test every endpoint with curl
+10. [Cookbook → Production Readiness](12-cookbook/15-production-readiness.md) — pre-launch checklist
 
 ### "My submission failed. Where do I look?"
 
@@ -69,6 +70,7 @@ Start here, in this order:
 | `CF401` / `CF403` / `CF410` | [Cookbook → Field Validation Rules](12-cookbook/06-field-validation-rules.md) |
 | HTTP 429 | [Cookbook → Rate Limits](12-cookbook/04-rate-limits.md) |
 | Anything weird | [Cookbook → Common Pitfalls](12-cookbook/05-common-pitfalls.md) |
+| Need to test an endpoint manually | [Cookbook → API Curl Reference](12-cookbook/18-api-curl-reference.md) |
 
 ### "I'm deciding what to buy/build."
 
@@ -210,7 +212,7 @@ Full contact directory: [`contacts.md`](contacts.md)
 
 ## 📅 Freshness & versioning
 
-This is a **snapshot** as of **July 2026**, including:
+This is a **snapshot** as of **August 2026**, including:
 
 - **e-Invoice General Guideline v4.7** (published 7 July 2026)
 - **e-Invoice Specific Guideline v4.8** (published 7 July 2026)
@@ -340,6 +342,9 @@ guidelines. Particularly valuable contributions:
 │   ├── 14-validation-status-lifecycle.md       (state machine, 72hr windows)
 │   ├── 15-production-readiness.md              (★ 130-item checklist)
 │   ├── 16-observability-and-operations.md      (logs, metrics, alerts, runbooks)
+│   ├── 17-automated-update-checking.md         (Claude Skill for SDK monitoring)
+│   ├── 18-api-curl-reference.md                (every endpoint as curl commands)
+│   ├── community-sdks/
 │   ├── community-sdks/
 │   │   ├── README.md                           (comparison matrix)
 │   │   ├── 01-klsheng-php-sdk.md
