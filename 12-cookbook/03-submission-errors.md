@@ -126,6 +126,28 @@ Three variants of this error from the FAQ:
 | You're using `Login as Intermediary`. | The issuer TIN in the document **must match** the TIN of the taxpayer you're representing (via `onbehalfof` header). |
 | Sole proprietors using `IG` prefix. | TIN validation works for `IG`-prefix TINs only if the **"Business Owner" role** is assigned in the user's MyTax profile. |
 
+#### Diagnosing TIN mismatch: decode the JWT
+
+The most common cause of "The authenticated TIN and documents TIN is not
+matching" is registering the ERP while the MyInvois portal was in your
+**personal profile** (individual `IG…` TIN) instead of the **company role**.
+The ERP's Client ID/Secret are then bound to the personal TIN, but the
+invoice carries the company TIN.
+
+**How to confirm:** decode your access token (it's a standard JWT) and check
+the `name` claim — it starts with the owning TIN:
+
+```bash
+# Extract and decode the JWT payload (middle segment)
+echo "$TOKEN" | cut -d. -f2 | base64 -d 2>/dev/null | python3 -m json.tool
+# Look for: "name": "C1234567890::MyCompany Sdn Bhd"
+#                     ^^^^^^^^^^^^^ this must match your invoice's supplier TIN
+```
+
+**Fix:** log in to the MyInvois portal, **switch role to the company** (not
+your personal profile), go to Taxpayer Profile → Register ERP again, and use
+the new Client ID/Secret. The old personal-TIN credentials should be revoked.
+
 ### "Issuance date time value of the document is too old and cannot be submitted"
 
 The `IssueDate` + `IssueTime` on the document is > 72 hours in the past. You
