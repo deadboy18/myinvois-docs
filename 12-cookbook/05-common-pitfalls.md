@@ -214,3 +214,67 @@ Log it always, even on success, for auditing.
 The [Postman collection](https://sdk.myinvois.hasil.gov.my/postman/) + sample
 requests lets you reproduce any call in a known-good environment. If your SDK
 is sending something different from Postman and failing, the SDK is wrong.
+
+## Empty strings in optional date/time fields (DateExpected / TimeExpected)
+
+> **Discovered:** 14 August 2026 (~20:43 MYT last success, ~21:33 MYT first
+> failure). Not announced in any SDK release note — LHDN tightened server-side
+> validation silently.
+
+Several optional UBL blocks contain `xsd:date` and `xsd:time` fields. If your
+integration sends these blocks with **empty strings** (`""`) instead of valid
+values, the submission is now rejected with:
+
+```
+DateExpected: #/Invoice[0].InvoicePeriod[0].StartDate[0]._
+DateExpected: #/Invoice[0].InvoicePeriod[0].EndDate[0]._
+DateExpected: #/Invoice[0].PrepaidPayment[0].PaidDate[0]._
+TimeExpected: #/Invoice[0].PrepaidPayment[0].PaidTime[0]._
+```
+
+### What changed
+
+Before ~14 August 2026, the validator accepted empty strings for these optional
+fields. After that date, the validator enforces strict XSD type checking:
+
+| Field | XSD type | Required format | Empty `""` accepted? |
+|---|---|---|---|
+| `InvoicePeriod.StartDate` | `xsd:date` | `YYYY-MM-DD` (10 chars) | **No** (was yes) |
+| `InvoicePeriod.EndDate` | `xsd:date` | `YYYY-MM-DD` (10 chars) | **No** (was yes) |
+| `PrepaidPayment.PaidDate` | `xsd:date` | `YYYY-MM-DD` (10 chars) | **No** (was yes) |
+| `PrepaidPayment.PaidTime` | `xsd:time` | `HH:MM:SSZ` (9 chars) | **No** (was yes) |
+
+### The fix
+
+Both `InvoicePeriod` and `PrepaidPayment` are **optional** blocks with
+cardinality `[0..1]` per the
+[Invoice v1.1 specification](https://sdk.myinvois.hasil.gov.my/documents/invoice-v1-1/).
+
+**Option A (recommended):** When there is no billing period or prepayment
+data, **omit the entire block** from the JSON payload. Do not include the key
+at all.
+
+```json
+// WRONG — empty strings trigger DateExpected / TimeExpected
+"InvoicePeriod": [{"StartDate": [{"_": ""}], "EndDate": [{"_": ""}], "Description": [{"_": ""}]}]
+"PrepaidPayment": [{"ID": [{"_": ""}], "PaidAmount": [{"_": 0, "currencyID": "MYR"}], "PaidDate": [{"_": ""}], "PaidTime": [{"_": ""}]}]
+
+// RIGHT — omit the blocks entirely when no data
+// (simply do not include "InvoicePeriod" or "PrepaidPayment" keys in the Invoice object)
+```
+
+**Option B:** If your code must always include the block, populate with valid
+values — e.g., use `IssueDate` as both `StartDate` and `EndDate`, and
+`IssueTime` as `PaidTime`.
+
+### Affected document types
+
+This likely applies to all 8 document types (Invoice, Credit Note, Debit Note,
+Refund Note, and their self-billed variants), as they share the same UBL
+structure for `InvoicePeriod` and `PrepaidPayment`.
+
+### How to check if you're affected
+
+Search your e-invoice JSON builder code for any place where `StartDate`,
+`EndDate`, `PaidDate`, or `PaidTime` are set to `""`. If found, apply the fix
+above.
