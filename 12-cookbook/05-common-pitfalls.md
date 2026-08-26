@@ -278,3 +278,74 @@ structure for `InvoicePeriod` and `PrepaidPayment`.
 Search your e-invoice JSON builder code for any place where `StartDate`,
 `EndDate`, `PaidDate`, or `PaidTime` are set to `""`. If found, apply the fix
 above.
+
+
+## General Public buyer must use classification code `004` (ERR236)
+
+When submitting a consolidated e-Invoice for the **General Public** (buyer
+TIN `EI00000000010`), every `InvoiceLine` must use classification code
+**`004`** (General Public). Using any other classification code (e.g. `022`)
+triggers:
+
+```
+ERR236: Classification code must be 004 for General Public buyer
+```
+
+This is a common issue for **POS systems** that default all walk-in
+transactions to the general public TIN but use the standard product
+classification code.
+
+### The fix
+
+```json
+// WRONG — general public buyer with product classification
+"ItemClassificationCode": [{ "_": "022", "listID": "CLASS" }]
+
+// RIGHT — general public buyer requires 004
+"ItemClassificationCode": [{ "_": "004", "listID": "CLASS" }]
+```
+
+Your e-invoice builder should check: if `buyer TIN == EI00000000010`, force
+all line item classification codes to `004`.
+
+### Buyer TIN reference
+
+| TIN | Use case |
+|---|---|
+| `EI00000000010` | **General Public** — consolidated invoices for walk-in customers who don't request an e-Invoice |
+| `EI00000000020` | **Foreign Buyer** — non-Malaysian buyers without a Malaysian TIN |
+| `EI00000000030` | **Foreign Supplier** — for self-billed e-Invoices to foreign vendors |
+
+## Empty optional blocks: omit, don't send empty
+
+Several UBL blocks are optional (`[0..1]` cardinality) but commonly included
+with empty/default values by integrations that always build the full document
+structure. While some of these still pass validation today, they are at risk
+of future rejection — as seen with `InvoicePeriod` and `PrepaidPayment` in
+the [DateExpected issue above](#empty-strings-in-optional-date-time-fields-dateexpected--timeexpected).
+
+### Blocks to omit when you have no data
+
+| Block | When to omit |
+|---|---|
+| `InvoicePeriod` | No billing period / frequency to report |
+| `PrepaidPayment` | No prepayment / deposit was made |
+| `Delivery` | No separate delivery address or date |
+| `AllowanceCharge` | No document-level discounts or fees |
+| `BillingReference` | Not a credit/debit/refund note referencing another document |
+| `PaymentMeans` | No specific payment method to declare |
+
+### The pattern
+
+```json
+// WRONG — empty block with default values
+"Delivery": [{"DeliveryParty": [{"PartyLegalEntity": [{"RegistrationName": [{"_": ""}]}]}]}]
+
+// RIGHT — omit entirely
+// (do not include the "Delivery" key in the Invoice object)
+```
+
+**Rule of thumb:** if every value inside an optional block would be empty
+string, zero, or `"NA"`, omit the entire block. This is both spec-compliant
+and future-proof against LHDN tightening validation (which they do without
+announcement).
