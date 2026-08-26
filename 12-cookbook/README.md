@@ -55,6 +55,8 @@ Community repositories surveyed:
 16. [Observability & operations](16-observability-and-operations.md) — logging, metrics, alerts, runbooks for certs/outages/stuck submissions, DLQ pattern
 17. [Automated update checking with Claude](17-automated-update-checking.md) — **Claude Skill for auditing the repo against the live SDK portal and IRBM guidelines**
 
+18. [API Curl Reference](18-api-curl-reference.md) | Every MyInvois API endpoint as a ready-to-paste curl command for debugging |
+
 ### Reference
 
 - [Official IRBM contacts](../contacts.md) — support emails, phones, portals, CA contacts
