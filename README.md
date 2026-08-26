@@ -5,7 +5,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 [![Docs](https://img.shields.io/badge/docs-92%20markdown%20files-blue.svg)](#-whats-inside)
-[![Last verified](https://img.shields.io/badge/last%20verified-July%202026-green.svg)](#-freshness--versioning)
+[![Last verified](https://img.shields.io/badge/last%20verified-August%202026-green.svg)](#-freshness--versioning)
 [![Links](https://img.shields.io/badge/links-853%2F853%20resolved-brightgreen.svg)](#)
 
 This repository is a comprehensive, developer-focused reference for integrating
