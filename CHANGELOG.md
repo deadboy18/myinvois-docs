@@ -3,6 +3,33 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.2.2] — 2026-08-26
+
+**API reference + additional pitfalls from community MCP project.**
+
+### Added
+
+- **API Curl Reference** (`12-cookbook/18-api-curl-reference.md`) — new cookbook
+  page with every MyInvois API endpoint as ready-to-paste `curl` commands,
+  including hash/base64 generation snippets, environment URLs, and document
+  type code quick reference. Sourced from official Postman collection and
+  community project [techtemplemy/mcp-myinvois](https://github.com/techtemplemy/mcp-myinvois).
+
+- **Common Pitfalls** (`12-cookbook/05-common-pitfalls.md`) — two new sections:
+  - "General Public buyer must use classification code `004` (ERR236)" —
+    documents the requirement that all `InvoiceLine` items must use CLASS
+    `004` when buyer TIN is `EI00000000010`. Common POS integration issue.
+  - "Empty optional blocks: omit, don't send empty" — documents which
+    optional UBL blocks to omit entirely when no data exists, with a
+    future-proofing rationale based on the DateExpected precedent.
+
+### Changed
+
+- **Submission Errors** (`12-cookbook/03-submission-errors.md`) — added JWT
+  decode diagnostic for TIN mismatch errors (the #1 support question for new
+  integrations). Explains how to check whether ERP credentials were
+  registered under a personal profile vs company role.
+
 ## [1.2.1] — 2026-08-26
 
 **SDK release notes catch-up + community-discovered validation change.**
