@@ -2,7 +2,7 @@ name: Update LHDN PDFs
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # Every Monday 8am MYT (midnight UTC)
+    - cron: '0 0 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -14,38 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create directories
+      - name: Create pdfs directory
         run: mkdir -p pdfs
 
-      - name: Download and validate PDFs
+      - name: Download and check PDFs
         run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-          STATUS_FILE="pdfs/pdf-status.json"
-          CHANGED=""
           NOW=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          CHANGED_LIST=""
 
-          # Load existing status or create empty
-          if [ -f "$STATUS_FILE" ]; then
-            OLD_STATUS=$(cat "$STATUS_FILE")
-          else
-            OLD_STATUS='{}'
-          fi
+          download_pdf() {
+            local filename="$1"
+            local url="$2"
 
-          declare -A PDFS
-          PDFS[IRBM-e-Invoice-Guideline.pdf]="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf"
-          PDFS[IRBM-e-Invoice-Specific-Guideline.pdf]="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf"
-          PDFS[Garis-Panduan-e-Invois-LHDNM.pdf]="https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf"
-          PDFS[LHDN-Garis-Panduan-Spesifik-e-Invois.pdf]="https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf"
+            echo "--- Downloading $filename ---"
 
-          # Build new status JSON
-          echo '{' > "$STATUS_FILE.tmp"
-          FIRST=true
-
-          for filename in "${!PDFS[@]}"; do
-            url="${PDFS[$filename]}"
-            echo "Downloading $filename..."
-
-            # Save old checksum if file exists
             OLD_SHA=""
             if [ -f "pdfs/$filename" ]; then
               OLD_SHA=$(sha256sum "pdfs/$filename" | cut -d' ' -f1)
@@ -58,53 +41,101 @@ jobs:
               -o "pdfs/$filename.new" \
               "$url"
 
-            SIZE=$(stat -c%s "pdfs/$filename.new")
-            HEADER=$(head -c 5 "pdfs/$filename.new")
+            local SIZE=$(stat -c%s "pdfs/$filename.new")
+            local HEADER=$(head -c 5 "pdfs/$filename.new")
 
             if [ "$SIZE" -lt 100000 ]; then
-              echo "  WARNING: $filename only ${SIZE} bytes, skipping"
-              rm "pdfs/$filename.new"
-              continue
+              echo "  SKIP: only ${SIZE} bytes"
+              rm -f "pdfs/$filename.new"
+              return
             fi
 
             if [ "$HEADER" != "%PDF-" ]; then
-              echo "  WARNING: $filename not a valid PDF, skipping"
-              rm "pdfs/$filename.new"
-              continue
+              echo "  SKIP: not a valid PDF"
+              rm -f "pdfs/$filename.new"
+              return
             fi
 
-            NEW_SHA=$(sha256sum "pdfs/$filename.new" | cut -d' ' -f1)
-            echo "  Size: ${SIZE} bytes | SHA256: ${NEW_SHA:0:16}..."
+            local NEW_SHA=$(sha256sum "pdfs/$filename.new" | cut -d' ' -f1)
+            echo "  Size: ${SIZE} bytes"
+            echo "  SHA256: ${NEW_SHA}"
 
             if [ "$OLD_SHA" = "$NEW_SHA" ]; then
-              echo "  No changes detected, keeping existing file"
-              rm "pdfs/$filename.new"
-              UPDATED_AT=$(echo "$OLD_STATUS" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('$filename',{}).get('updated','$NOW'))" 2>/dev/null || echo "$NOW")
+              echo "  UNCHANGED"
+              rm -f "pdfs/$filename.new"
             else
-              echo "  NEW VERSION DETECTED, updating"
+              echo "  UPDATED"
               mv "pdfs/$filename.new" "pdfs/$filename"
-              CHANGED="$CHANGED $filename"
-              UPDATED_AT="$NOW"
+              CHANGED_LIST="$CHANGED_LIST $filename"
             fi
+          }
 
-            # Append to status JSON
-            if [ "$FIRST" = true ]; then FIRST=false; else echo ',' >> "$STATUS_FILE.tmp"; fi
-            cat >> "$STATUS_FILE.tmp" << ENTRY
-  "$filename": {
-    "url": "$url",
-    "size_bytes": $SIZE,
-    "sha256": "$NEW_SHA",
-    "last_checked": "$NOW",
-    "updated": "$UPDATED_AT"
-  }
-ENTRY
-          done
+          download_pdf "IRBM-e-Invoice-Guideline.pdf" \
+            "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf"
 
-          echo '' >> "$STATUS_FILE.tmp"
-          echo '}' >> "$STATUS_FILE.tmp"
-          mv "$STATUS_FILE.tmp" "$STATUS_FILE"
+          download_pdf "IRBM-e-Invoice-Specific-Guideline.pdf" \
+            "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf"
 
-          echo "CHANGED=$CHANGED" >> $GITHUB_ENV
+          download_pdf "Garis-Panduan-e-Invois-LHDNM.pdf" \
+            "https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf"
+
+          download_pdf "LHDN-Garis-Panduan-Spesifik-e-Invois.pdf" \
+            "https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf"
+
+          echo "CHANGED_LIST=$CHANGED_LIST" >> "$GITHUB_ENV"
+
+      - name: Generate status file
+        run: |
+          NOW=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          python3 << 'PYEOF'
+          import json, os, hashlib, datetime
+
+          now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+          status_file = 'pdfs/pdf-status.json'
+          old_status = {}
+
+          if os.path.exists(status_file):
+              with open(status_file) as f:
+                  try:
+                      old_status = json.load(f)
+                  except:
+                      pass
+
+          pdfs = {
+              'IRBM-e-Invoice-Guideline.pdf': 'https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf',
+              'IRBM-e-Invoice-Specific-Guideline.pdf': 'https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf',
+              'Garis-Panduan-e-Invois-LHDNM.pdf': 'https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf',
+              'LHDN-Garis-Panduan-Spesifik-e-Invois.pdf': 'https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf',
+          }
+
+          new_status = {}
+          for filename, url in pdfs.items():
+              path = f'pdfs/{filename}'
+              if not os.path.exists(path):
+                  continue
+
+              size = os.path.getsize(path)
+              sha = hashlib.sha256(open(path, 'rb').read()).hexdigest()
+
+              old = old_status.get(filename, {})
+              old_sha = old.get('sha256', '')
+              old_updated = old.get('updated', now)
+
+              updated = now if sha != old_sha else old_updated
+
+              new_status[filename] = {
+                  'url': url,
+                  'size_bytes': size,
+                  'sha256': sha,
+                  'last_checked': now,
+                  'updated': updated,
+              }
+
+          with open(status_file, 'w') as f:
+              json.dump(new_status, f, indent=2)
+
+          print(f'Status written for {len(new_status)} PDFs')
+          PYEOF
 
       - name: Commit changes
         run: |
@@ -115,11 +146,11 @@ ENTRY
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
 
-            if [ -n "$CHANGED" ]; then
-              NAMES=$(echo "$CHANGED" | xargs -n1 basename | paste -sd ', ')
+            if [ -n "$CHANGED_LIST" ]; then
+              NAMES=$(echo "$CHANGED_LIST" | xargs -n1 | sort | paste -sd ', ')
               git commit -m "Update LHDN PDFs - $(date +'%d %b %Y') - $NAMES"
             else
-              git commit -m "Update PDF status check - $(date +'%d %b %Y') - no content changes"
+              git commit -m "PDF status check - $(date +'%d %b %Y') - no content changes"
             fi
             git push
           fi
