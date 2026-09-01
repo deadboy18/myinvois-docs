@@ -1,0 +1,30 @@
+{
+  "IRBM-e-Invoice-Guideline.pdf": {
+    "url": "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf",
+    "size_bytes": 944059,
+    "sha256": "af55b6a71e0a81af3813e7495761b6dbd156feb636b451cb66288ad08f8153bc",
+    "last_checked": "2026-09-01T10:34:13Z",
+    "updated": "2026-09-01T10:34:13Z"
+  },
+  "IRBM-e-Invoice-Specific-Guideline.pdf": {
+    "url": "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf",
+    "size_bytes": 2820971,
+    "sha256": "45ab4ba6d37557278c428d7df2b4728a5830ccf0773c2e9f1ca6d24afe7ca44c",
+    "last_checked": "2026-09-01T10:34:13Z",
+    "updated": "2026-09-01T10:34:13Z"
+  },
+  "Garis-Panduan-e-Invois-LHDNM.pdf": {
+    "url": "https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf",
+    "size_bytes": 897222,
+    "sha256": "00e88d54865d01ab66e13095bffce1b43d6d1074783bb5944f8a30c64eab9948",
+    "last_checked": "2026-09-01T10:34:13Z",
+    "updated": "2026-09-01T10:34:13Z"
+  },
+  "LHDN-Garis-Panduan-Spesifik-e-Invois.pdf": {
+    "url": "https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf",
+    "size_bytes": 2460548,
+    "sha256": "1c4831f4cbaa5fef3994888e8164f0e7264b0845c25139a42e4756aecd7b71e4",
+    "last_checked": "2026-09-01T10:34:13Z",
+    "updated": "2026-09-01T10:34:13Z"
+  }
+}
