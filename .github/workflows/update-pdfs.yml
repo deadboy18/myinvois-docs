@@ -20,17 +20,46 @@ jobs:
 
       - name: Download PDFs
         run: |
-          curl -L -o pdfs/IRBM-e-Invoice-Guideline.pdf \
-            "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf"
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 
-          curl -L -o pdfs/IRBM-e-Invoice-Specific-Guideline.pdf \
-            "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf"
+          declare -A PDFS
+          PDFS[IRBM-e-Invoice-Guideline.pdf]="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf"
+          PDFS[IRBM-e-Invoice-Specific-Guideline.pdf]="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf"
+          PDFS[Garis-Panduan-e-Invois-LHDNM.pdf]="https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf"
+          PDFS[LHDN-Garis-Panduan-Spesifik-e-Invois.pdf]="https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf"
 
-          curl -L -o pdfs/Garis-Panduan-e-Invois-LHDNM.pdf \
-            "https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf"
+          for filename in "${!PDFS[@]}"; do
+            url="${PDFS[$filename]}"
+            echo "Downloading $filename..."
+            curl -L -A "$UA" \
+              -H "Accept: application/pdf,*/*" \
+              -H "Accept-Language: en-US,en;q=0.9" \
+              --retry 3 --retry-delay 5 \
+              -o "pdfs/$filename" \
+              "$url"
 
-          curl -L -o pdfs/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf \
-            "https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf"
+            # Validate: real PDFs start with %PDF and should be > 100KB
+            SIZE=$(stat -c%s "pdfs/$filename")
+            HEADER=$(head -c 5 "pdfs/$filename")
+            echo "  -> Size: ${SIZE} bytes, Header: ${HEADER}"
+
+            if [ "$SIZE" -lt 100000 ]; then
+              echo "  ⚠️  WARNING: $filename is only ${SIZE} bytes - probably not a real PDF"
+              echo "  First 200 chars of downloaded file:"
+              head -c 200 "pdfs/$filename"
+              echo ""
+              # Remove the bad file so we don't commit garbage
+              rm "pdfs/$filename"
+              echo "  Removed bad download."
+            elif [ "$HEADER" != "%PDF-" ]; then
+              echo "  ⚠️  WARNING: $filename doesn't start with %PDF header"
+              rm "pdfs/$filename"
+              echo "  Removed bad download."
+            else
+              echo "  ✅ Valid PDF"
+            fi
+            echo ""
+          done
 
       - name: Check for changes and commit
         run: |
