@@ -2,8 +2,7 @@ name: Update LHDN PDFs
 
 on:
   schedule:
-    # Every Monday at 8am MYT (midnight UTC)
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * 1'  # Every Monday 8am MYT (midnight UTC)
   workflow_dispatch:
 
 permissions:
@@ -15,12 +14,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create pdfs directory
+      - name: Create directories
         run: mkdir -p pdfs
 
-      - name: Download PDFs
+      - name: Download and validate PDFs
         run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+          STATUS_FILE="pdfs/pdf-status.json"
+          CHANGED=""
+          NOW=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+
+          # Load existing status or create empty
+          if [ -f "$STATUS_FILE" ]; then
+            OLD_STATUS=$(cat "$STATUS_FILE")
+          else
+            OLD_STATUS='{}'
+          fi
 
           declare -A PDFS
           PDFS[IRBM-e-Invoice-Guideline.pdf]="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf"
@@ -28,48 +37,89 @@ jobs:
           PDFS[Garis-Panduan-e-Invois-LHDNM.pdf]="https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf"
           PDFS[LHDN-Garis-Panduan-Spesifik-e-Invois.pdf]="https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf"
 
+          # Build new status JSON
+          echo '{' > "$STATUS_FILE.tmp"
+          FIRST=true
+
           for filename in "${!PDFS[@]}"; do
             url="${PDFS[$filename]}"
             echo "Downloading $filename..."
+
+            # Save old checksum if file exists
+            OLD_SHA=""
+            if [ -f "pdfs/$filename" ]; then
+              OLD_SHA=$(sha256sum "pdfs/$filename" | cut -d' ' -f1)
+            fi
+
             curl -L -A "$UA" \
               -H "Accept: application/pdf,*/*" \
               -H "Accept-Language: en-US,en;q=0.9" \
               --retry 3 --retry-delay 5 \
-              -o "pdfs/$filename" \
+              -o "pdfs/$filename.new" \
               "$url"
 
-            # Validate: real PDFs start with %PDF and should be > 100KB
-            SIZE=$(stat -c%s "pdfs/$filename")
-            HEADER=$(head -c 5 "pdfs/$filename")
-            echo "  -> Size: ${SIZE} bytes, Header: ${HEADER}"
+            SIZE=$(stat -c%s "pdfs/$filename.new")
+            HEADER=$(head -c 5 "pdfs/$filename.new")
 
             if [ "$SIZE" -lt 100000 ]; then
-              echo "  ⚠️  WARNING: $filename is only ${SIZE} bytes - probably not a real PDF"
-              echo "  First 200 chars of downloaded file:"
-              head -c 200 "pdfs/$filename"
-              echo ""
-              # Remove the bad file so we don't commit garbage
-              rm "pdfs/$filename"
-              echo "  Removed bad download."
-            elif [ "$HEADER" != "%PDF-" ]; then
-              echo "  ⚠️  WARNING: $filename doesn't start with %PDF header"
-              rm "pdfs/$filename"
-              echo "  Removed bad download."
-            else
-              echo "  ✅ Valid PDF"
+              echo "  WARNING: $filename only ${SIZE} bytes, skipping"
+              rm "pdfs/$filename.new"
+              continue
             fi
-            echo ""
+
+            if [ "$HEADER" != "%PDF-" ]; then
+              echo "  WARNING: $filename not a valid PDF, skipping"
+              rm "pdfs/$filename.new"
+              continue
+            fi
+
+            NEW_SHA=$(sha256sum "pdfs/$filename.new" | cut -d' ' -f1)
+            echo "  Size: ${SIZE} bytes | SHA256: ${NEW_SHA:0:16}..."
+
+            if [ "$OLD_SHA" = "$NEW_SHA" ]; then
+              echo "  No changes detected, keeping existing file"
+              rm "pdfs/$filename.new"
+              UPDATED_AT=$(echo "$OLD_STATUS" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('$filename',{}).get('updated','$NOW'))" 2>/dev/null || echo "$NOW")
+            else
+              echo "  NEW VERSION DETECTED, updating"
+              mv "pdfs/$filename.new" "pdfs/$filename"
+              CHANGED="$CHANGED $filename"
+              UPDATED_AT="$NOW"
+            fi
+
+            # Append to status JSON
+            if [ "$FIRST" = true ]; then FIRST=false; else echo ',' >> "$STATUS_FILE.tmp"; fi
+            cat >> "$STATUS_FILE.tmp" << ENTRY
+  "$filename": {
+    "url": "$url",
+    "size_bytes": $SIZE,
+    "sha256": "$NEW_SHA",
+    "last_checked": "$NOW",
+    "updated": "$UPDATED_AT"
+  }
+ENTRY
           done
 
-      - name: Check for changes and commit
+          echo '' >> "$STATUS_FILE.tmp"
+          echo '}' >> "$STATUS_FILE.tmp"
+          mv "$STATUS_FILE.tmp" "$STATUS_FILE"
+
+          echo "CHANGED=$CHANGED" >> $GITHUB_ENV
+
+      - name: Commit changes
         run: |
           git add pdfs/
           if git diff --cached --quiet; then
-            echo "No PDF changes detected"
+            echo "No changes to commit"
           else
-            CHANGED=$(git diff --cached --name-only | xargs -I{} basename {} | paste -sd ', ')
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -m "Update LHDN PDFs - $(date +'%d %b %Y') - ${CHANGED}"
+
+            if [ -n "$CHANGED" ]; then
+              NAMES=$(echo "$CHANGED" | xargs -n1 basename | paste -sd ', ')
+              git commit -m "Update LHDN PDFs - $(date +'%d %b %Y') - $NAMES"
+            else
+              git commit -m "Update PDF status check - $(date +'%d %b %Y') - no content changes"
+            fi
             git push
           fi
