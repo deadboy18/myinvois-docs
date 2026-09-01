@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyInvois Docs | Malaysia e-Invoice Developer Reference</title>
+<meta name="description" content="Community-maintained developer documentation for Malaysia's LHDN e-Invoice (MyInvois) system. APIs, digital certificates, SDKs, validation errors, production playbooks.">
+<meta name="keywords" content="MyInvois, LHDN, e-Invoice, Malaysia, API, SDK, developer documentation, IRBM">
+<meta property="og:title" content="MyInvois Docs | Malaysia e-Invoice Developer Reference">
+<meta property="og:description" content="APIs, digital certificates, SDKs, validation errors, production playbooks in one place.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#fcfcfd;--bg-sidebar:#f5f6f8;--bg-card:#ffffff;--bg-code:#f0f2f5;
+  --bg-hover:#e8ecf1;--bg-active:#dce4ed;--bg-badge:#e0f2fe;
+  --text:#1a1d23;--text-2:#4a5568;--text-3:#718096;
+  --border:#e2e6ec;--accent:#0e5e9e;--accent-2:#0284c7;
+  --accent-bg:#eff8ff;--accent-border:#bae0fd;
+  --red:#dc2626;--green:#16a34a;--orange:#ea580c;
+  --method-get:#16a34a;--method-post:#2563eb;--method-put:#ea580c;--method-del:#dc2626;
+  --shadow:0 1px 3px rgba(0,0,0,.06);--shadow-lg:0 4px 20px rgba(0,0,0,.08);
+  --radius:6px;--sidebar-w:290px;--header-h:56px;
+  --font:'IBM Plex Sans',-apple-system,sans-serif;
+  --mono:'IBM Plex Mono','Menlo',monospace;
+}
+[data-theme="dark"]{
+  --bg:#0f1117;--bg-sidebar:#151820;--bg-card:#1a1d27;--bg-code:#1e2130;
+  --bg-hover:#252938;--bg-active:#2d3348;--bg-badge:#0c3d5f;
+  --text:#e4e7ee;--text-2:#9ca3b4;--text-3:#6b7280;
+  --border:#2a2e3a;--accent:#38bdf8;--accent-2:#7dd3fc;
+  --accent-bg:#0c2d4a;--accent-border:#164e73;
+  --shadow:0 1px 3px rgba(0,0,0,.3);--shadow-lg:0 4px 20px rgba(0,0,0,.4);
+}
+
+html{font-size:15px;scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+.app{display:flex;min-height:100vh}
+
+/* HEADER */
+.header{
+  position:fixed;top:0;left:0;right:0;height:var(--header-h);
+  background:var(--bg-sidebar);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 20px;z-index:100;gap:12px;
+}
+.header-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);flex-shrink:0}
+.header-logo svg{width:28px;height:28px}
+.header-logo span{font-weight:700;font-size:.95rem;letter-spacing:-.01em}
+.header-logo .badge{font-size:.65rem;padding:2px 6px;border-radius:3px;background:var(--accent);color:#fff;font-weight:600;margin-left:4px}
+.header-search{flex:1;max-width:420px;position:relative;margin:0 auto}
+.header-search input{
+  width:100%;padding:7px 12px 7px 34px;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);color:var(--text);font-size:.82rem;font-family:var(--font);transition:border-color .15s;
+}
+.header-search input:focus{outline:none;border-color:var(--accent)}
+.header-search input::placeholder{color:var(--text-3)}
+.header-search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-3)}
+.header-search .shortcut{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-size:.65rem;color:var(--text-3);border:1px solid var(--border);border-radius:3px;padding:1px 5px;
+  font-family:var(--mono);pointer-events:none;
+}
+.header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.header-actions button,.header-actions a{
+  background:none;border:none;color:var(--text-2);cursor:pointer;padding:6px;border-radius:var(--radius);
+  display:flex;align-items:center;transition:color .15s,background .15s;text-decoration:none;
+}
+.header-actions button:hover,.header-actions a:hover{color:var(--text);background:var(--bg-hover)}
+.header-actions svg{width:18px;height:18px}
+.menu-toggle{display:none}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;top:var(--header-h);left:0;bottom:0;width:var(--sidebar-w);
+  background:var(--bg-sidebar);border-right:1px solid var(--border);
+  overflow-y:auto;overflow-x:hidden;padding:16px 0;z-index:90;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;transition:transform .25s ease;
+}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.nav-section{margin-bottom:6px}
+.nav-section-title{font-size:.68rem;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;padding:10px 20px 4px;user-select:none}
+.nav-group-toggle{
+  display:flex;align-items:center;width:100%;padding:5px 20px;border:none;background:none;
+  color:var(--text);font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;
+  gap:6px;text-align:left;transition:background .1s;
+}
+.nav-group-toggle:hover{background:var(--bg-hover)}
+.nav-group-toggle svg{width:14px;height:14px;color:var(--text-3);transition:transform .15s;flex-shrink:0}
+.nav-group-toggle[aria-expanded="true"] svg{transform:rotate(90deg)}
+.nav-group-items{display:none;padding-left:0}
+.nav-group-toggle[aria-expanded="true"]+.nav-group-items{display:block}
+.nav-link{
+  display:block;padding:4px 20px 4px 38px;color:var(--text-2);text-decoration:none;
+  font-size:.8rem;transition:background .1s,color .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.nav-link:hover{background:var(--bg-hover);color:var(--text)}
+.nav-link.active{background:var(--bg-active);color:var(--accent);font-weight:500}
+.nav-top-link{
+  display:flex;align-items:center;gap:8px;padding:5px 20px;color:var(--text-2);
+  text-decoration:none;font-size:.82rem;font-weight:500;transition:background .1s,color .1s;
+}
+.nav-top-link:hover{background:var(--bg-hover);color:var(--text)}
+.nav-top-link.active{background:var(--bg-active);color:var(--accent)}
+.nav-top-link svg{width:16px;height:16px;flex-shrink:0}
+
+/* MAIN */
+.main{flex:1;margin-left:var(--sidebar-w);margin-top:var(--header-h);min-width:0;display:flex;flex-direction:column}
+.content{max-width:900px;width:100%;margin:0 auto;padding:32px 40px 80px}
+
+/* HERO */
+.hero{padding:40px 40px 0;max-width:900px;margin:0 auto;width:100%}
+.hero h1{font-size:1.7rem;font-weight:700;line-height:1.2;margin-bottom:8px;letter-spacing:-.02em}
+.hero p{color:var(--text-2);font-size:.92rem;line-height:1.6;max-width:620px}
+.hero-badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.hero-badge{font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:500;display:inline-flex;align-items:center;gap:4px}
+.hero-badge.blue{background:var(--bg-badge);color:var(--accent)}
+.hero-badge.green{background:#dcfce7;color:#166534}
+[data-theme="dark"] .hero-badge.green{background:#14532d;color:#86efac}
+
+/* SDK BANNER */
+.sdk-banner{
+  display:flex;align-items:center;gap:12px;padding:12px 16px;margin:20px 0 0;
+  border:1px solid var(--accent-border);border-radius:var(--radius);background:var(--accent-bg);
+  font-size:.84rem;color:var(--text);text-decoration:none;transition:border-color .15s;
+}
+.sdk-banner:hover{border-color:var(--accent)}
+.sdk-banner svg{width:20px;height:20px;color:var(--accent);flex-shrink:0}
+.sdk-banner strong{color:var(--accent)}
+.sdk-banner .arrow{margin-left:auto;color:var(--accent);flex-shrink:0;font-size:1.1rem}
+
+/* QUICK GRID */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:24px}
+.quick-card{
+  padding:16px;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg-card);cursor:pointer;transition:border-color .15s,box-shadow .15s;
+  text-decoration:none;color:var(--text);display:block;
+}
+.quick-card:hover{border-color:var(--accent-border);box-shadow:var(--shadow)}
+.quick-card h3{font-size:.85rem;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.quick-card h3 .icon{font-size:1rem}
+.quick-card p{font-size:.78rem;color:var(--text-2);line-height:1.5}
+
+/* TABLES */
+.env-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.82rem}
+.env-table th{text-align:left;padding:8px 12px;background:var(--bg-code);border:1px solid var(--border);font-weight:600;font-size:.75rem}
+.env-table td{padding:8px 12px;border:1px solid var(--border)}
+.env-table code{font-family:var(--mono);font-size:.78rem;color:var(--accent);background:var(--bg-code);padding:1px 5px;border-radius:3px}
+
+/* MARKDOWN BODY */
+.md-body{animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.md-body h1{font-size:1.55rem;font-weight:700;margin:0 0 16px;border-bottom:1px solid var(--border);padding-bottom:12px;letter-spacing:-.02em}
+.md-body h2{font-size:1.2rem;font-weight:700;margin:32px 0 12px;letter-spacing:-.01em}
+.md-body h3{font-size:1.02rem;font-weight:600;margin:24px 0 8px}
+.md-body h4{font-size:.9rem;font-weight:600;margin:20px 0 6px}
+.md-body p{margin:0 0 14px;line-height:1.7}
+.md-body a{color:var(--accent);text-decoration:none}
+.md-body a:hover{text-decoration:underline}
+.md-body ul,.md-body ol{margin:0 0 14px;padding-left:24px}
+.md-body li{margin:4px 0;line-height:1.6}
+.md-body li>ul,.md-body li>ol{margin:4px 0 4px}
+.md-body blockquote{
+  border-left:3px solid var(--accent);padding:10px 16px;margin:14px 0;
+  background:var(--accent-bg);border-radius:0 var(--radius) var(--radius) 0;color:var(--text-2);font-size:.88rem;
+}
+.md-body code{font-family:var(--mono);font-size:.82rem;background:var(--bg-code);padding:2px 6px;border-radius:3px}
+.md-body pre{
+  background:var(--bg-code);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;overflow-x:auto;margin:14px 0;position:relative;
+}
+.md-body pre code{background:none;padding:0;font-size:.8rem;line-height:1.6}
+.md-body table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.82rem}
+.md-body table th{text-align:left;padding:8px 10px;background:var(--bg-code);border:1px solid var(--border);font-weight:600}
+.md-body table td{padding:8px 10px;border:1px solid var(--border);vertical-align:top}
+.md-body table tr:hover td{background:var(--bg-hover)}
+.md-body hr{border:none;border-top:1px solid var(--border);margin:28px 0}
+.md-body img{max-width:100%;height:auto;border-radius:var(--radius)}
+.md-body input[type="checkbox"]{margin-right:6px}
+.md-body details{margin:14px 0;border:1px solid var(--border);border-radius:var(--radius)}
+.md-body details summary{padding:10px 14px;cursor:pointer;font-weight:500;font-size:.88rem}
+.md-body details[open] summary{border-bottom:1px solid var(--border)}
+.md-body details>*:not(summary){padding:0 14px}
+
+/* EDIT ON GITHUB */
+.edit-link{
+  display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-3);
+  text-decoration:none;margin-top:32px;padding:6px 10px;border:1px solid var(--border);
+  border-radius:var(--radius);transition:color .15s,border-color .15s;
+}
+.edit-link:hover{color:var(--accent);border-color:var(--accent)}
+.edit-link svg{width:14px;height:14px}
+
+/* PDF VIEWER SECTION */
+.pdf-viewer-section{padding:32px 40px;max-width:960px;margin:0 auto;width:100%}
+.pdf-lang-tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:2px solid var(--border)}
+.pdf-lang-tab{
+  padding:8px 20px;font-size:.82rem;font-weight:600;color:var(--text-3);
+  border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-2px;transition:color .15s,border-color .15s;font-family:var(--font);
+}
+.pdf-lang-tab:hover{color:var(--text)}
+.pdf-lang-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+.pdf-card{
+  border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-card);
+  padding:20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:16px;
+  transition:border-color .15s;
+}
+.pdf-card:hover{border-color:var(--accent-border)}
+.pdf-card-icon{
+  width:48px;height:48px;background:var(--red);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;font-weight:700;font-size:.75rem;
+}
+.pdf-card-info{flex:1;min-width:0}
+.pdf-card-info h3{font-size:.92rem;font-weight:600;margin-bottom:2px}
+.pdf-card-info p{font-size:.78rem;color:var(--text-2);margin-bottom:10px;line-height:1.5}
+.pdf-card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.pdf-btn-dl{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 14px;font-size:.8rem;font-weight:500;
+  border-radius:var(--radius);text-decoration:none;transition:all .15s;font-family:var(--font);cursor:pointer;
+}
+.pdf-btn-dl svg{width:14px;height:14px}
+.pdf-btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.pdf-btn-primary:hover{opacity:.9}
+.pdf-btn-secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.pdf-btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+.pdf-embed-wrap{
+  width:100%;height:calc(100vh - 260px);min-height:500px;border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;background:var(--bg-code);margin-top:16px;
+}
+.pdf-embed-wrap iframe,.pdf-embed-wrap embed,.pdf-embed-wrap object{width:100%;height:100%;border:none}
+.pdf-tab-btns{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid var(--border)}
+.pdf-tab-btn{
+  padding:10px 18px;font-size:.82rem;font-weight:500;color:var(--text-3);
+  border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:color .15s,border-color .15s;font-family:var(--font);
+}
+.pdf-tab-btn:hover{color:var(--text)}
+.pdf-tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.pdf-note{font-size:.78rem;color:var(--text-3);margin-top:10px;line-height:1.6}
+.pdf-note a{color:var(--accent)}
+
+/* SEARCH OVERLAY */
+.search-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;
+  align-items:flex-start;justify-content:center;padding:80px 20px;
+}
+.search-overlay.open{display:flex}
+.search-modal{
+  width:100%;max-width:600px;background:var(--bg-card);border-radius:10px;
+  box-shadow:var(--shadow-lg);overflow:hidden;max-height:70vh;display:flex;flex-direction:column;
+}
+.search-modal-input{display:flex;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);gap:10px}
+.search-modal-input svg{width:18px;height:18px;color:var(--text-3);flex-shrink:0}
+.search-modal-input input{flex:1;border:none;background:none;color:var(--text);font-size:.95rem;font-family:var(--font)}
+.search-modal-input input:focus{outline:none}
+.search-results{overflow-y:auto;padding:8px}
+.search-result{padding:10px 14px;border-radius:var(--radius);cursor:pointer;transition:background .1s}
+.search-result:hover,.search-result.focused{background:var(--bg-hover)}
+.search-result-title{font-size:.85rem;font-weight:600;color:var(--text)}
+.search-result-section{font-size:.72rem;color:var(--text-3)}
+.search-empty{padding:30px;text-align:center;color:var(--text-3);font-size:.85rem}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:4px;font-size:.75rem;color:var(--text-3);margin-bottom:16px;flex-wrap:wrap}
+.breadcrumb a{color:var(--text-3);text-decoration:none}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb .sep{margin:0 2px}
+
+/* LOADING */
+.loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--text-3);gap:10px;font-size:.88rem}
+.loading .spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* BACK TO TOP */
+.back-to-top{
+  position:fixed;bottom:24px;right:24px;width:38px;height:38px;border-radius:50%;
+  background:var(--accent);color:#fff;border:none;cursor:pointer;display:none;
+  align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:80;transition:opacity .2s;
+}
+.back-to-top.show{display:flex}
+.back-to-top svg{width:18px;height:18px}
+
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:85;display:none}
+.sidebar-overlay.open{display:block}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:none}
+  .main{margin-left:0}
+  .menu-toggle{display:flex}
+  .header-search .shortcut{display:none}
+  .content,.hero,.pdf-viewer-section{padding-left:16px;padding-right:16px}
+  .pdf-embed-wrap{height:calc(100vh - 300px);min-height:400px}
+  .quick-grid{grid-template-columns:1fr}
+  .pdf-card{flex-direction:column}
+}
+@media(max-width:480px){
+  .header-logo span{display:none}
+  .hero h1{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <button class="menu-toggle header-actions" onclick="toggleSidebar()" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+  </button>
+  <a href="#" class="header-logo" onclick="goHome(event)">
+    <svg viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="var(--accent)"/><path d="M7 8h14v2H7zm0 5h10v2H7zm0 5h12v2H7z" fill="#fff"/></svg>
+    <span>MyInvois Docs<span class="badge">v4.8</span></span>
+  </a>
+  <div class="header-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" placeholder="Search documentation..." id="searchInput" onclick="openSearch()" readonly>
+    <span class="shortcut">Ctrl K</span>
+  </div>
+  <div class="header-actions">
+    <a href="https://sdk.myinvois.hasil.gov.my/" target="_blank" rel="noopener" title="Official MyInvois SDK Portal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+    <button onclick="toggleTheme()" title="Toggle dark mode" id="themeBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="themeIcon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="https://github.com/deadboy18/myinvois-docs" target="_blank" rel="noopener" title="GitHub repo">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<aside class="sidebar" id="sidebar">
+  <a href="#" class="nav-top-link active" data-page="home" onclick="goHome(event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
+  </a>
+  <a href="#" class="nav-top-link" data-page="guidelines" onclick="showGuidelines(event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    LHDN Guidelines (PDF)
+  </a>
+
+  <div class="nav-section"><div class="nav-section-title">Getting Started</div></div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      Introduction
+    </button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="01-getting-started/overview.md">Overview</a>
+      <a href="#" class="nav-link" data-file="01-getting-started/standard-headers.md">Standard Headers</a>
+      <a href="#" class="nav-link" data-file="01-getting-started/error-responses.md">Error Responses</a>
+      <a href="#" class="nav-link" data-file="01-getting-started/integration-practices.md">Integration Practices</a>
+    </div>
+  </div>
+
+  <div class="nav-section"><div class="nav-section-title">API Reference</div></div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      Platform API
+    </button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="02-platform-api/01-login-taxpayer.md">Login as Taxpayer</a>
+      <a href="#" class="nav-link" data-file="02-platform-api/02-login-intermediary.md">Login as Intermediary</a>
+      <a href="#" class="nav-link" data-file="02-platform-api/03-get-document-types.md">Get All Document Types</a>
+      <a href="#" class="nav-link" data-file="02-platform-api/04-get-document-type.md">Get Document Type</a>
+      <a href="#" class="nav-link" data-file="02-platform-api/05-get-document-type-version.md">Get Document Type Version</a>
+      <a href="#" class="nav-link" data-file="02-platform-api/06-get-notifications.md">Get Notifications</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      e-Invoice API
+    </button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="03-einvoice-api/01-validate-taxpayer-tin.md">Validate Taxpayer TIN</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/02-submit-documents.md">Submit Documents</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/03-cancel-document.md">Cancel Document</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/04-reject-document.md">Reject Document</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/05-get-recent-documents.md">Get Recent Documents</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/06-get-submission.md">Get Submission</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/07-get-document.md">Get Document</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/08-get-document-details.md">Get Document Details</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/09-search-documents.md">Search Documents</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/10-search-taxpayer-tin.md">Search Taxpayer TIN</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/11-qr-code.md">QR Code</a>
+    </div>
+  </div>
+
+  <div class="nav-section"><div class="nav-section-title">Document Types</div></div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Invoice</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/invoice-v1-0.md">Invoice v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/invoice-v1-1.md">Invoice v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Credit Note</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/credit-note-v1-0.md">Credit Note v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/credit-note-v1-1.md">Credit Note v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Debit Note</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/debit-note-v1-0.md">Debit Note v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/debit-note-v1-1.md">Debit Note v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Refund Note</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/refund-note-v1-0.md">Refund Note v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/refund-note-v1-1.md">Refund Note v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Invoice</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-invoice-v1-0.md">Self-Billed Invoice v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-invoice-v1-1.md">Self-Billed Invoice v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Credit Note</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-credit-note-v1-0.md">Self-Billed Credit Note v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-credit-note-v1-1.md">Self-Billed Credit Note v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Debit Note</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-debit-note-v1-0.md">Self-Billed Debit Note v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-debit-note-v1-1.md">Self-Billed Debit Note v1.1</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Refund Note</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-refund-note-v1-0.md">Self-Billed Refund Note v1.0</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-refund-note-v1-1.md">Self-Billed Refund Note v1.1</a>
+    </div>
+  </div>
+
+  <div class="nav-section"><div class="nav-section-title">Reference</div></div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Code Tables</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="05-code-tables/classification-codes.md">Classification Codes</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/country-codes.md">Country Codes</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/currency-codes.md">Currency Codes</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/e-invoice-types.md">e-Invoice Types</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/msic-codes.md">MSIC Codes</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/payment-methods.md">Payment Methods</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/state-codes.md">State Codes</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/tax-types.md">Tax Types</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/unit-types.md">Unit Types</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Digital Signature</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="06-signature/README.md">Signature Overview</a>
+      <a href="#" class="nav-link" data-file="06-signature/signature-creation-xml.md">Signature Creation (XML)</a>
+      <a href="#" class="nav-link" data-file="06-signature/signature-creation-json.md">Signature Creation (JSON)</a>
+      <a href="#" class="nav-link" data-file="06-signature/mathematical-mappings.md">Mathematical Mappings</a>
+    </div>
+  </div>
+  <a href="#" class="nav-top-link" data-file="07-validation/README.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    Validation Rules
+  </a>
+
+  <div class="nav-section"><div class="nav-section-title">Resources</div></div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>FAQ</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="08-faq/README.md">SDK FAQ</a>
+      <a href="#" class="nav-link" data-file="08-faq/lhdnm-e-invoice-general-faqs.md">LHDN General FAQ</a>
+    </div>
+  </div>
+  <a href="#" class="nav-top-link" data-file="09-postman/README.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    Postman Collection
+  </a>
+  <a href="#" class="nav-top-link" data-file="10-sample-documents/README.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+    Sample Documents
+  </a>
+
+  <div class="nav-section"><div class="nav-section-title">IRBM Guidelines (Markdown)</div></div>
+  <a href="#" class="nav-top-link" data-file="11-irbm-specific-guideline/README.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    Specific Guideline v4.8
+  </a>
+  <a href="#" class="nav-top-link" data-file="12-cookbook/irbm-general-guideline/README.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    General Guideline v4.8
+  </a>
+
+  <div class="nav-section"><div class="nav-section-title">Cookbook & Operations</div></div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Error Cookbook</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="12-cookbook/01-http-status-codes.md">HTTP Status Codes</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/02-signature-errors.md">Signature Errors (DS300-DS338)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/03-submission-errors.md">Submission Errors</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/04-rate-limits.md">Rate Limits</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/05-common-pitfalls.md">Common Pitfalls</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/06-field-validation-rules.md">Field Validation Rules</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/07-special-characters.md">Special Characters</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Production Playbook</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="12-cookbook/08-integration-antipatterns.md">Integration Anti-Patterns</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/09-duplicate-detection.md">Duplicate Detection</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/10-implementation-timeline.md">Implementation Timeline</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/11-digital-certificates.md">Digital Certificates</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/12-sandbox-setup.md">Sandbox Setup</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/13-required-fields-reference.md">Required Fields Reference</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/14-validation-status-lifecycle.md">Validation Status Lifecycle</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/15-production-readiness.md">Production Readiness</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/16-observability-and-operations.md">Observability & Operations</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/17-automated-update-checking.md">Automated Update Checking</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/18-api-curl-reference.md">API cURL Reference</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Community SDKs</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/README.md">SDK Comparison</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/01-klsheng-php-sdk.md">PHP SDK (klsheng)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/02-mokth-csharp.md">C# SDK (mokth)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/03-erpgulf-frappe.md">Python/Frappe (ERPGulf)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/04-syukrandev-nodejs.md">Node.js SDK (syukranDev)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/05-pyhoon-b4x.md">B4X SDK (pyhoon)</a>
+    </div>
+  </div>
+
+  <div class="nav-section"><div class="nav-section-title">Meta</div></div>
+  <a href="#" class="nav-top-link" data-file="contacts.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Contacts
+  </a>
+  <div class="nav-group">
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Release Notes</button>
+    <div class="nav-group-items">
+      <a href="#" class="nav-link" data-file="release-notes/sdk-1-0.md">SDK 1.0</a>
+      <a href="#" class="nav-link" data-file="release-notes/sdk-beta.md">SDK Beta</a>
+    </div>
+  </div>
+  <a href="#" class="nav-top-link" data-file="CHANGELOG.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Changelog
+  </a>
+  <a href="#" class="nav-top-link" data-file="CONTRIBUTING.md" onclick="loadFile(this,event)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+    Contributing
+  </a>
+  <div style="height:40px"></div>
+</aside>
+
+<main class="main" id="mainContent">
+
+  <!-- ===== HOME ===== -->
+  <div id="homePage">
+    <div class="hero">
+      <h1>MyInvois Developer Documentation</h1>
+      <p>Community-maintained reference for Malaysia's LHDN e-Invoice system. APIs, digital certificates, SDKs, validation errors, and production playbooks in one place.</p>
+      <div class="hero-badges">
+        <span class="hero-badge blue">93 markdown files</span>
+        <span class="hero-badge green">Verified August 2026</span>
+        <span class="hero-badge blue">Guideline v4.8</span>
+      </div>
+      <a class="sdk-banner" href="https://sdk.myinvois.hasil.gov.my/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Official <strong>MyInvois SDK Portal</strong> at sdk.myinvois.hasil.gov.my</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="content">
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Start here</h2>
+      <div class="quick-grid">
+        <a class="quick-card" onclick="navigateTo('01-getting-started/overview.md',event)">
+          <h3><span class="icon">🚀</span> Getting Started</h3>
+          <p>Architecture overview, who's in scope, authentication model, and base URLs.</p>
+        </a>
+        <a class="quick-card" onclick="showGuidelines(event)">
+          <h3><span class="icon">📄</span> LHDN Guidelines (PDF)</h3>
+          <p>View and download the official e-Invoice Guideline v4.8 and Specific Guideline v4.8.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('12-cookbook/12-sandbox-setup.md',event)">
+          <h3><span class="icon">🧪</span> Sandbox Setup</h3>
+          <p>Register on preprod, get credentials, and make your first API call.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('12-cookbook/11-digital-certificates.md',event)">
+          <h3><span class="icon">🔐</span> Digital Certificates</h3>
+          <p>Compare 4 certificate vendors: PosDigicert, MSC Trustgate, Rafftech, TM Applied.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('03-einvoice-api/02-submit-documents.md',event)">
+          <h3><span class="icon">📨</span> Submit Documents API</h3>
+          <p>The core submission endpoint: request format, batch limits, response structure.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('06-signature/README.md',event)">
+          <h3><span class="icon">✍️</span> Digital Signature</h3>
+          <p>XAdES signature spec, creation guides for XML and JSON, certificate profile.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('12-cookbook/02-signature-errors.md',event)">
+          <h3><span class="icon">⚠️</span> Signature Errors</h3>
+          <p>Complete DS300 to DS338 table with remediation for every error code.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('12-cookbook/15-production-readiness.md',event)">
+          <h3><span class="icon">✅</span> Production Readiness</h3>
+          <p>130+ item checklist across 13 sections. Go live with confidence.</p>
+        </a>
+        <a class="quick-card" onclick="navigateTo('12-cookbook/community-sdks/README.md',event)">
+          <h3><span class="icon">📦</span> Community SDKs</h3>
+          <p>PHP, Node.js, Python, C#, and B4X compared side by side.</p>
+        </a>
+      </div>
+
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Environment URLs</h2>
+      <table class="env-table">
+        <thead><tr><th></th><th>Production</th><th>Sandbox</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Portal</td><td><code>myinvois.hasil.gov.my</code></td><td><code>preprod.myinvois.hasil.gov.my</code></td></tr>
+          <tr><td style="font-weight:600">API base</td><td><code>api.myinvois.hasil.gov.my</code></td><td><code>preprod-api.myinvois.hasil.gov.my</code></td></tr>
+          <tr><td style="font-weight:600">Identity</td><td><code>api.myinvois.hasil.gov.my</code></td><td><code>preprod-api.myinvois.hasil.gov.my</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Troubleshooting quick links</h2>
+      <table class="env-table">
+        <thead><tr><th>You got this</th><th>Go to</th></tr></thead>
+        <tbody>
+          <tr><td>HTTP 4xx / 5xx</td><td><a href="#" onclick="navigateTo('12-cookbook/01-http-status-codes.md',event)" style="color:var(--accent)">HTTP Status Codes</a></td></tr>
+          <tr><td><code>DS3xx</code> error</td><td><a href="#" onclick="navigateTo('12-cookbook/02-signature-errors.md',event)" style="color:var(--accent)">Signature Errors</a></td></tr>
+          <tr><td>Duplicate submission</td><td><a href="#" onclick="navigateTo('12-cookbook/09-duplicate-detection.md',event)" style="color:var(--accent)">Duplicate Detection</a></td></tr>
+          <tr><td><code>Invalid Structure</code></td><td><a href="#" onclick="navigateTo('12-cookbook/03-submission-errors.md',event)" style="color:var(--accent)">Submission Errors</a></td></tr>
+          <tr><td>HTTP 429</td><td><a href="#" onclick="navigateTo('12-cookbook/04-rate-limits.md',event)" style="color:var(--accent)">Rate Limits</a></td></tr>
+          <tr><td>Anything weird</td><td><a href="#" onclick="navigateTo('12-cookbook/05-common-pitfalls.md',event)" style="color:var(--accent)">Common Pitfalls</a></td></tr>
+        </tbody>
+      </table>
+
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Official sources</h2>
+      <table class="env-table">
+        <thead><tr><th>Purpose</th><th>URL</th></tr></thead>
+        <tbody>
+          <tr><td>MyInvois SDK portal</td><td><a href="https://sdk.myinvois.hasil.gov.my/" target="_blank" style="color:var(--accent)">sdk.myinvois.hasil.gov.my</a></td></tr>
+          <tr><td>IRBM e-Invoice microsite</td><td><a href="https://www.hasil.gov.my/en/e-invoice/" target="_blank" style="color:var(--accent)">hasil.gov.my/en/e-invoice</a></td></tr>
+          <tr><td>Guidelines (latest PDFs)</td><td><a href="https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/" target="_blank" style="color:var(--accent)">Guidelines page</a></td></tr>
+          <tr><td>MyTax Portal</td><td><a href="https://mytax.hasil.gov.my/" target="_blank" style="color:var(--accent)">mytax.hasil.gov.my</a></td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:32px;padding:16px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);font-size:.84rem;color:var(--text-2)">
+        <strong style="color:var(--text)">⚠️ Not an official LHDN publication.</strong> For authoritative guidance always consult
+        <a href="https://sdk.myinvois.hasil.gov.my/" target="_blank" style="color:var(--accent)">sdk.myinvois.hasil.gov.my</a> and the
+        <a href="https://www.hasil.gov.my/en/e-invoice/" target="_blank" style="color:var(--accent)">IRBM e-Invoice microsite</a>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GUIDELINES/PDF PAGE ===== -->
+  <div id="guidelinesPage" style="display:none">
+    <div class="pdf-viewer-section">
+      <h1 style="font-size:1.4rem;font-weight:700;margin-bottom:4px;letter-spacing:-.02em">LHDN e-Invoice Guidelines</h1>
+      <p style="color:var(--text-2);font-size:.88rem;margin-bottom:20px">
+        Official IRBM e-Invoicing guidelines. Download the PDFs or read them right here.
+      </p>
+
+      <div class="pdf-lang-tabs">
+        <button class="pdf-lang-tab active" onclick="switchPdfLang('en',this)">English</button>
+        <button class="pdf-lang-tab" onclick="switchPdfLang('ms',this)">Bahasa Melayu</button>
+      </div>
+
+      <!-- ENGLISH -->
+      <div id="pdfEnglish">
+        <div class="pdf-card">
+          <div class="pdf-card-icon">PDF</div>
+          <div class="pdf-card-info">
+            <h3>e-Invoice Guideline v4.8</h3>
+            <p>General guideline covering overall e-Invoice workflow, portal usage, API integration, document lifecycle, and compliance requirements. Published 30 August 2026.</p>
+            <div class="pdf-card-actions">
+              <a class="pdf-btn-dl pdf-btn-primary" href="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </a>
+              <button class="pdf-btn-dl pdf-btn-secondary" onclick="viewPdf('general-en')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                View inline
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="pdf-card">
+          <div class="pdf-card-icon">PDF</div>
+          <div class="pdf-card-info">
+            <h3>e-Invoice Specific Guideline v4.8</h3>
+            <p>Detailed scenarios: cross-border transactions, self-billed invoices, e-commerce, employment perquisites, foreign income, SVDP, and appendices. Published 7 July 2026.</p>
+            <div class="pdf-card-actions">
+              <a class="pdf-btn-dl pdf-btn-primary" href="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download PDF
+              </a>
+              <button class="pdf-btn-dl pdf-btn-secondary" onclick="viewPdf('specific-en')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                View inline
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="pdfEmbedEn" style="display:none">
+          <div class="pdf-tab-btns">
+            <button class="pdf-tab-btn active" onclick="viewPdf('general-en',this)">General Guideline</button>
+            <button class="pdf-tab-btn" onclick="viewPdf('specific-en',this)">Specific Guideline</button>
+          </div>
+          <div class="pdf-embed-wrap">
+            <iframe id="pdfFrameEn" src="" loading="lazy"></iframe>
+          </div>
+          <p class="pdf-note">
+            PDF not loading? The LHDN server may block embedding. Try opening it directly:
+            <a id="pdfDirectLinkEn" href="#" target="_blank">Open in new tab</a>.
+            You can also host copies of these PDFs in your own repo's <code>/pdfs/</code> folder for reliable embedding.
+          </p>
+        </div>
+      </div>
+
+      <!-- MALAY -->
+      <div id="pdfMalay" style="display:none">
+        <div class="pdf-card">
+          <div class="pdf-card-icon">PDF</div>
+          <div class="pdf-card-info">
+            <h3>Garis Panduan e-Invois v4.8</h3>
+            <p>Garis panduan am merangkumi aliran kerja e-Invois, penggunaan portal, integrasi API, kitaran hayat dokumen, dan keperluan pematuhan. Diterbitkan 30 Ogos 2026.</p>
+            <div class="pdf-card-actions">
+              <a class="pdf-btn-dl pdf-btn-primary" href="https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Muat turun PDF
+              </a>
+              <button class="pdf-btn-dl pdf-btn-secondary" onclick="viewPdf('general-ms')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Papar dalam halaman
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="pdf-card">
+          <div class="pdf-card-icon">PDF</div>
+          <div class="pdf-card-info">
+            <h3>Garis Panduan Spesifik e-Invois v4.8</h3>
+            <p>Senario terperinci: transaksi rentas sempadan, invois bil sendiri, e-dagang, manfaat pekerjaan, pendapatan luar negara, SVDP, dan lampiran. Diterbitkan 7 Julai 2026.</p>
+            <div class="pdf-card-actions">
+              <a class="pdf-btn-dl pdf-btn-primary" href="https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Muat turun PDF
+              </a>
+              <button class="pdf-btn-dl pdf-btn-secondary" onclick="viewPdf('specific-ms')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Papar dalam halaman
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="pdfEmbedMs" style="display:none">
+          <div class="pdf-tab-btns">
+            <button class="pdf-tab-btn active" onclick="viewPdf('general-ms',this)">Garis Panduan Am</button>
+            <button class="pdf-tab-btn" onclick="viewPdf('specific-ms',this)">Garis Panduan Spesifik</button>
+          </div>
+          <div class="pdf-embed-wrap">
+            <iframe id="pdfFrameMs" src="" loading="lazy"></iframe>
+          </div>
+          <p class="pdf-note">
+            PDF tidak dipaparkan? Pelayan LHDN mungkin menghalang penyematan. Cuba buka secara terus:
+            <a id="pdfDirectLinkMs" href="#" target="_blank">Buka dalam tab baharu</a>.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding:14px 16px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);font-size:.82rem;color:var(--text-2)">
+        <strong style="color:var(--text)">💡 Want reliable inline viewing?</strong>
+        Download the PDFs and put them in a <code>/pdfs/</code> folder in your repo. Then update the <code>PDF_URLS</code> config in this file to point to your local copies. This avoids the LHDN server's iframe restrictions.
+      </div>
+
+      <div style="margin-top:12px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);font-size:.82rem;color:var(--text-2)">
+        <strong style="color:var(--text)">📌 About version updates</strong> —
+        This page shows the latest version we've verified manually. LHDN publishes new versions on their
+        <a href="https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/" target="_blank" style="color:var(--accent)">guidelines page</a>.
+        If a new version drops, update the text and PDF links in this file.
+        The repo also has a <a href="#" onclick="navigateTo('12-cookbook/17-automated-update-checking.md',event);return false" style="color:var(--accent)">Claude Skill for automated update checking</a>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DOC PAGE ===== -->
+  <div id="docPage" style="display:none">
+    <div class="content">
+      <div class="breadcrumb" id="breadcrumb"></div>
+      <div class="md-body" id="mdContent"></div>
+      <a class="edit-link" id="editLink" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Edit this page on GitHub
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- SEARCH -->
+<div class="search-overlay" id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-modal">
+    <div class="search-modal-input">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search all documentation..." id="searchModalInput" oninput="doSearch(this.value)">
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-empty">Type to search across all documentation</div>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+const GITHUB_REPO = 'deadboy18/myinvois-docs';
+const GITHUB_BRANCH = 'main';
+const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/`;
+const EDIT_BASE = `https://github.com/${GITHUB_REPO}/edit/${GITHUB_BRANCH}/`;
+
+// Direct PDF URLs (for download links)
+const PDF_DIRECT = {
+  'general-en': 'https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf',
+  'specific-en': 'https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf',
+  'general-ms': 'https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf',
+  'specific-ms': 'https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf',
+};
+// Google Docs Viewer proxy (bypasses LHDN's frame-ancestors CSP)
+// If you self-host PDFs in /pdfs/, just replace these with the local paths directly
+const gview = url => `https://docs.google.com/gview?url=${encodeURIComponent(url)}&embedded=true`;
+const PDF_URLS = {
+  'general-en': gview(PDF_DIRECT['general-en']),
+  'specific-en': gview(PDF_DIRECT['specific-en']),
+  'general-ms': gview(PDF_DIRECT['general-ms']),
+  'specific-ms': gview(PDF_DIRECT['specific-ms']),
+};
+
+const searchIndex=[
+  {title:"Overview",section:"Getting Started",file:"01-getting-started/overview.md",keywords:"overview architecture myinvois authentication base urls scope taxpayer"},
+  {title:"Standard Headers",section:"Getting Started",file:"01-getting-started/standard-headers.md",keywords:"headers authorization content-type accept version"},
+  {title:"Error Responses",section:"Getting Started",file:"01-getting-started/error-responses.md",keywords:"error response format http status 400 401 403 404 500"},
+  {title:"Integration Practices",section:"Getting Started",file:"01-getting-started/integration-practices.md",keywords:"retry backoff rate limit token reuse logging production best practices"},
+  {title:"Login as Taxpayer",section:"Platform API",file:"02-platform-api/01-login-taxpayer.md",keywords:"login taxpayer oauth token client_id client_secret authentication"},
+  {title:"Login as Intermediary",section:"Platform API",file:"02-platform-api/02-login-intermediary.md",keywords:"login intermediary onbehalfof representative agent"},
+  {title:"Get All Document Types",section:"Platform API",file:"02-platform-api/03-get-document-types.md",keywords:"document types list invoice credit debit note"},
+  {title:"Get Document Type",section:"Platform API",file:"02-platform-api/04-get-document-type.md",keywords:"document type single detail structure"},
+  {title:"Get Document Type Version",section:"Platform API",file:"02-platform-api/05-get-document-type-version.md",keywords:"document type version v1.0 v1.1"},
+  {title:"Get Notifications",section:"Platform API",file:"02-platform-api/06-get-notifications.md",keywords:"notifications alerts messages system"},
+  {title:"Validate Taxpayer TIN",section:"e-Invoice API",file:"03-einvoice-api/01-validate-taxpayer-tin.md",keywords:"validate tin taxpayer tax identification number idtype idvalue"},
+  {title:"Submit Documents",section:"e-Invoice API",file:"03-einvoice-api/02-submit-documents.md",keywords:"submit documents submission invoice batch upload send"},
+  {title:"Cancel Document",section:"e-Invoice API",file:"03-einvoice-api/03-cancel-document.md",keywords:"cancel document state cancelled 72 hours window"},
+  {title:"Reject Document",section:"e-Invoice API",file:"03-einvoice-api/04-reject-document.md",keywords:"reject document buyer rejection request"},
+  {title:"Get Recent Documents",section:"e-Invoice API",file:"03-einvoice-api/05-get-recent-documents.md",keywords:"recent documents list latest poll"},
+  {title:"Get Submission",section:"e-Invoice API",file:"03-einvoice-api/06-get-submission.md",keywords:"get submission status poll submissionuid valid invalid"},
+  {title:"Get Document",section:"e-Invoice API",file:"03-einvoice-api/07-get-document.md",keywords:"get document retrieve uuid"},
+  {title:"Get Document Details",section:"e-Invoice API",file:"03-einvoice-api/08-get-document-details.md",keywords:"document details full response validation status"},
+  {title:"Search Documents",section:"e-Invoice API",file:"03-einvoice-api/09-search-documents.md",keywords:"search documents filter query date range"},
+  {title:"Search Taxpayer TIN",section:"e-Invoice API",file:"03-einvoice-api/10-search-taxpayer-tin.md",keywords:"search taxpayer tin lookup find"},
+  {title:"QR Code",section:"e-Invoice API",file:"03-einvoice-api/11-qr-code.md",keywords:"qr code generate validation link share"},
+  {title:"Invoice v1.0",section:"Document Types",file:"04-document-types/invoice-v1-0.md",keywords:"invoice v1.0 ubl schema structure fields"},
+  {title:"Invoice v1.1",section:"Document Types",file:"04-document-types/invoice-v1-1.md",keywords:"invoice v1.1 ubl signature enabled"},
+  {title:"Credit Note v1.0",section:"Document Types",file:"04-document-types/credit-note-v1-0.md",keywords:"credit note v1.0 correction discount return"},
+  {title:"Credit Note v1.1",section:"Document Types",file:"04-document-types/credit-note-v1-1.md",keywords:"credit note v1.1 signature"},
+  {title:"Debit Note v1.0",section:"Document Types",file:"04-document-types/debit-note-v1-0.md",keywords:"debit note v1.0 additional charge"},
+  {title:"Debit Note v1.1",section:"Document Types",file:"04-document-types/debit-note-v1-1.md",keywords:"debit note v1.1 signature"},
+  {title:"Refund Note v1.0",section:"Document Types",file:"04-document-types/refund-note-v1-0.md",keywords:"refund note v1.0 return money"},
+  {title:"Refund Note v1.1",section:"Document Types",file:"04-document-types/refund-note-v1-1.md",keywords:"refund note v1.1 signature"},
+  {title:"Self-Billed Invoice v1.0",section:"Document Types",file:"04-document-types/self-billed-invoice-v1-0.md",keywords:"self-billed invoice v1.0"},
+  {title:"Self-Billed Invoice v1.1",section:"Document Types",file:"04-document-types/self-billed-invoice-v1-1.md",keywords:"self-billed invoice v1.1"},
+  {title:"Self-Billed Credit Note v1.0",section:"Document Types",file:"04-document-types/self-billed-credit-note-v1-0.md",keywords:"self-billed credit note v1.0"},
+  {title:"Self-Billed Credit Note v1.1",section:"Document Types",file:"04-document-types/self-billed-credit-note-v1-1.md",keywords:"self-billed credit note v1.1"},
+  {title:"Self-Billed Debit Note v1.0",section:"Document Types",file:"04-document-types/self-billed-debit-note-v1-0.md",keywords:"self-billed debit note v1.0"},
+  {title:"Self-Billed Debit Note v1.1",section:"Document Types",file:"04-document-types/self-billed-debit-note-v1-1.md",keywords:"self-billed debit note v1.1"},
+  {title:"Self-Billed Refund Note v1.0",section:"Document Types",file:"04-document-types/self-billed-refund-note-v1-0.md",keywords:"self-billed refund note v1.0"},
+  {title:"Self-Billed Refund Note v1.1",section:"Document Types",file:"04-document-types/self-billed-refund-note-v1-1.md",keywords:"self-billed refund note v1.1"},
+  {title:"Classification Codes",section:"Code Tables",file:"05-code-tables/classification-codes.md",keywords:"classification codes category product service"},
+  {title:"Country Codes",section:"Code Tables",file:"05-code-tables/country-codes.md",keywords:"country codes iso address origin"},
+  {title:"Currency Codes",section:"Code Tables",file:"05-code-tables/currency-codes.md",keywords:"currency codes myr usd foreign exchange"},
+  {title:"e-Invoice Types",section:"Code Tables",file:"05-code-tables/e-invoice-types.md",keywords:"e-invoice types document type code"},
+  {title:"MSIC Codes",section:"Code Tables",file:"05-code-tables/msic-codes.md",keywords:"msic codes industry classification business activity"},
+  {title:"Payment Methods",section:"Code Tables",file:"05-code-tables/payment-methods.md",keywords:"payment methods bank transfer cash cheque"},
+  {title:"State Codes",section:"Code Tables",file:"05-code-tables/state-codes.md",keywords:"state codes malaysia johor selangor kuala lumpur"},
+  {title:"Tax Types",section:"Code Tables",file:"05-code-tables/tax-types.md",keywords:"tax types sst service tax sales tax exempt"},
+  {title:"Unit Types",section:"Code Tables",file:"05-code-tables/unit-types.md",keywords:"unit types uom measurement quantity"},
+  {title:"Signature Overview",section:"Digital Signature",file:"06-signature/README.md",keywords:"signature overview xades certificate x509 profile"},
+  {title:"Signature Creation (XML)",section:"Digital Signature",file:"06-signature/signature-creation-xml.md",keywords:"signature creation xml canonicalization digest"},
+  {title:"Signature Creation (JSON)",section:"Digital Signature",file:"06-signature/signature-creation-json.md",keywords:"signature creation json base64 hash"},
+  {title:"Mathematical Mappings",section:"Digital Signature",file:"06-signature/mathematical-mappings.md",keywords:"mathematical mappings hash algorithm sha256"},
+  {title:"Validation Rules",section:"Validation",file:"07-validation/README.md",keywords:"validation rules structure core fields signature taxpayer duplicate currency"},
+  {title:"SDK FAQ",section:"FAQ",file:"08-faq/README.md",keywords:"faq frequently asked questions sdk"},
+  {title:"LHDN General FAQ",section:"FAQ",file:"08-faq/lhdnm-e-invoice-general-faqs.md",keywords:"lhdn lhdnm general faq taxpayer"},
+  {title:"Postman Collection",section:"Resources",file:"09-postman/README.md",keywords:"postman collection api testing environment sandbox"},
+  {title:"Sample Documents",section:"Resources",file:"10-sample-documents/README.md",keywords:"sample documents xml json invoice example payload"},
+  {title:"Specific Guideline v4.8",section:"IRBM Guidelines",file:"11-irbm-specific-guideline/README.md",keywords:"specific guideline irbm cross-border self-billed ecommerce svdp appendix"},
+  {title:"General Guideline v4.8",section:"IRBM Guidelines",file:"12-cookbook/irbm-general-guideline/README.md",keywords:"general guideline irbm workflow portal api consolidated v4.8 rm3 million exemption"},
+  {title:"HTTP Status Codes",section:"Error Cookbook",file:"12-cookbook/01-http-status-codes.md",keywords:"http status codes 200 400 401 403 404 429 500"},
+  {title:"Signature Errors (DS300-DS338)",section:"Error Cookbook",file:"12-cookbook/02-signature-errors.md",keywords:"signature errors ds300 ds326 ds338 posdigicert certificate"},
+  {title:"Submission Errors",section:"Error Cookbook",file:"12-cookbook/03-submission-errors.md",keywords:"submission errors cf codes structure invalid"},
+  {title:"Rate Limits",section:"Error Cookbook",file:"12-cookbook/04-rate-limits.md",keywords:"rate limits rpm 429 retry-after throttle"},
+  {title:"Common Pitfalls",section:"Error Cookbook",file:"12-cookbook/05-common-pitfalls.md",keywords:"common pitfalls tin sandbox 403 utc timezone"},
+  {title:"Field Validation Rules",section:"Error Cookbook",file:"12-cookbook/06-field-validation-rules.md",keywords:"field validation rules phone email sst ttx"},
+  {title:"Special Characters",section:"Error Cookbook",file:"12-cookbook/07-special-characters.md",keywords:"special characters xml json escapes encoding"},
+  {title:"Integration Anti-Patterns",section:"Production Playbook",file:"12-cookbook/08-integration-antipatterns.md",keywords:"anti-patterns throttled polling token"},
+  {title:"Duplicate Detection",section:"Production Playbook",file:"12-cookbook/09-duplicate-detection.md",keywords:"duplicate detection 2 hour window fields"},
+  {title:"Implementation Timeline",section:"Production Playbook",file:"12-cookbook/10-implementation-timeline.md",keywords:"implementation timeline scope required deadline phase"},
+  {title:"Digital Certificates",section:"Production Playbook",file:"12-cookbook/11-digital-certificates.md",keywords:"digital certificates posdigicert msc trustgate rafftech vendor"},
+  {title:"Sandbox Setup",section:"Production Playbook",file:"12-cookbook/12-sandbox-setup.md",keywords:"sandbox setup preprod credentials register walkthrough"},
+  {title:"Required Fields Reference",section:"Production Playbook",file:"12-cookbook/13-required-fields-reference.md",keywords:"required fields 55 mandatory annexure"},
+  {title:"Validation Status Lifecycle",section:"Production Playbook",file:"12-cookbook/14-validation-status-lifecycle.md",keywords:"validation status lifecycle state machine 72 hour"},
+  {title:"Production Readiness",section:"Production Playbook",file:"12-cookbook/15-production-readiness.md",keywords:"production readiness checklist go-live launch"},
+  {title:"Observability & Operations",section:"Production Playbook",file:"12-cookbook/16-observability-and-operations.md",keywords:"observability operations logging metrics alerts runbooks"},
+  {title:"Automated Update Checking",section:"Production Playbook",file:"12-cookbook/17-automated-update-checking.md",keywords:"automated update checking claude skill monitor"},
+  {title:"API cURL Reference",section:"Production Playbook",file:"12-cookbook/18-api-curl-reference.md",keywords:"api curl reference command line test endpoint"},
+  {title:"Community SDKs Overview",section:"Community SDKs",file:"12-cookbook/community-sdks/README.md",keywords:"community sdks comparison php nodejs python csharp b4x"},
+  {title:"PHP SDK (klsheng)",section:"Community SDKs",file:"12-cookbook/community-sdks/01-klsheng-php-sdk.md",keywords:"php sdk klsheng composer packagist laravel"},
+  {title:"C# SDK (mokth)",section:"Community SDKs",file:"12-cookbook/community-sdks/02-mokth-csharp.md",keywords:"csharp c# sdk mokth dotnet windows x509"},
+  {title:"Python/Frappe (ERPGulf)",section:"Community SDKs",file:"12-cookbook/community-sdks/03-erpgulf-frappe.md",keywords:"python frappe erpgulf erpnext"},
+  {title:"Node.js SDK (syukranDev)",section:"Community SDKs",file:"12-cookbook/community-sdks/04-syukrandev-nodejs.md",keywords:"nodejs node.js sdk syukrandev npm javascript"},
+  {title:"B4X SDK (pyhoon)",section:"Community SDKs",file:"12-cookbook/community-sdks/05-pyhoon-b4x.md",keywords:"b4x sdk pyhoon cross-platform android ios desktop"},
+  {title:"Contacts",section:"Meta",file:"contacts.md",keywords:"contacts email phone helpdesk support feedback"},
+  {title:"Changelog",section:"Meta",file:"CHANGELOG.md",keywords:"changelog version history changes updates"},
+  {title:"Contributing",section:"Meta",file:"CONTRIBUTING.md",keywords:"contributing guide style pull request issue"},
+  {title:"SDK 1.0 Release Notes",section:"Release Notes",file:"release-notes/sdk-1-0.md",keywords:"release notes sdk 1.0 changes new features"},
+  {title:"SDK Beta Release Notes",section:"Release Notes",file:"release-notes/sdk-beta.md",keywords:"release notes sdk beta preview"},
+  {title:"LHDN Guidelines (PDF Viewer)",section:"PDF Resources",file:"__guidelines__",keywords:"pdf lhdn guideline specific general irbm download view"},
+];
+
+const mdCache = {};
+let currentFile = null;
+
+marked.setOptions({ gfm:true, breaks:false, headerIds:true, mangle:false });
+const renderer = new marked.Renderer();
+renderer.link = function(href,title,text){
+  if(typeof href==='object'){text=href.text;title=href.title;href=href.href}
+  if(href&&href.endsWith('.md')&&!href.startsWith('http'))
+    return `<a href="#" onclick="navigateRelative('${href}',event)">${text}</a>`;
+  const t=href&&href.startsWith('http')?' target="_blank" rel="noopener"':'';
+  return `<a href="${href}"${t}${title?` title="${title}"`:''}>${text}</a>`;
+};
+renderer.code = function(code,lang){
+  if(typeof code==='object'){lang=code.lang;code=code.text}
+  const lc=lang?` class="language-${lang}"`:'';
+  const e=code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return `<pre><code${lc}>${e}</code></pre>`;
+};
+marked.use({renderer});
+
+function toggleGroup(btn){btn.setAttribute('aria-expanded',btn.getAttribute('aria-expanded')!=='true')}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('sidebarOverlay').classList.toggle('open')}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('open')}
+
+function setActiveLink(file){
+  document.querySelectorAll('.nav-link,.nav-top-link').forEach(l=>l.classList.remove('active'));
+  if(file==='__guidelines__'){document.querySelector('[data-page="guidelines"]').classList.add('active');return}
+  if(file==='home'){document.querySelector('[data-page="home"]').classList.add('active');return}
+  const link=document.querySelector(`[data-file="${file}"]`);
+  if(link){link.classList.add('active');const g=link.closest('.nav-group-items');if(g){const t=g.previousElementSibling;if(t)t.setAttribute('aria-expanded','true')}}
+}
+function showPage(p){
+  document.getElementById('homePage').style.display=p==='home'?'':'none';
+  document.getElementById('guidelinesPage').style.display=p==='guidelines'?'':'none';
+  document.getElementById('docPage').style.display=p==='doc'?'':'none';
+}
+function goHome(e){if(e)e.preventDefault();showPage('home');setActiveLink('home');currentFile=null;window.scrollTo({top:0});closeSidebar();updateHash('')}
+function showGuidelines(e){if(e)e.preventDefault();showPage('guidelines');setActiveLink('__guidelines__');currentFile='__guidelines__';window.scrollTo({top:0});closeSidebar();updateHash('guidelines')}
+function loadFile(el,e){if(e)e.preventDefault();const f=el.dataset.file;if(f)navigateTo(f,e)}
+
+async function navigateTo(file,e){
+  if(e)e.preventDefault();
+  if(file==='__guidelines__'){showGuidelines();return}
+  showPage('doc');setActiveLink(file);currentFile=file;closeSidebar();updateHash(file);
+  const c=document.getElementById('mdContent');
+  c.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
+  window.scrollTo({top:0});
+  buildBreadcrumb(file);
+  document.getElementById('editLink').href=EDIT_BASE+file;
+  try{
+    let md;
+    if(mdCache[file]){md=mdCache[file]}else{
+      const r=await fetch(RAW_BASE+file);if(!r.ok)throw new Error(`HTTP ${r.status}`);
+      md=await r.text();mdCache[file]=md;
+    }
+    md=md.replace(/<!--[\s\S]*?-->/g,'');
+    c.innerHTML=marked.parse(md);
+  }catch(err){
+    c.innerHTML=`<div style="padding:40px;text-align:center">
+      <p style="font-size:1.1rem;margin-bottom:8px">Could not load <code>${file}</code></p>
+      <p style="color:var(--text-3);font-size:.85rem">Check that the repo is public and the file exists.</p>
+      <p style="color:var(--text-3);font-size:.82rem;margin-top:6px">${err.message}</p>
+      <a href="${RAW_BASE+file}" target="_blank" style="color:var(--accent);font-size:.85rem;margin-top:12px;display:inline-block">Try opening on GitHub</a>
+    </div>`;
+  }
+}
+function navigateRelative(href,e){
+  if(e)e.preventDefault();if(!currentFile)return;
+  const parts=currentFile.split('/');parts.pop();const base=parts.join('/');
+  let resolved=href;
+  if(href.startsWith('../')){const bp=base.split('/'),hp=href.split('/');while(hp[0]==='..'){bp.pop();hp.shift()}resolved=[...bp,...hp].join('/')}
+  else if(!href.startsWith('/')&&!href.startsWith('http')){resolved=base?base+'/'+href:href}
+  resolved=resolved.split('#')[0];navigateTo(resolved,e);
+}
+function buildBreadcrumb(file){
+  const el=document.getElementById('breadcrumb');
+  const names={'01-getting-started':'Getting Started','02-platform-api':'Platform API','03-einvoice-api':'e-Invoice API',
+    '04-document-types':'Document Types','05-code-tables':'Code Tables','06-signature':'Digital Signature',
+    '07-validation':'Validation','08-faq':'FAQ','09-postman':'Postman','10-sample-documents':'Samples',
+    '11-irbm-specific-guideline':'Specific Guideline','12-cookbook':'Cookbook','release-notes':'Release Notes',
+    'community-sdks':'Community SDKs','irbm-general-guideline':'General Guideline'};
+  const parts=file.split('/');
+  let h='<a href="#" onclick="goHome(event)">Home</a>';
+  parts.forEach((p,i)=>{
+    const n=names[p]||p.replace(/\.md$/,'').replace(/^\d+-/,'').replace(/-/g,' ');
+    h+='<span class="sep">›</span>';
+    h+=i===parts.length-1?`<span style="color:var(--text)">${n}</span>`:`<span>${n}</span>`;
+  });
+  el.innerHTML=h;
+}
+
+// PDF
+function viewPdf(key,tabBtn){
+  const isEn=key.endsWith('-en');
+  const embedId=isEn?'pdfEmbedEn':'pdfEmbedMs';
+  const frameId=isEn?'pdfFrameEn':'pdfFrameMs';
+  const linkId=isEn?'pdfDirectLinkEn':'pdfDirectLinkMs';
+  document.getElementById(embedId).style.display='';
+  // Set tab active
+  const parent=document.getElementById(embedId);
+  parent.querySelectorAll('.pdf-tab-btn').forEach(b=>b.classList.remove('active'));
+  if(tabBtn){tabBtn.classList.add('active')}else{
+    const btns=parent.querySelectorAll('.pdf-tab-btn');
+    btns.forEach(b=>{b.classList.remove('active');if(b.textContent.toLowerCase().includes(key.includes('specific')?'specific':'general')||b.textContent.toLowerCase().includes(key.includes('specific')?'spesifik':'am'))b.classList.add('active')});
+  }
+  document.getElementById(frameId).src=PDF_URLS[key];
+  document.getElementById(linkId).href=PDF_DIRECT[key];
+  parent.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function switchPdfLang(lang,btn){
+  document.querySelectorAll('.pdf-lang-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pdfEnglish').style.display=lang==='en'?'':'none';
+  document.getElementById('pdfMalay').style.display=lang==='ms'?'':'none';
+}
+
+// Search
+function openSearch(){document.getElementById('searchOverlay').classList.add('open');setTimeout(()=>document.getElementById('searchModalInput').focus(),50)}
+function closeSearch(){document.getElementById('searchOverlay').classList.remove('open');document.getElementById('searchModalInput').value='';document.getElementById('searchResults').innerHTML='<div class="search-empty">Type to search across all documentation</div>'}
+function doSearch(q){
+  const c=document.getElementById('searchResults');
+  if(!q.trim()){c.innerHTML='<div class="search-empty">Type to search across all documentation</div>';return}
+  const terms=q.toLowerCase().split(/\s+/);
+  const results=searchIndex.filter(i=>{const h=(i.title+' '+i.section+' '+i.keywords).toLowerCase();return terms.every(t=>h.includes(t))}).slice(0,12);
+  if(!results.length){c.innerHTML='<div class="search-empty">No results found</div>';return}
+  c.innerHTML=results.map(r=>`<div class="search-result" onclick="searchSelect('${r.file}')"><div class="search-result-title">${r.title}</div><div class="search-result-section">${r.section}</div></div>`).join('');
+}
+function searchSelect(f){closeSearch();if(f==='__guidelines__'){showGuidelines();return}navigateTo(f)}
+
+// Theme
+function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);updateThemeIcon(n)}
+function updateThemeIcon(t){const i=document.getElementById('themeIcon');i.innerHTML=t==='dark'?'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>':'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'}
+
+function updateHash(v){history.replaceState(null,'',v?'#'+v:location.pathname)}
+function handleHash(){const h=location.hash.slice(1);if(!h){goHome();return}if(h==='guidelines'){showGuidelines();return}navigateTo(decodeURIComponent(h))}
+
+window.addEventListener('scroll',()=>{document.getElementById('backToTop').classList.toggle('show',window.scrollY>400)});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch()}if(e.key==='Escape')closeSearch()});
+document.querySelectorAll('.nav-link').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();navigateTo(l.dataset.file,e)})});
+
+(function(){
+  const s=localStorage.getItem('theme');
+  if(s){document.documentElement.setAttribute('data-theme',s);updateThemeIcon(s)}
+  else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');updateThemeIcon('dark')}
+  if(location.hash)handleHash();
+})();
+window.addEventListener('hashchange',handleHash);
+</script>
+</body>
+</html>
