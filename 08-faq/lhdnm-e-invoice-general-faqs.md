@@ -101,42 +101,42 @@ The mandatory implementation date as outlined in Section 1.5 of the e-Invoice Gu
 | Taxpayers with an annual turnover or revenue of more than RM5 million and up to RM25 million | 1 July 2025 |
 | Taxpayers with an annual turnover or revenue of up to RM5 million | 1 January 2026 |
 
-#### 11. If my business is in operation as at year of assessment (YA) 2022 and my annual revenue did not reach RM1 million in YA2022, how should I determine my e-Invoice implementation date?
+#### 11. If my business is in operation as at year of assessment (YA) 2022 and my annual revenue did not reach RM3 million in YA2022, how should I determine my e-Invoice implementation date?
 
 **(a) Taxpayers that are able to meet the e-Invoice exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
 
-- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2022 annual turnover or revenue did not exceed RM1 million. However, since the taxpayer fulfilled the criteria to be exempted, the taxpayer is exempt from implementation of e-Invoice (including the self-billed e-Invoice requirements).
-- If the taxpayer's annual turnover or revenue subsequently reached / exceeded RM1 million in YA2023, YA2024 or YA2025, the taxpayer is required to implement e-Invoice starting from 1 July 2026.
-- If the taxpayer's annual turnover or revenue reaches / exceeds RM1 million in YA2026 or thereafter, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches / exceeds RM1 million.
+- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2022 annual turnover or revenue did not exceed RM3 million. However, since the taxpayer fulfilled the criteria to be exempted, the taxpayer is exempt from implementation of e-Invoice (including the self-billed e-Invoice requirements).
+- If the taxpayer's annual turnover or revenue subsequently reached / exceeded RM3 million in YA2023, YA2024 or YA2025, the taxpayer is required to implement e-Invoice starting from 1 July 2026.
+- If the taxpayer's annual turnover or revenue reaches / exceeds RM3 million in YA2026 or thereafter, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches / exceeds RM3 million.
 
 **(b) Taxpayers that are not able to meet the e-Invoice exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
 
-- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2022 annual turnover or revenue did not exceed RM1 million. Since the exemption criteria were not met, the taxpayer is required to implement e-Invoice starting from 1 July 2026 (concessionary e-Invoice implementation date).
+- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2022 annual turnover or revenue did not exceed RM3 million. Since the exemption criteria were not met, the taxpayer is required to implement e-Invoice starting from 1 July 2026 (concessionary e-Invoice implementation date).
 
-> **Example:** Mountain Jump Sdn Bhd closes its financial year on 31 December every year. Mountain Jump Sdn Bhd is an independent company with no corporate shareholders. In YA2022, Mountain Jump Sdn Bhd recorded an annual revenue of RM400,000. As Mountain Jump Sdn Bhd's annual revenue is below the RM1 million threshold and it fulfilled the criteria to be exempted, Mountain Jump Sdn Bhd is exempt from implementing e-Invoice.
+> **Example:** Mountain Jump Sdn Bhd closes its financial year on 31 December every year. Mountain Jump Sdn Bhd is an independent company with no corporate shareholders. In YA2022, Mountain Jump Sdn Bhd recorded an annual revenue of RM400,000. As Mountain Jump Sdn Bhd's annual revenue is below the RM3 million threshold and it fulfilled the criteria to be exempted, Mountain Jump Sdn Bhd is exempt from implementing e-Invoice.
 >
-> However, in YA2024, Mountain Jump Sdn Bhd has recorded an annual revenue of RM1.1 million. As Mountain Jump Sdn Bhd's annual revenue has exceeded the exemption threshold, Mountain Jump Sdn Bhd is required to implement e-Invoice starting from 1 July 2026 (concessionary e-Invoice implementation date).
+> However, in YA2024, Mountain Jump Sdn Bhd has recorded an annual revenue of RM3.1 million. As Mountain Jump Sdn Bhd's annual revenue has exceeded the exemption threshold, Mountain Jump Sdn Bhd is required to implement e-Invoice starting from 1 July 2026 (concessionary e-Invoice implementation date).
 
 #### 12. If my business commenced operation from YA2023 to YA2025, how should I determine my e-Invoice implementation date?
 
-**(a) Taxpayers with annual turnover or revenue of at least RM1 million in YA2023, YA2024 or YA2025**
+**(a) Taxpayers with annual turnover or revenue of at least RM3 million in YA2023, YA2024 or YA2025**
 
-- As the taxpayer's annual turnover or revenue reached / exceeded RM1 million in YA2023, YA2024 or YA2025, the taxpayer is required to implement e-Invoice starting from 1 July 2026.
+- As the taxpayer's annual turnover or revenue reached / exceeded RM3 million in YA2023, YA2024 or YA2025, the taxpayer is required to implement e-Invoice starting from 1 July 2026.
 
-> **Example:** Layang Warna Sdn Bhd was incorporated on 1 October 2023 and commenced operations on the same date, closing its accounts on 30 September each year. It is an independent company with no corporate shareholders. In YA2024 (i.e., 1 October 2023 to 30 September 2024), Layang Warna Sdn Bhd recorded an annual revenue of RM1.12 million. As Layang Warna Sdn Bhd's annual revenue has exceeded the exemption threshold, Layang Warna Sdn Bhd is required to implement e-Invoice starting from 1 July 2026.
+> **Example:** Layang Warna Sdn Bhd was incorporated on 1 October 2023 and commenced operations on the same date, closing its accounts on 30 September each year. It is an independent company with no corporate shareholders. In YA2024 (i.e., 1 October 2023 to 30 September 2024), Layang Warna Sdn Bhd recorded an annual revenue of RM3.12 million. As Layang Warna Sdn Bhd's annual revenue has exceeded the exemption threshold, Layang Warna Sdn Bhd is required to implement e-Invoice starting from 1 July 2026.
 
-**(b) Taxpayers with annual turnover or revenue of less than RM1 million in YA2023, YA2024 and YA2025 who are **able** to meet the e-Invoice exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
+**(b) Taxpayers with annual turnover or revenue of less than RM3 million in YA2023, YA2024 and YA2025 who are **able** to meet the e-Invoice exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
 
-- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2023, YA2024 and YA2025 annual turnover or revenue did not exceed RM1 million. However, since the taxpayer fulfilled the criteria to be exempted, the taxpayer is exempt from implementation of e-Invoice (including self-billed e-Invoice requirements).
-- If the taxpayer's annual turnover or revenue subsequently reached / exceeded RM1 million in YA2026 onwards, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM1 million.
+- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2023, YA2024 and YA2025 annual turnover or revenue did not exceed RM3 million. However, since the taxpayer fulfilled the criteria to be exempted, the taxpayer is exempt from implementation of e-Invoice (including self-billed e-Invoice requirements).
+- If the taxpayer's annual turnover or revenue subsequently reached / exceeded RM3 million in YA2026 onwards, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM3 million.
 
-> **Example:** Pak Salleh started its sole proprietorship business, Kedai Runcit Salleh, on 1 January 2025. In YA2025, Pak Salleh records an annual revenue of RM185,000. As Pak Salleh's annual revenue is recorded below the RM1 million threshold and the criteria to be exempted have been fulfilled, Pak Salleh is exempted from implementing e-Invoice.
+> **Example:** Pak Salleh started its sole proprietorship business, Kedai Runcit Salleh, on 1 January 2025. In YA2025, Pak Salleh records an annual revenue of RM185,000. As Pak Salleh's annual revenue is recorded below the RM3 million threshold and the criteria to be exempted have been fulfilled, Pak Salleh is exempted from implementing e-Invoice.
 >
-> However, in YA2027, Pak Salleh records an annual revenue of RM1.17 million. As Pak Salleh's annual revenue has exceeded the exemption threshold, Pak Salleh is required to implement e-Invoice starting from 1 January 2029.
+> However, in YA2027, Pak Salleh records an annual revenue of RM3.17 million. As Pak Salleh's annual revenue has exceeded the exemption threshold, Pak Salleh is required to implement e-Invoice starting from 1 January 2029.
 
-**(c) Taxpayers with annual turnover or revenue of less than RM1 million in YA2023, YA2024 and YA2025 who are **not able** to meet the e-Invoice exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
+**(c) Taxpayers with annual turnover or revenue of less than RM3 million in YA2023, YA2024 and YA2025 who are **not able** to meet the e-Invoice exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
 
-- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2023, YA2024 and YA2025 annual turnover or revenue did not exceed RM1 million. Since the exemption criteria were not met, the taxpayer is required to implement e-Invoice starting from 1 July 2026.
+- The taxpayer's e-Invoice implementation date will fall on 1 July 2026 (concessionary e-Invoice implementation date) as the taxpayer's YA2023, YA2024 and YA2025 annual turnover or revenue did not exceed RM3 million. Since the exemption criteria were not met, the taxpayer is required to implement e-Invoice starting from 1 July 2026.
 
 > **Example:** Paper Bottle Sdn Bhd, a wholly-owned subsidiary of Paper All Berhad that has implemented e-Invoice, was incorporated on 1 April 2023 and commenced operations on the same date, closing its accounts on 31 March each year. In YA2024 and YA2025, Paper Bottle Sdn Bhd recorded annual revenue of RM230,000 and RM365,000 respectively. Even though Paper Bottle Sdn Bhd's annual revenue did not exceed the exemption threshold, the exemption criteria were not met. In this case, Paper Bottle Sdn Bhd is required to implement e-Invoice starting from 1 July 2026.
 
@@ -150,15 +150,15 @@ The mandatory implementation date as outlined in Section 1.5 of the e-Invoice Gu
 
 **(b) Taxpayers that are able to meet the e-Invoice implementation exemption criteria** (please refer Part 3: e-Invoice for MSME of this FAQ for more details on the criteria)
 
-- As the exemption criteria are being met, the taxpayer is required to implement e-Invoice starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM1 million.
-- If the taxpayer's annual turnover or revenue for the first YA (i.e., YA2026) has reached / exceeded RM1 million, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM1 million.
-- However, if the taxpayer's annual turnover or revenue for the first YA (i.e., YA2026) did not exceed RM1 million, the taxpayer is exempt from implementation of e-Invoice. Subsequently, if the taxpayer's annual turnover or revenue reached / exceeded RM1 million in YA2027 or thereafter, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM1 million.
+- As the exemption criteria are being met, the taxpayer is required to implement e-Invoice starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM3 million.
+- If the taxpayer's annual turnover or revenue for the first YA (i.e., YA2026) has reached / exceeded RM3 million, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM3 million.
+- However, if the taxpayer's annual turnover or revenue for the first YA (i.e., YA2026) did not exceed RM3 million, the taxpayer is exempt from implementation of e-Invoice. Subsequently, if the taxpayer's annual turnover or revenue reached / exceeded RM3 million in YA2027 or thereafter, the taxpayer is required to implement starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM3 million.
 
-> **Example:** The operations of Warung Salima, owned and run by Puan Salima, commenced on 1 January 2026. In YA2026, Puan Salima records an annual revenue of RM1.12 million. As Puan Salima's annual revenue has exceeded the RM1 million threshold, Puan Salima is required to implement e-Invoice starting from 1 January 2028.
+> **Example:** The operations of Warung Salima, owned and run by Puan Salima, commenced on 1 January 2026. In YA2026, Puan Salima records an annual revenue of RM3.12 million. As Puan Salima's annual revenue has exceeded the RM3 million threshold, Puan Salima is required to implement e-Invoice starting from 1 January 2028.
 
-> **Example:** Adjacent to Warung Salima, Mak Cik Samsiah started her sole proprietorship business, Pinggan Mangkuk Enterprise, on 1 January 2026. For YA2026, Mak Cik Samsiah records an annual revenue of RM308,000. As Mak Cik Samsiah's annual revenue is recorded below the RM1 million threshold and the criteria to be exempted have been fulfilled, Mak Cik Samsiah is exempted from implementing e-Invoice.
+> **Example:** Adjacent to Warung Salima, Mak Cik Samsiah started her sole proprietorship business, Pinggan Mangkuk Enterprise, on 1 January 2026. For YA2026, Mak Cik Samsiah records an annual revenue of RM308,000. As Mak Cik Samsiah's annual revenue is recorded below the RM3 million threshold and the criteria to be exempted have been fulfilled, Mak Cik Samsiah is exempted from implementing e-Invoice.
 >
-> In YA2027, Mak Cik Samsiah records an annual revenue of RM1.14 million. As Mak Cik Samsiah's annual revenue has exceeded the exemption threshold, Mak Cik Samsiah is required to implement e-Invoice starting from 1 January 2029.
+> In YA2027, Mak Cik Samsiah records an annual revenue of RM3.14 million. As Mak Cik Samsiah's annual revenue has exceeded the exemption threshold, Mak Cik Samsiah is required to implement e-Invoice starting from 1 January 2029.
 
 ---
 
@@ -643,47 +643,47 @@ No, taxpayers are not required to include the customs form reference number in t
 
 All persons conducting a business are required to implement e-Invoice in accordance with their respective implementation timeline as outlined under section 1.5 of the e-Invoice Guideline.
 
-However, the Government of Malaysia has exempted taxpayers with annual turnover or revenue below RM1 million from the issuance of e-Invoice.
+However, the Government of Malaysia has exempted taxpayers with annual turnover or revenue below RM3 million from the issuance of e-Invoice.
 
-> **Example:** Amzah operates a sole proprietorship, AMZ Enterprise. As at 31 December 2024, his business recorded total annual turnover or revenue of below RM1 million. Since his business is still below the threshold, Amzah is exempted from issuing e-Invoice (including issuance of self-billed e-Invoice).
+> **Example:** Amzah operates a sole proprietorship, AMZ Enterprise. As at 31 December 2024, his business recorded total annual turnover or revenue of below RM3 million. Since his business is still below the threshold, Amzah is exempted from issuing e-Invoice (including issuance of self-billed e-Invoice).
 
 #### 90. Does the exemption apply to all MSMEs?
 
-The exemption applies to all categories of taxpayers (e.g., individuals, partnerships, companies, cooperatives, etc.) with an annual turnover or revenue below RM1 million.
+The exemption applies to all categories of taxpayers (e.g., individuals, partnerships, companies, cooperatives, etc.) with an annual turnover or revenue below RM3 million.
 
 However, this exemption does not apply to the following taxpayers:
 
-a) taxpayer with non-individual shareholder(s) (or equivalent) with annual turnover or revenue of at least RM1 million; or
+a) taxpayer with non-individual shareholder(s) (or equivalent) with annual turnover or revenue of at least RM3 million; or
 
-b) taxpayer is a subsidiary of a holding company with annual turnover or revenue of at least RM1 million; or
+b) taxpayer is a subsidiary of a holding company with annual turnover or revenue of at least RM3 million; or
 
-c) taxpayer has related company\* / joint venture with annual turnover or revenue of at least RM1 million.
+c) taxpayer has related company\* / joint venture with annual turnover or revenue of at least RM3 million.
 
 \* A "related company" has the meaning assigned to it in section 2 of the Promotion of Investments Act 1986.
 
-> **Example:** RC Cycling Sdn. Bhd. closes its financial year on 31 December every year. RC Cycling Sdn. Bhd. is a subsidiary of JT Motors Sdn. Bhd., which has implemented e-Invoice. The annual revenue recorded for RC Cycling Sdn. Bhd. as at 31 December 2022 is RM400,000. Even though the annual turnover or revenue is recorded below the RM1 million threshold, RC Cycling Sdn. Bhd. does not qualify for the exemption because it is a subsidiary of another company (i.e., JT Motors Sdn. Bhd.) that is required to implement e-Invoice. As such, RC Cycling Sdn. Bhd. is required to implement e-Invoice starting from 1 July 2026.
+> **Example:** RC Cycling Sdn. Bhd. closes its financial year on 31 December every year. RC Cycling Sdn. Bhd. is a subsidiary of JT Motors Sdn. Bhd., which has implemented e-Invoice. The annual revenue recorded for RC Cycling Sdn. Bhd. as at 31 December 2022 is RM400,000. Even though the annual turnover or revenue is recorded below the RM3 million threshold, RC Cycling Sdn. Bhd. does not qualify for the exemption because it is a subsidiary of another company (i.e., JT Motors Sdn. Bhd.) that is required to implement e-Invoice. As such, RC Cycling Sdn. Bhd. is required to implement e-Invoice starting from 1 July 2026.
 
-#### 91. When will MSMEs be required to implement e-Invoice if their annual turnover or revenue have reached or exceeded the threshold of RM1 million?
+#### 91. When will MSMEs be required to implement e-Invoice if their annual turnover or revenue have reached or exceeded the threshold of RM3 million?
 
-MSME is required to implement e-Invoice starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM1 million.
+MSME is required to implement e-Invoice starting from 1 January in the second year following the YA in which the total annual turnover or revenue reaches RM3 million.
 
-> **Example:** Johan operates a business specialising in the sale of fertilisers, Winner Fertilizer Sdn. Bhd. and its accounting period ends every 31 December. As at 31 August 2026, his company already recorded an annual turnover or revenue exceeding RM1 million. Since the company has exceeded the exemption threshold, Winner Fertilizer Sdn. Bhd. is required to implement e-Invoice starting from 1 January 2028.
+> **Example:** Johan operates a business specialising in the sale of fertilisers, Winner Fertilizer Sdn. Bhd. and its accounting period ends every 31 December. As at 31 August 2026, his company already recorded an annual turnover or revenue exceeding RM3 million. Since the company has exceeded the exemption threshold, Winner Fertilizer Sdn. Bhd. is required to implement e-Invoice starting from 1 January 2028.
 
 #### 92. What are the determination for the implementation of e-Invoice for MSMEs?
 
-The implementation of e-Invoices is applicable to taxpayers with an annual turnover or revenue of at least RM1 million, determined as follows:
+The implementation of e-Invoices is applicable to taxpayers with an annual turnover or revenue of at least RM3 million, determined as follows:
 
 a) Taxpayers with audited financial statements: Based on annual turnover or revenue stated in the statement of comprehensive income in the audited financial statements for relevant year; or
 
 b) Taxpayers without audited financial statements: Based on annual revenue reported in the tax return for year of assessment relevant year; or
 
-c) Taxpayers with annual turnover or revenue of at least RM1 million for the relevant year.
+c) Taxpayers with annual turnover or revenue of at least RM3 million for the relevant year.
 
-> **Example:** Kedai Berkat Gemilang recorded product sales income of RM1.2 million as of 31 December 2026. In view that the total income earned has reached RM1 million, Kedai Berkat Gemilang is required to implement e-Invoice starting from 1 January 2028.
+> **Example:** Kedai Berkat Gemilang recorded product sales income of RM3.2 million as of 31 December 2026. In view that the total income earned has reached RM3 million, Kedai Berkat Gemilang is required to implement e-Invoice starting from 1 January 2028.
 
 #### 93. For sole proprietorship, how will the mandatory implementation be determined if a sole proprietor has more than one business?
 
-For sole proprietorship, the determination of annual turnover or revenue below RM1 million threshold includes all sole proprietorship businesses owned or registered under the name of the respective sole proprietor.
+For sole proprietorship, the determination of annual turnover or revenue below RM3 million threshold includes all sole proprietorship businesses owned or registered under the name of the respective sole proprietor.
 
 > **Example:** Awiyah owns several sole proprietorship businesses, namely RAM Cosmetic Enterprise, Princess Tailor and Fifty Cafe. The total annual turnover or revenue as of 31 December 2026 are as follows:
 >
@@ -694,7 +694,7 @@ For sole proprietorship, the determination of annual turnover or revenue below R
 > | Fifty Cafe | 280,000 |
 > | **Total annual revenue or turnover** | **1,030,000** |
 >
-> In view that the total annual turnover or revenue exceeds RM1 million, Awiyah is required to implement e-Invoice starting from 1 January 2028.
+> In view that the total annual turnover or revenue exceeds RM3 million, Awiyah is required to implement e-Invoice starting from 1 January 2028.
 
 #### 94. Does a taxpayer have a related company under the following scenario?
 
@@ -715,9 +715,9 @@ For sole proprietorship, the determination of annual turnover or revenue below R
 
 - Where two (2) companies are owned by the same individual shareholder, both companies will not be considered as related companies for e-Invoice purposes, even if the individual also serves as a director in both companies.
 
-#### 95. Will MSMEs that have been mandated to implement e-Invoice be eligible for the exemption again if their annual turnover or revenue falls below the RM1 million threshold in the subsequent years?
+#### 95. Will MSMEs that have been mandated to implement e-Invoice be eligible for the exemption again if their annual turnover or revenue falls below the RM3 million threshold in the subsequent years?
 
-No exemption will be granted after the mandatory implementation year has been determined, and taxpayers are required to continue issuing e-Invoices even if their total annual turnover or revenue do not exceed RM1 million in the subsequent years.
+No exemption will be granted after the mandatory implementation year has been determined, and taxpayers are required to continue issuing e-Invoices even if their total annual turnover or revenue do not exceed RM3 million in the subsequent years.
 
 #### 96. For eligible taxpayers that are exempted from issuance of e-Invoice, are they required to issue consolidated e-Invoice and self-billed e-Invoice?
 
@@ -725,7 +725,7 @@ Eligible taxpayers who are exempted from the issuance of e-Invoice in accordance
 
 However, IRBM would encourage the exempted taxpayers to adopt e-Invoice on a voluntary basis.
 
-#### 97. If MSME has an annual turnover or revenue below RM1 million and sells goods on a local e-commerce platform, is the MSME obligated to provide details to the e-commerce platform for issuance of e-Invoice?
+#### 97. If MSME has an annual turnover or revenue below RM3 million and sells goods on a local e-commerce platform, is the MSME obligated to provide details to the e-commerce platform for issuance of e-Invoice?
 
 Yes. This is because the obligation to issue e-Invoice / self-billed e-Invoice rests with the e-commerce platform provider, for all transactions conducted on the e-commerce platform.
 

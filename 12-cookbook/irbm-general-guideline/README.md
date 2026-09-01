@@ -1,8 +1,8 @@
-# E-Invoice Guideline (Version 4.7)
+# E-Invoice Guideline (Version 4.8)
 
 **Inland Revenue Board of Malaysia (IRBM / LHDN)**
 Issued under Section 134A of the Income Tax Act 1967
-**Date of publication: 7 July 2026**
+**Date of publication: 30 August 2026**
 
 This file is a markdown rendering of the official IRBM **General Guideline**
 (not to be confused with the Specific Guideline which drills into per-scenario
@@ -22,7 +22,16 @@ the `11-irbm-specific-guideline/` folder in the parent `myinvois-docs` repo.
 
 ---
 
-## Summary of changes from v4.6 → v4.7
+## Summary of changes from v4.7 → v4.8
+
+| Paragraph (v4.7) | Paragraph (v4.8) | Change type | Notes |
+|---|---|---|---|
+| §1.5 | §1.5 | Amendment | New-business threshold raised from RM 1,000,000 to RM 3,000,000 |
+| §1.6.1(e) | §1.6.1(e) | Amendment | Exemption threshold raised from RM 1,000,000 to RM 3,000,000 |
+| — | §1.6.9 | Addition | Statutory bodies, local authorities, international organisations confirmed required from 1 July 2025 for sale of goods and services |
+| — | §1.6.10 | Addition | Related-company carve-outs — exemption denied where non-individual shareholder, holding company, related company, or joint venture has revenue ≥ RM 3,000,000 |
+
+### Previous changes (v4.6 → v4.7)
 
 | Paragraph (v4.6) | Paragraph (v4.7) | Change type | Notes |
 |---|---|---|---|
@@ -158,10 +167,10 @@ including:
 
 **Voluntary early adoption** is permitted for any taxpayer regardless of revenue.
 
-**New businesses (commenced 2023–2025)** with annual turnover ≥ RM 1M:
+**New businesses (commenced 2023–2025)** with annual turnover ≥ RM 3M:
 mandatory from **1 July 2026**.
 
-**New businesses commencing 2026+:** mandatory from 1 July 2026 or commencement date. If first-year revenue < RM 1M, deadline is 1 January of the second year following the year you crossed RM 1M.
+**New businesses commencing 2026+:** mandatory from 1 July 2026 or commencement date. If first-year revenue < RM 3M, deadline is 1 January of the second year following the year you crossed RM 3M.
 
 ### 1.6 Exemptions
 
@@ -175,7 +184,7 @@ mandatory from **1 July 2026**.
     - Goods sold / services performed **before 1 July 2025**
 (d) International organization — exempt for goods sold / services performed
     **before 1 July 2025** (see [full list](../10-implementation-timeline.md#list-of-exempted-international-organisations))
-(e) Taxpayers with annual turnover / revenue **< RM 1,000,000**
+(e) Taxpayers with annual turnover / revenue **< RM 3,000,000**
 
 #### 1.6.2 Consequences
 
@@ -212,6 +221,38 @@ e-Invoice (including self-billed) NOT required for:
 #### 1.6.8 Review cycle
 
 Exemptions are reviewed and updated from time to time.
+
+#### 1.6.9 Statutory bodies, local authorities, and international organisations
+
+Statutory bodies, statutory authorities, local authorities, and international
+organisations are required to issue e-Invoice from **1 July 2025** for the
+**sale of goods and services**.
+
+> **Note:** The exemption in §1.6.1(c)–(d) covers only collection of statutory
+> levies/penalties and goods/services performed before 1 July 2025. From 1 July 2025
+> onwards, e-Invoice is required for goods sold and services performed.
+
+#### 1.6.10 Related-company carve-outs (v4.8 addition)
+
+The RM 3,000,000 exemption in §1.6.1(e) applies to all categories of taxpayers
+(individuals, partnerships, companies, co-operatives, etc.). However, the
+exemption **does not apply** where:
+
+(a) The taxpayer has **non-individual shareholder(s)** (or equivalent) with
+    annual turnover or revenue of at least RM 3,000,000; or
+
+(b) The taxpayer is a **subsidiary of a holding company** with annual turnover
+    or revenue of at least RM 3,000,000; or
+
+(c) The taxpayer has a **related company / joint venture** with annual turnover
+    or revenue of at least RM 3,000,000.
+
+"Related company" takes its meaning from section 2 of the Promotion of
+Investments Act 1986.
+
+> **In practice:** A stand-alone company turning over RM 2M and owned by
+> individuals is exempt. The same company is NOT exempt if a corporate
+> shareholder, its parent, or a sister company crosses RM 3M.
 
 ---
 

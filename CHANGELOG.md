@@ -3,6 +3,31 @@
 All notable changes to this documentation repository will be tracked here.
 Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) conventions.
 
+## [1.3.0] — 2026-09-01
+
+**LHDN General Guideline v4.8 update — exemption threshold tripled to RM3 million.**
+
+### Added
+
+- **§1.6.9** — Statutory bodies, local authorities, and international
+  organisations confirmed required from 1 July 2025 for sale of goods
+  and services.
+- **§1.6.10** — Related-company carve-outs: exemption does not apply where
+  non-individual shareholder, holding company, related company, or joint
+  venture has revenue ≥ RM 3,000,000 (per Promotion of Investments Act 1986).
+- **v4.7 → v4.8 change summary table** in General Guideline markdown.
+- **GitHub Pages** — docs site now served at `deadboy18.github.io/myinvois-docs/`.
+
+### Changed
+
+- **Exemption threshold** — RM 1,000,000 → RM 3,000,000 across all files:
+  General Guideline, Implementation Timeline, FAQ.
+- **§1.5 new-business rule** — threshold updated from RM 1M to RM 3M.
+- **FAQ examples** — revenue figures in worked examples updated to reflect
+  RM 3M threshold (e.g. RM 1.12M → RM 3.12M where scenario requires
+  exceeding the threshold).
+- **References** — General Guideline v4.7 → v4.8 (30 August 2026) throughout.
+
 ## [1.2.2] — 2026-08-26
 
 **API reference + additional pitfalls from community MCP project.**

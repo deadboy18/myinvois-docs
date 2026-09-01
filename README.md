@@ -38,7 +38,7 @@ operations runbooks), and keeps everything cross-linked.
 | [`09-postman/`](09-postman/) | Postman collection + sandbox/production environments | 4 |
 | [`10-sample-documents/`](10-sample-documents/) | 44 real XML/JSON sample payloads + 9 code-table JSONs + Digital Signature User Guide PDF | 55 |
 | [`11-irbm-specific-guideline/`](11-irbm-specific-guideline/) | **Specific Guideline v4.8** as markdown — cross-border, self-billed, e-commerce, employment perks, foreign income, cybersecurity, **SVDP**, appendices | 1 |
-| [`12-cookbook/`](12-cookbook/) | **Error cookbook + operations playbook + General Guideline v4.7 + community SDK survey** | 27 |
+| [`12-cookbook/`](12-cookbook/) | **Error cookbook + operations playbook + General Guideline v4.8 + community SDK survey** | 27 |
 | [`release-notes/`](release-notes/) | Archived release notes | 3 |
 
 ---
@@ -214,8 +214,8 @@ Full contact directory: [`contacts.md`](contacts.md)
 
 This is a **snapshot** as of **August 2026**, including:
 
-- **e-Invoice General Guideline v4.7** (published 7 July 2026)
-- **e-Invoice Specific Guideline v4.8** (published 7 July 2026)
+- **e-Invoice General Guideline v4.8** (published 30 August 2026)
+- **e-Invoice Specific Guideline v4.8** (published 30 August 2026)
 - **MyInvois SDK** as published at that date
 - **Digital Signature User Guide** (PosDigicert Rev 1.2, July 2024)
 - Community SDK versions (klsheng 1.0.14, ERPGulf 3.0.1, etc.)
@@ -253,7 +253,7 @@ drift, please contribute — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - Survey all major community SDK implementations
 - Provide a production-readiness checklist
 - Include 44 sample invoice payloads covering normal, foreign currency, consolidated, multi-line, and self-billed variants
-- Render both IRBM guideline PDFs (General v4.7, Specific v4.8) as searchable markdown
+- Render both IRBM guideline PDFs (General v4.8, Specific v4.8) as searchable markdown
 
 ### ⚠️ Does not
 
@@ -353,7 +353,7 @@ guidelines. Particularly valuable contributions:
 │   │   ├── 04-syukrandev-nodejs.md
 │   │   └── 05-pyhoon-b4x.md
 │   └── irbm-general-guideline/
-│       └── README.md                           (General Guideline v4.7 as markdown)
+│       └── README.md                           (General Guideline v4.8 as markdown)
 │
 └── release-notes/
     ├── README.md

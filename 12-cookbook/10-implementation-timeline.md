@@ -44,12 +44,12 @@ The rules are slightly different for businesses that didn't exist in 2022:
 
 | Business commencement year | Rule |
 |---|---|
-| **2023 to 2025** with annual turnover / revenue ≥ **RM 1,000,000** | Mandatory from **1 July 2026** |
+| **2023 to 2025** with annual turnover / revenue ≥ **RM 3,000,000** | Mandatory from **1 July 2026** |
 | **2026 onwards** | Mandatory from **1 July 2026** or the operation commencement date, whichever is later |
-| **2026 onwards**, if first year revenue < RM 1,000,000 | Mandatory from **1 January of the second year** following the year you cross RM 1M |
+| **2026 onwards**, if first year revenue < RM 3,000,000 | Mandatory from **1 January of the second year** following the year you cross RM 3M |
 
-Example: a business that starts in March 2026 with RM 800K first-year revenue
-and hits RM 1.2M in 2027 → mandatory from **1 January 2028**.
+Example: a business that starts in March 2026 with RM 2M first-year revenue
+and hits RM 3.5M in 2027 → mandatory from **1 January 2029**.
 
 ## Voluntary early adoption
 
@@ -85,7 +85,7 @@ All B2B, B2C, and B2G transactions are in scope (B2G flows work like B2B).
 
 ## Exemptions — who is NOT required to issue e-Invoice
 
-Per Section 1.6 of the General Guideline v4.7, these persons are **currently
+Per Section 1.6 of the General Guideline v4.8, these persons are **currently
 exempted** from issuing e-Invoice (including self-billed e-Invoice):
 
 ### Entity / person exemptions
@@ -96,7 +96,7 @@ exempted** from issuing e-Invoice (including self-billed e-Invoice):
 | **Individual not conducting business** | i.e. personal, non-business activity |
 | **Statutory body, statutory authority, local authority** | Exempt only for: (i) payment/fee/charge/statutory levy/summon/compound/penalty collection in carrying out functions under any written law; and (ii) goods sold / services performed **before 1 July 2025** |
 | **International organisations** (see list below) | Exempt for transactions of goods sold / services performed **before 1 July 2025** |
-| **Taxpayers with annual turnover / revenue < RM 1,000,000** | Always exempt |
+| **Taxpayers with annual turnover / revenue < RM 3,000,000** | Exempt — unless a §1.6.10 related-company carve-out applies (see General Guideline v4.8) |
 
 ### Transaction-type exemptions
 
@@ -223,13 +223,13 @@ For full details, worked examples, and rules, see
 If you're reading this in 2026 and don't know your mandatory date, **you are
 almost certainly past it**. Contact your accountant or IRBM to confirm.
 The latest voluntary-adoption path is for businesses that haven't crossed
-RM 1M yet. If you have gaps in your e-Invoice compliance, the **SVDP
-window (7 July 2026 – 31 December 2027)** lets you catch up without
-penalty — see the section above.
+RM 3M yet (subject to the related-company carve-outs in §1.6.10). If you
+have gaps in your e-Invoice compliance, the **SVDP window (7 July 2026 –
+31 December 2027)** lets you catch up without penalty — see the section above.
 
 ## Reference
 
-- [IRBM e-Invoice General Guideline v4.7 (7 July 2026)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
+- [IRBM e-Invoice General Guideline v4.8 (30 August 2026)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
 - [IRBM e-Invoice Specific Guideline v4.8 (7 July 2026)](https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/)
 - [e-Invoice implementation information page](https://www.hasil.gov.my/en/e-invoice/implementation-of-e-invoicing-in-malaysia/)
 - [MyTax Portal (for TIN lookup / e-Daftar)](https://mytax.hasil.gov.my/)
