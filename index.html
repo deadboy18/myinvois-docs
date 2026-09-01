@@ -861,15 +861,33 @@ const PDF_DIRECT = {
   'general-ms': 'https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf',
   'specific-ms': 'https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf',
 };
-// Self-hosted PDFs (served from your repo via GitHub Pages)
-// The GitHub Action at .github/workflows/update-pdfs.yml downloads these weekly
-// Chrome shows its full native PDF toolbar (zoom, page nav, search, print)
-const PDF_URLS = {
+// Local self-hosted PDFs (best: Chrome native toolbar with zoom, search, print)
+const PDF_LOCAL = {
   'general-en': 'pdfs/IRBM-e-Invoice-Guideline.pdf',
   'specific-en': 'pdfs/IRBM-e-Invoice-Specific-Guideline.pdf',
   'general-ms': 'pdfs/Garis-Panduan-e-Invois-LHDNM.pdf',
   'specific-ms': 'pdfs/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf',
 };
+// Google Docs Viewer fallback (no native toolbar, but always works)
+const gview = url => `https://docs.google.com/gview?url=${encodeURIComponent(url)}&embedded=true`;
+// getPdfUrl: tries local first by checking if the file exists via HEAD request
+// If local files aren't in the repo yet, falls back to Google Docs viewer
+const pdfUrlCache = {};
+async function getPdfUrl(key) {
+  if (pdfUrlCache[key]) return pdfUrlCache[key];
+  try {
+    const r = await fetch(PDF_LOCAL[key], { method: 'HEAD' });
+    // Check it's actually a PDF (not a 404 HTML page)
+    const ct = r.headers.get('content-type') || '';
+    if (r.ok && ct.includes('pdf')) {
+      pdfUrlCache[key] = PDF_LOCAL[key];
+      return PDF_LOCAL[key];
+    }
+  } catch(e) {}
+  // Fallback to Google Docs viewer
+  pdfUrlCache[key] = gview(PDF_DIRECT[key]);
+  return pdfUrlCache[key];
+}
 
 const searchIndex=[
   {title:"Overview",section:"Getting Started",file:"01-getting-started/overview.md",keywords:"overview architecture myinvois authentication base urls scope taxpayer"},
@@ -1053,7 +1071,7 @@ function buildBreadcrumb(file){
 }
 
 // PDF
-function viewPdf(key,tabBtn){
+async function viewPdf(key,tabBtn){
   const isEn=key.endsWith('-en');
   const embedId=isEn?'pdfEmbedEn':'pdfEmbedMs';
   const frameId=isEn?'pdfFrameEn':'pdfFrameMs';
@@ -1070,7 +1088,9 @@ function viewPdf(key,tabBtn){
     const btns=parent.querySelectorAll('.pdf-tab-btn');
     btns.forEach(b=>{b.classList.remove('active');if(b.textContent.toLowerCase().includes(key.includes('specific')?'specific':'general')||b.textContent.toLowerCase().includes(key.includes('specific')?'spesifik':'am'))b.classList.add('active')});
   }
-  document.getElementById(frameId).src=PDF_URLS[key];
+  // Get the best available URL (local PDF or Google Docs fallback)
+  const url = await getPdfUrl(key);
+  document.getElementById(frameId).src=url;
   document.getElementById(linkId).href=PDF_DIRECT[key];
   parent.scrollIntoView({behavior:'smooth',block:'start'});
 }
