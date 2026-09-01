@@ -232,9 +232,16 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 
 .pdf-embed-wrap{
   width:100%;height:calc(100vh - 260px);min-height:500px;border:1px solid var(--border);
-  border-radius:var(--radius);overflow:hidden;background:var(--bg-code);margin-top:16px;
+  border-radius:var(--radius);overflow:hidden;background:var(--bg-code);position:relative;
 }
 .pdf-embed-wrap iframe,.pdf-embed-wrap embed,.pdf-embed-wrap object{width:100%;height:100%;border:none}
+.pdf-loading{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:var(--bg-code);z-index:2;gap:10px;color:var(--text-3);font-size:.88rem;
+  transition:opacity .3s;
+}
+.pdf-loading.hidden{opacity:0;pointer-events:none}
+.pdf-loading .spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
 .pdf-tab-btns{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid var(--border)}
 .pdf-tab-btn{
   padding:10px 18px;font-size:.82rem;font-weight:500;color:var(--text-3);
@@ -730,13 +737,14 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
             <button class="pdf-tab-btn active" onclick="viewPdf('general-en',this)">General Guideline</button>
             <button class="pdf-tab-btn" onclick="viewPdf('specific-en',this)">Specific Guideline</button>
           </div>
-          <div class="pdf-embed-wrap">
-            <iframe id="pdfFrameEn" src="" loading="lazy"></iframe>
+          <div class="pdf-embed-wrap" id="pdfWrapEn">
+            <div class="pdf-loading" id="pdfLoadingEn"><div class="spinner"></div>Loading PDF...</div>
+            <iframe id="pdfFrameEn" src="" loading="lazy" onload="hidePdfLoading('En')"></iframe>
           </div>
           <p class="pdf-note">
-            PDF not loading? The LHDN server may block embedding. Try opening it directly:
-            <a id="pdfDirectLinkEn" href="#" target="_blank">Open in new tab</a>.
-            You can also host copies of these PDFs in your own repo's <code>/pdfs/</code> folder for reliable embedding.
+            PDF not showing? Make sure the GitHub Action has run at least once to download the PDFs into <code>/pdfs/</code>.
+            You can also trigger it manually from the <a href="https://github.com/deadboy18/myinvois-docs/actions" target="_blank">Actions tab</a>, or
+            open the PDF directly: <a id="pdfDirectLinkEn" href="#" target="_blank">Open in new tab</a>.
           </p>
         </div>
       </div>
@@ -782,27 +790,29 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
             <button class="pdf-tab-btn active" onclick="viewPdf('general-ms',this)">Garis Panduan Am</button>
             <button class="pdf-tab-btn" onclick="viewPdf('specific-ms',this)">Garis Panduan Spesifik</button>
           </div>
-          <div class="pdf-embed-wrap">
-            <iframe id="pdfFrameMs" src="" loading="lazy"></iframe>
+          <div class="pdf-embed-wrap" id="pdfWrapMs">
+            <div class="pdf-loading" id="pdfLoadingMs"><div class="spinner"></div>Memuatkan PDF...</div>
+            <iframe id="pdfFrameMs" src="" loading="lazy" onload="hidePdfLoading('Ms')"></iframe>
           </div>
           <p class="pdf-note">
-            PDF tidak dipaparkan? Pelayan LHDN mungkin menghalang penyematan. Cuba buka secara terus:
-            <a id="pdfDirectLinkMs" href="#" target="_blank">Buka dalam tab baharu</a>.
+            PDF tidak dipaparkan? Pastikan GitHub Action telah dijalankan untuk memuat turun PDF ke dalam <code>/pdfs/</code>.
+            Buka secara terus: <a id="pdfDirectLinkMs" href="#" target="_blank">Buka dalam tab baharu</a>.
           </p>
         </div>
       </div>
 
       <div style="margin-top:24px;padding:14px 16px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);font-size:.82rem;color:var(--text-2)">
-        <strong style="color:var(--text)">💡 Want reliable inline viewing?</strong>
-        Download the PDFs and put them in a <code>/pdfs/</code> folder in your repo. Then update the <code>PDF_URLS</code> config in this file to point to your local copies. This avoids the LHDN server's iframe restrictions.
+        <strong style="color:var(--text)">💡 Full PDF toolbar</strong>
+        These PDFs are served from this repo's <code>/pdfs/</code> folder, so Chrome shows its native viewer with page navigation, zoom, search, print, and download. A
+        <a href="https://github.com/deadboy18/myinvois-docs/actions" target="_blank" style="color:var(--accent)">GitHub Action</a>
+        checks for updated versions from LHDN every Monday and commits any changes automatically.
       </div>
 
       <div style="margin-top:12px;padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);font-size:.82rem;color:var(--text-2)">
-        <strong style="color:var(--text)">📌 About version updates</strong> —
-        This page shows the latest version we've verified manually. LHDN publishes new versions on their
+        <strong style="color:var(--text)">📌 About version updates</strong>
+        LHDN publishes new guideline versions on their
         <a href="https://www.hasil.gov.my/en/e-invoice/reference-for-the-implementation-of-e-invoice/guidelines/" target="_blank" style="color:var(--accent)">guidelines page</a>.
-        If a new version drops, update the text and PDF links in this file.
-        The repo also has a <a href="#" onclick="navigateTo('12-cookbook/17-automated-update-checking.md',event);return false" style="color:var(--accent)">Claude Skill for automated update checking</a>.
+        The GitHub Action picks up new PDFs automatically. If LHDN changes the URL pattern, update the workflow file and the text on this page.
       </div>
     </div>
   </div>
@@ -844,21 +854,21 @@ const GITHUB_BRANCH = 'main';
 const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/`;
 const EDIT_BASE = `https://github.com/${GITHUB_REPO}/edit/${GITHUB_BRANCH}/`;
 
-// Direct PDF URLs (for download links)
+// Direct LHDN URLs (for download links - always point to source)
 const PDF_DIRECT = {
   'general-en': 'https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf',
   'specific-en': 'https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf',
   'general-ms': 'https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf',
   'specific-ms': 'https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf',
 };
-// Google Docs Viewer proxy (bypasses LHDN's frame-ancestors CSP)
-// If you self-host PDFs in /pdfs/, just replace these with the local paths directly
-const gview = url => `https://docs.google.com/gview?url=${encodeURIComponent(url)}&embedded=true`;
+// Self-hosted PDFs (served from your repo via GitHub Pages)
+// The GitHub Action at .github/workflows/update-pdfs.yml downloads these weekly
+// Chrome shows its full native PDF toolbar (zoom, page nav, search, print)
 const PDF_URLS = {
-  'general-en': gview(PDF_DIRECT['general-en']),
-  'specific-en': gview(PDF_DIRECT['specific-en']),
-  'general-ms': gview(PDF_DIRECT['general-ms']),
-  'specific-ms': gview(PDF_DIRECT['specific-ms']),
+  'general-en': 'pdfs/IRBM-e-Invoice-Guideline.pdf',
+  'specific-en': 'pdfs/IRBM-e-Invoice-Specific-Guideline.pdf',
+  'general-ms': 'pdfs/Garis-Panduan-e-Invois-LHDNM.pdf',
+  'specific-ms': 'pdfs/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf',
 };
 
 const searchIndex=[
@@ -918,7 +928,7 @@ const searchIndex=[
   {title:"Postman Collection",section:"Resources",file:"09-postman/README.md",keywords:"postman collection api testing environment sandbox"},
   {title:"Sample Documents",section:"Resources",file:"10-sample-documents/README.md",keywords:"sample documents xml json invoice example payload"},
   {title:"Specific Guideline v4.8",section:"IRBM Guidelines",file:"11-irbm-specific-guideline/README.md",keywords:"specific guideline irbm cross-border self-billed ecommerce svdp appendix"},
-  {title:"General Guideline v4.8",section:"IRBM Guidelines",file:"12-cookbook/irbm-general-guideline/README.md",keywords:"general guideline irbm workflow portal api consolidated v4.8 rm3 million exemption"},
+  {title:"General Guideline v4.8",section:"IRBM Guidelines",file:"12-cookbook/irbm-general-guideline/README.md",keywords:"general guideline irbm workflow portal api consolidated"},
   {title:"HTTP Status Codes",section:"Error Cookbook",file:"12-cookbook/01-http-status-codes.md",keywords:"http status codes 200 400 401 403 404 429 500"},
   {title:"Signature Errors (DS300-DS338)",section:"Error Cookbook",file:"12-cookbook/02-signature-errors.md",keywords:"signature errors ds300 ds326 ds338 posdigicert certificate"},
   {title:"Submission Errors",section:"Error Cookbook",file:"12-cookbook/03-submission-errors.md",keywords:"submission errors cf codes structure invalid"},
@@ -1048,7 +1058,11 @@ function viewPdf(key,tabBtn){
   const embedId=isEn?'pdfEmbedEn':'pdfEmbedMs';
   const frameId=isEn?'pdfFrameEn':'pdfFrameMs';
   const linkId=isEn?'pdfDirectLinkEn':'pdfDirectLinkMs';
+  const loadingId=isEn?'pdfLoadingEn':'pdfLoadingMs';
   document.getElementById(embedId).style.display='';
+  // Show loading overlay
+  const loadEl=document.getElementById(loadingId);
+  loadEl.classList.remove('hidden');
   // Set tab active
   const parent=document.getElementById(embedId);
   parent.querySelectorAll('.pdf-tab-btn').forEach(b=>b.classList.remove('active'));
@@ -1059,6 +1073,10 @@ function viewPdf(key,tabBtn){
   document.getElementById(frameId).src=PDF_URLS[key];
   document.getElementById(linkId).href=PDF_DIRECT[key];
   parent.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function hidePdfLoading(lang){
+  const el=document.getElementById('pdfLoading'+lang);
+  if(el)el.classList.add('hidden');
 }
 function switchPdfLang(lang,btn){
   document.querySelectorAll('.pdf-lang-tab').forEach(t=>t.classList.remove('active'));
