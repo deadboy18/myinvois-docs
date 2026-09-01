@@ -1,0 +1,46 @@
+name: Update LHDN PDFs
+
+on:
+  schedule:
+    # Every Monday at 8am MYT (midnight UTC)
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create pdfs directory
+        run: mkdir -p pdfs
+
+      - name: Download PDFs
+        run: |
+          curl -L -o pdfs/IRBM-e-Invoice-Guideline.pdf \
+            "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf"
+
+          curl -L -o pdfs/IRBM-e-Invoice-Specific-Guideline.pdf \
+            "https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf"
+
+          curl -L -o pdfs/Garis-Panduan-e-Invois-LHDNM.pdf \
+            "https://www.hasil.gov.my/wp-content/uploads/Garis-Panduan-e-Invois-LHDNM.pdf"
+
+          curl -L -o pdfs/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf \
+            "https://www.hasil.gov.my/wp-content/uploads/LHDN-Garis-Panduan-Spesifik-e-Invois.pdf"
+
+      - name: Check for changes and commit
+        run: |
+          git add pdfs/
+          if git diff --cached --quiet; then
+            echo "No PDF changes detected"
+          else
+            CHANGED=$(git diff --cached --name-only | xargs -I{} basename {} | paste -sd ', ')
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update LHDN PDFs - $(date +'%d %b %Y') - ${CHANGED}"
+            git push
+          fi
