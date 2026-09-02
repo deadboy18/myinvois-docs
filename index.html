@@ -71,6 +71,27 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 }
 .header-actions button:hover,.header-actions a:hover{color:var(--text);background:var(--bg-hover)}
 .header-actions svg{width:18px;height:18px}
+.lang-picker{position:relative}
+.lang-picker-btn{
+  font-family:var(--font);font-size:.75rem;font-weight:600;padding:4px 8px;
+  border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);
+  color:var(--text);cursor:pointer;display:flex;align-items:center;gap:4px;
+  transition:border-color .15s;
+}
+.lang-picker-btn:hover{border-color:var(--accent)}
+.lang-picker-menu{
+  display:none;position:absolute;right:0;top:calc(100% + 4px);
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);overflow:hidden;z-index:110;min-width:160px;
+}
+.lang-picker-menu.open{display:block}
+.lang-picker-item{
+  display:block;width:100%;padding:8px 14px;border:none;background:none;
+  color:var(--text);font:inherit;font-size:.8rem;cursor:pointer;text-align:left;
+  transition:background .1s;
+}
+.lang-picker-item:hover{background:var(--bg-hover)}
+.lang-picker-item.active{color:var(--accent);font-weight:600}
 .menu-toggle{display:none}
 
 /* SIDEBAR */
@@ -331,6 +352,14 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
     <span class="shortcut">Ctrl K</span>
   </div>
   <div class="header-actions">
+    <div class="lang-picker">
+      <button class="lang-picker-btn" onclick="toggleLangMenu()" id="langBtn">EN ▾</button>
+      <div class="lang-picker-menu" id="langMenu">
+        <button class="lang-picker-item active" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-picker-item" onclick="setLang('ms')">🇲🇾 Bahasa Melayu</button>
+        <button class="lang-picker-item" onclick="setLang('id')">🇮🇩 Bahasa Indonesia</button>
+      </div>
+    </div>
     <a href="https://sdk.myinvois.hasil.gov.my/" target="_blank" rel="noopener" title="Official MyInvois SDK Portal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
     </a>
@@ -348,40 +377,40 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
 <aside class="sidebar" id="sidebar">
   <a href="#" class="nav-top-link active" data-page="home" onclick="goHome(event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    Home
+    <span data-i18n="nav.home">Home</span>
   </a>
   <a href="#" class="nav-top-link" data-page="guidelines" onclick="showGuidelines(event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-    LHDN Guidelines (PDF)
+    <span data-i18n="nav.guidelines">LHDN Guidelines (PDF)</span>
   </a>
 
-  <div class="nav-section"><div class="nav-section-title">Getting Started</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.start">Getting Started</div></div>
   <div class="nav-group">
     <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       Introduction
     </button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="01-getting-started/overview.md">Overview</a>
-      <a href="#" class="nav-link" data-file="01-getting-started/standard-headers.md">Standard Headers</a>
-      <a href="#" class="nav-link" data-file="01-getting-started/error-responses.md">Error Responses</a>
-      <a href="#" class="nav-link" data-file="01-getting-started/integration-practices.md">Integration Practices</a>
+      <a href="#" class="nav-link" data-file="01-getting-started/overview.md"><span data-i18n="nav.link.overview">Overview</span></a>
+      <a href="#" class="nav-link" data-file="01-getting-started/standard-headers.md"><span data-i18n="nav.link.stdHeaders">Standard Headers</span></a>
+      <a href="#" class="nav-link" data-file="01-getting-started/error-responses.md"><span data-i18n="nav.link.errorResp">Error Responses</span></a>
+      <a href="#" class="nav-link" data-file="01-getting-started/integration-practices.md"><span data-i18n="nav.link.intPractices">Integration Practices</span></a>
     </div>
   </div>
 
-  <div class="nav-section"><div class="nav-section-title">API Reference</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.api">API Reference</div></div>
   <div class="nav-group">
     <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       Platform API
     </button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="02-platform-api/01-login-taxpayer.md">Login as Taxpayer</a>
-      <a href="#" class="nav-link" data-file="02-platform-api/02-login-intermediary.md">Login as Intermediary</a>
-      <a href="#" class="nav-link" data-file="02-platform-api/03-get-document-types.md">Get All Document Types</a>
-      <a href="#" class="nav-link" data-file="02-platform-api/04-get-document-type.md">Get Document Type</a>
-      <a href="#" class="nav-link" data-file="02-platform-api/05-get-document-type-version.md">Get Document Type Version</a>
-      <a href="#" class="nav-link" data-file="02-platform-api/06-get-notifications.md">Get Notifications</a>
+      <a href="#" class="nav-link" data-file="02-platform-api/01-login-taxpayer.md"><span data-i18n="nav.link.loginTaxpayer">Login as Taxpayer</span></a>
+      <a href="#" class="nav-link" data-file="02-platform-api/02-login-intermediary.md"><span data-i18n="nav.link.loginIntermediary">Login as Intermediary</span></a>
+      <a href="#" class="nav-link" data-file="02-platform-api/03-get-document-types.md"><span data-i18n="nav.link.getAllDocTypes">Get All Document Types</span></a>
+      <a href="#" class="nav-link" data-file="02-platform-api/04-get-document-type.md"><span data-i18n="nav.link.getDocType">Get Document Type</span></a>
+      <a href="#" class="nav-link" data-file="02-platform-api/05-get-document-type-version.md"><span data-i18n="nav.link.getDocTypeVer">Get Document Type Version</span></a>
+      <a href="#" class="nav-link" data-file="02-platform-api/06-get-notifications.md"><span data-i18n="nav.link.getNotif">Get Notifications</span></a>
     </div>
   </div>
   <div class="nav-group">
@@ -390,195 +419,195 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
       e-Invoice API
     </button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="03-einvoice-api/01-validate-taxpayer-tin.md">Validate Taxpayer TIN</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/02-submit-documents.md">Submit Documents</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/03-cancel-document.md">Cancel Document</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/04-reject-document.md">Reject Document</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/05-get-recent-documents.md">Get Recent Documents</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/06-get-submission.md">Get Submission</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/07-get-document.md">Get Document</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/08-get-document-details.md">Get Document Details</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/09-search-documents.md">Search Documents</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/10-search-taxpayer-tin.md">Search Taxpayer TIN</a>
-      <a href="#" class="nav-link" data-file="03-einvoice-api/11-qr-code.md">QR Code</a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/01-validate-taxpayer-tin.md"><span data-i18n="nav.link.validateTin">Validate Taxpayer TIN</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/02-submit-documents.md"><span data-i18n="nav.link.submitDocs">Submit Documents</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/03-cancel-document.md"><span data-i18n="nav.link.cancelDoc">Cancel Document</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/04-reject-document.md"><span data-i18n="nav.link.rejectDoc">Reject Document</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/05-get-recent-documents.md"><span data-i18n="nav.link.getRecent">Get Recent Documents</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/06-get-submission.md"><span data-i18n="nav.link.getSubmission">Get Submission</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/07-get-document.md"><span data-i18n="nav.link.getDoc">Get Document</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/08-get-document-details.md"><span data-i18n="nav.link.getDocDetails">Get Document Details</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/09-search-documents.md"><span data-i18n="nav.link.searchDocs">Search Documents</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/10-search-taxpayer-tin.md"><span data-i18n="nav.link.searchTin">Search Taxpayer TIN</span></a>
+      <a href="#" class="nav-link" data-file="03-einvoice-api/11-qr-code.md"><span data-i18n="nav.link.qrCode">QR Code</span></a>
     </div>
   </div>
 
-  <div class="nav-section"><div class="nav-section-title">Document Types</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.docs">Document Types</div></div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Invoice</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.invoice">Invoice</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/invoice-v1-0.md">Invoice v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/invoice-v1-1.md">Invoice v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/invoice-v1-0.md"><span data-i18n="nav.link.invV10">Invoice v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/invoice-v1-1.md"><span data-i18n="nav.link.invV11">Invoice v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Credit Note</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.creditNote">Credit Note</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/credit-note-v1-0.md">Credit Note v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/credit-note-v1-1.md">Credit Note v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/credit-note-v1-0.md"><span data-i18n="nav.link.cnV10">Credit Note v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/credit-note-v1-1.md"><span data-i18n="nav.link.cnV11">Credit Note v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Debit Note</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.debitNote">Debit Note</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/debit-note-v1-0.md">Debit Note v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/debit-note-v1-1.md">Debit Note v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/debit-note-v1-0.md"><span data-i18n="nav.link.dnV10">Debit Note v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/debit-note-v1-1.md"><span data-i18n="nav.link.dnV11">Debit Note v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Refund Note</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.refundNote">Refund Note</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/refund-note-v1-0.md">Refund Note v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/refund-note-v1-1.md">Refund Note v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/refund-note-v1-0.md"><span data-i18n="nav.link.rnV10">Refund Note v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/refund-note-v1-1.md"><span data-i18n="nav.link.rnV11">Refund Note v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Invoice</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.sbInvoice">Self-Billed Invoice</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-invoice-v1-0.md">Self-Billed Invoice v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-invoice-v1-1.md">Self-Billed Invoice v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-invoice-v1-0.md"><span data-i18n="nav.link.sbiV10">Self-Billed Invoice v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-invoice-v1-1.md"><span data-i18n="nav.link.sbiV11">Self-Billed Invoice v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Credit Note</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.sbCreditNote">Self-Billed Credit Note</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-credit-note-v1-0.md">Self-Billed Credit Note v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-credit-note-v1-1.md">Self-Billed Credit Note v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-credit-note-v1-0.md"><span data-i18n="nav.link.sbcnV10">Self-Billed Credit Note v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-credit-note-v1-1.md"><span data-i18n="nav.link.sbcnV11">Self-Billed Credit Note v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Debit Note</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.sbDebitNote">Self-Billed Debit Note</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-debit-note-v1-0.md">Self-Billed Debit Note v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-debit-note-v1-1.md">Self-Billed Debit Note v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-debit-note-v1-0.md"><span data-i18n="nav.link.sbdnV10">Self-Billed Debit Note v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-debit-note-v1-1.md"><span data-i18n="nav.link.sbdnV11">Self-Billed Debit Note v1.1</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Self-Billed Refund Note</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.sbRefundNote">Self-Billed Refund Note</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-refund-note-v1-0.md">Self-Billed Refund Note v1.0</a>
-      <a href="#" class="nav-link" data-file="04-document-types/self-billed-refund-note-v1-1.md">Self-Billed Refund Note v1.1</a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-refund-note-v1-0.md"><span data-i18n="nav.link.sbrnV10">Self-Billed Refund Note v1.0</span></a>
+      <a href="#" class="nav-link" data-file="04-document-types/self-billed-refund-note-v1-1.md"><span data-i18n="nav.link.sbrnV11">Self-Billed Refund Note v1.1</span></a>
     </div>
   </div>
 
-  <div class="nav-section"><div class="nav-section-title">Reference</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.ref">Reference</div></div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Code Tables</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.codeTables">Code Tables</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="05-code-tables/classification-codes.md">Classification Codes</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/country-codes.md">Country Codes</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/currency-codes.md">Currency Codes</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/e-invoice-types.md">e-Invoice Types</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/msic-codes.md">MSIC Codes</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/payment-methods.md">Payment Methods</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/state-codes.md">State Codes</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/tax-types.md">Tax Types</a>
-      <a href="#" class="nav-link" data-file="05-code-tables/unit-types.md">Unit Types</a>
+      <a href="#" class="nav-link" data-file="05-code-tables/classification-codes.md"><span data-i18n="nav.link.classCodes">Classification Codes</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/country-codes.md"><span data-i18n="nav.link.countryCodes">Country Codes</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/currency-codes.md"><span data-i18n="nav.link.currCodes">Currency Codes</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/e-invoice-types.md"><span data-i18n="nav.link.einvTypes">e-Invoice Types</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/msic-codes.md"><span data-i18n="nav.link.msicCodes">MSIC Codes</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/payment-methods.md"><span data-i18n="nav.link.payMethods">Payment Methods</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/state-codes.md"><span data-i18n="nav.link.stateCodes">State Codes</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/tax-types.md"><span data-i18n="nav.link.taxTypes">Tax Types</span></a>
+      <a href="#" class="nav-link" data-file="05-code-tables/unit-types.md"><span data-i18n="nav.link.unitTypes">Unit Types</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Digital Signature</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.signature">Digital Signature</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="06-signature/README.md">Signature Overview</a>
-      <a href="#" class="nav-link" data-file="06-signature/signature-creation-xml.md">Signature Creation (XML)</a>
-      <a href="#" class="nav-link" data-file="06-signature/signature-creation-json.md">Signature Creation (JSON)</a>
-      <a href="#" class="nav-link" data-file="06-signature/mathematical-mappings.md">Mathematical Mappings</a>
+      <a href="#" class="nav-link" data-file="06-signature/README.md"><span data-i18n="nav.link.sigOverview">Signature Overview</span></a>
+      <a href="#" class="nav-link" data-file="06-signature/signature-creation-xml.md"><span data-i18n="nav.link.sigXml">Signature Creation (XML)</span></a>
+      <a href="#" class="nav-link" data-file="06-signature/signature-creation-json.md"><span data-i18n="nav.link.sigJson">Signature Creation (JSON)</span></a>
+      <a href="#" class="nav-link" data-file="06-signature/mathematical-mappings.md"><span data-i18n="nav.link.mathMap">Mathematical Mappings</span></a>
     </div>
   </div>
   <a href="#" class="nav-top-link" data-file="07-validation/README.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-    Validation Rules
+    <span data-i18n="nav.link.valRules">Validation Rules</span>
   </a>
 
-  <div class="nav-section"><div class="nav-section-title">Resources</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.res">Resources</div></div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>FAQ</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.faq">FAQ</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="08-faq/README.md">SDK FAQ</a>
-      <a href="#" class="nav-link" data-file="08-faq/lhdnm-e-invoice-general-faqs.md">LHDN General FAQ</a>
+      <a href="#" class="nav-link" data-file="08-faq/README.md"><span data-i18n="nav.link.sdkFaq">SDK FAQ</span></a>
+      <a href="#" class="nav-link" data-file="08-faq/lhdnm-e-invoice-general-faqs.md"><span data-i18n="nav.link.lhdnFaq">LHDN General FAQ</span></a>
     </div>
   </div>
   <a href="#" class="nav-top-link" data-file="09-postman/README.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-    Postman Collection
+    <span data-i18n="nav.link.postman">Postman Collection</span>
   </a>
   <a href="#" class="nav-top-link" data-file="10-sample-documents/README.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
-    Sample Documents
+    <span data-i18n="nav.link.samples">Sample Documents</span>
   </a>
 
-  <div class="nav-section"><div class="nav-section-title">IRBM Guidelines (Markdown)</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.irbm">IRBM Guidelines (Markdown)</div></div>
   <a href="#" class="nav-top-link" data-file="11-irbm-specific-guideline/README.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-    Specific Guideline v4.8
+    <span data-i18n="nav.link.specGuideline">Specific Guideline v4.8</span>
   </a>
   <a href="#" class="nav-top-link" data-file="12-cookbook/irbm-general-guideline/README.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-    General Guideline v4.8
+    <span data-i18n="nav.link.genGuideline">General Guideline v4.8</span>
   </a>
 
-  <div class="nav-section"><div class="nav-section-title">Cookbook & Operations</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.cookbook">Cookbook &amp; Operations</div></div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Error Cookbook</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.errorCookbook">Error Cookbook</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="12-cookbook/01-http-status-codes.md">HTTP Status Codes</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/02-signature-errors.md">Signature Errors (DS300-DS338)</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/03-submission-errors.md">Submission Errors</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/04-rate-limits.md">Rate Limits</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/05-common-pitfalls.md">Common Pitfalls</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/06-field-validation-rules.md">Field Validation Rules</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/07-special-characters.md">Special Characters</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/01-http-status-codes.md"><span data-i18n="nav.link.httpCodes">HTTP Status Codes</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/02-signature-errors.md"><span data-i18n="nav.link.sigErrors">Signature Errors (DS300-DS338)</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/03-submission-errors.md"><span data-i18n="nav.link.subErrors">Submission Errors</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/04-rate-limits.md"><span data-i18n="nav.link.rateLimits">Rate Limits</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/05-common-pitfalls.md"><span data-i18n="nav.link.pitfalls">Common Pitfalls</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/06-field-validation-rules.md"><span data-i18n="nav.link.fieldRules">Field Validation Rules</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/07-special-characters.md"><span data-i18n="nav.link.specialChars">Special Characters</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Production Playbook</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.prodPlaybook">Production Playbook</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="12-cookbook/08-integration-antipatterns.md">Integration Anti-Patterns</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/09-duplicate-detection.md">Duplicate Detection</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/10-implementation-timeline.md">Implementation Timeline</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/11-digital-certificates.md">Digital Certificates</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/12-sandbox-setup.md">Sandbox Setup</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/13-required-fields-reference.md">Required Fields Reference</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/14-validation-status-lifecycle.md">Validation Status Lifecycle</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/15-production-readiness.md">Production Readiness</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/16-observability-and-operations.md">Observability & Operations</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/17-automated-update-checking.md">Automated Update Checking</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/18-api-curl-reference.md">API cURL Reference</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/19-real-world-lessons.md">Real-World Lessons (Hotel)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/08-integration-antipatterns.md"><span data-i18n="nav.link.antiPatterns">Integration Anti-Patterns</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/09-duplicate-detection.md"><span data-i18n="nav.link.dupDetect">Duplicate Detection</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/10-implementation-timeline.md"><span data-i18n="nav.link.timeline">Implementation Timeline</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/11-digital-certificates.md"><span data-i18n="nav.link.certs">Digital Certificates</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/12-sandbox-setup.md"><span data-i18n="nav.link.sandbox">Sandbox Setup</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/13-required-fields-reference.md"><span data-i18n="nav.link.reqFields">Required Fields Reference</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/14-validation-status-lifecycle.md"><span data-i18n="nav.link.valLifecycle">Validation Status Lifecycle</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/15-production-readiness.md"><span data-i18n="nav.link.prodReady">Production Readiness</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/16-observability-and-operations.md"><span data-i18n="nav.link.observability">Observability & Operations</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/17-automated-update-checking.md"><span data-i18n="nav.link.autoUpdate">Automated Update Checking</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/18-api-curl-reference.md"><span data-i18n="nav.link.curlRef">API cURL Reference</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/19-real-world-lessons.md"><span data-i18n="nav.link.realWorld">Real-World Lessons (Hotel)</span></a>
     </div>
   </div>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Community SDKs</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.communitySDKs">Community SDKs</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/README.md">SDK Comparison</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/01-klsheng-php-sdk.md">PHP SDK (klsheng)</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/02-mokth-csharp.md">C# SDK (mokth)</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/03-erpgulf-frappe.md">Python/Frappe (ERPGulf)</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/04-syukrandev-nodejs.md">Node.js SDK (syukranDev)</a>
-      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/05-pyhoon-b4x.md">B4X SDK (pyhoon)</a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/README.md"><span data-i18n="nav.link.sdkCompare">SDK Comparison</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/01-klsheng-php-sdk.md"><span data-i18n="nav.link.phpSdk">PHP SDK (klsheng)</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/02-mokth-csharp.md"><span data-i18n="nav.link.csharpSdk">C# SDK (mokth)</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/03-erpgulf-frappe.md"><span data-i18n="nav.link.pythonSdk">Python/Frappe (ERPGulf)</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/04-syukrandev-nodejs.md"><span data-i18n="nav.link.nodeSdk">Node.js SDK (syukranDev)</span></a>
+      <a href="#" class="nav-link" data-file="12-cookbook/community-sdks/05-pyhoon-b4x.md"><span data-i18n="nav.link.b4xSdk">B4X SDK (pyhoon)</span></a>
     </div>
   </div>
 
-  <div class="nav-section"><div class="nav-section-title">Meta</div></div>
+  <div class="nav-section"><div class="nav-section-title" data-i18n="nav.sec.meta">Meta</div></div>
   <a href="#" class="nav-top-link" data-file="contacts.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    Contacts
+    <span data-i18n="nav.link.contacts">Contacts</span>
   </a>
   <div class="nav-group">
-    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>Release Notes</button>
+    <button class="nav-group-toggle" aria-expanded="false" onclick="toggleGroup(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg><span data-i18n="nav.grp.releaseNotes">Release Notes</span></button>
     <div class="nav-group-items">
-      <a href="#" class="nav-link" data-file="release-notes/sdk-1-0.md">SDK 1.0</a>
-      <a href="#" class="nav-link" data-file="release-notes/sdk-beta.md">SDK Beta</a>
+      <a href="#" class="nav-link" data-file="release-notes/sdk-1-0.md"><span data-i18n="nav.link.sdk10">SDK 1.0</span></a>
+      <a href="#" class="nav-link" data-file="release-notes/sdk-beta.md"><span data-i18n="nav.link.sdkBeta">SDK Beta</span></a>
     </div>
   </div>
   <a href="#" class="nav-top-link" data-file="CHANGELOG.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Changelog
+    <span data-i18n="nav.link.changelog">Changelog</span>
   </a>
   <a href="#" class="nav-top-link" data-file="CONTRIBUTING.md" onclick="loadFile(this,event)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-    Contributing
+    <span data-i18n="nav.link.contributing">Contributing</span>
   </a>
   <div style="height:40px"></div>
 </aside>
@@ -588,86 +617,87 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
   <!-- ===== HOME ===== -->
   <div id="homePage">
     <div class="hero">
-      <h1>MyInvois Developer Documentation</h1>
-      <p>Community-maintained reference for Malaysia's LHDN e-Invoice system. APIs, digital certificates, SDKs, validation errors, and production playbooks in one place.</p>
+      <h1 data-i18n="hero.title">MyInvois Developer Documentation</h1>
+      <p data-i18n="hero.desc">Community-maintained reference for Malaysia's LHDN e-Invoice system. APIs, digital certificates, SDKs, validation errors, and production playbooks in one place.</p>
       <div class="hero-badges">
         <span class="hero-badge blue">93 markdown files</span>
         <span class="hero-badge green">Verified August 2026</span>
+        <span class="hero-badge blue" id="lastCheckedBadge" style="display:none"></span>
         <span class="hero-badge blue">Guideline v4.8</span>
       </div>
       <a class="sdk-banner" href="https://sdk.myinvois.hasil.gov.my/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        <span>Official <strong>MyInvois SDK Portal</strong> at sdk.myinvois.hasil.gov.my</span>
+        <span><span data-i18n="home.sdkBanner">Official <strong>MyInvois SDK Portal</strong> at sdk.myinvois.hasil.gov.my</span></span>
         <span class="arrow">→</span>
       </a>
     </div>
     <div class="content">
-      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Start here</h2>
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600" data-i18n="home.startHere">Start here</h2>
       <div class="quick-grid">
         <a class="quick-card" onclick="navigateTo('01-getting-started/overview.md',event)">
-          <h3><span class="icon">🚀</span> Getting Started</h3>
-          <p>Architecture overview, who's in scope, authentication model, and base URLs.</p>
+          <h3><span class="icon">🚀</span> <span data-i18n="card.start.t">Getting Started</span></h3>
+          <p><span data-i18n="card.start.d">Architecture overview, who's in scope, authentication model, and base URLs.</span></p>
         </a>
         <a class="quick-card" onclick="showGuidelines(event)">
-          <h3><span class="icon">📄</span> LHDN Guidelines (PDF)</h3>
-          <p>View and download the official e-Invoice Guideline v4.8 and Specific Guideline v4.8.</p>
+          <h3><span class="icon">📄</span> <span data-i18n="card.pdf.t">LHDN Guidelines (PDF)</span></h3>
+          <p><span data-i18n="card.pdf.d">View and download the official e-Invoice Guideline v4.8 and Specific Guideline v4.8.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('12-cookbook/12-sandbox-setup.md',event)">
-          <h3><span class="icon">🧪</span> Sandbox Setup</h3>
-          <p>Register on preprod, get credentials, and make your first API call.</p>
+          <h3><span class="icon">🧪</span> <span data-i18n="card.sandbox.t">Sandbox Setup</span></h3>
+          <p><span data-i18n="card.sandbox.d">Register on preprod, get credentials, and make your first API call.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('12-cookbook/11-digital-certificates.md',event)">
-          <h3><span class="icon">🔐</span> Digital Certificates</h3>
-          <p>Compare 4 certificate vendors: PosDigicert, MSC Trustgate, Rafftech, TM Applied.</p>
+          <h3><span class="icon">🔐</span> <span data-i18n="card.certs.t">Digital Certificates</span></h3>
+          <p><span data-i18n="card.certs.d">Compare 4 certificate vendors: PosDigicert, MSC Trustgate, Rafftech, TM Applied.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('03-einvoice-api/02-submit-documents.md',event)">
-          <h3><span class="icon">📨</span> Submit Documents API</h3>
-          <p>The core submission endpoint: request format, batch limits, response structure.</p>
+          <h3><span class="icon">📨</span> <span data-i18n="card.submit.t">Submit Documents API</span></h3>
+          <p><span data-i18n="card.submit.d">The core submission endpoint: request format, batch limits, response structure.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('06-signature/README.md',event)">
-          <h3><span class="icon">✍️</span> Digital Signature</h3>
-          <p>XAdES signature spec, creation guides for XML and JSON, certificate profile.</p>
+          <h3><span class="icon">✍️</span> <span data-i18n="card.sig.t">Digital Signature</span></h3>
+          <p><span data-i18n="card.sig.d">XAdES signature spec, creation guides for XML and JSON, certificate profile.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('12-cookbook/02-signature-errors.md',event)">
-          <h3><span class="icon">⚠️</span> Signature Errors</h3>
-          <p>Complete DS300 to DS338 table with remediation for every error code.</p>
+          <h3><span class="icon">⚠️</span> <span data-i18n="card.sigErr.t">Signature Errors</span></h3>
+          <p><span data-i18n="card.sigErr.d">Complete DS300 to DS338 table with remediation for every error code.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('12-cookbook/15-production-readiness.md',event)">
-          <h3><span class="icon">✅</span> Production Readiness</h3>
-          <p>130+ item checklist across 13 sections. Go live with confidence.</p>
+          <h3><span class="icon">✅</span> <span data-i18n="card.prod.t">Production Readiness</span></h3>
+          <p><span data-i18n="card.prod.d">130+ item checklist across 13 sections. Go live with confidence.</span></p>
         </a>
         <a class="quick-card" onclick="navigateTo('12-cookbook/community-sdks/README.md',event)">
-          <h3><span class="icon">📦</span> Community SDKs</h3>
-          <p>PHP, Node.js, Python, C#, and B4X compared side by side.</p>
+          <h3><span class="icon">📦</span> <span data-i18n="card.sdks.t">Community SDKs</span></h3>
+          <p><span data-i18n="card.sdks.d">PHP, Node.js, Python, C#, and B4X compared side by side.</span></p>
         </a>
       </div>
 
-      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Environment URLs</h2>
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600" data-i18n="home.envUrls">Environment URLs</h2>
       <table class="env-table">
-        <thead><tr><th></th><th>Production</th><th>Sandbox</th></tr></thead>
+        <thead><tr><th></th><th data-i18n="tbl.prod">Production</th><th data-i18n="tbl.sandbox">Sandbox</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:600">Portal</td><td><code>myinvois.hasil.gov.my</code></td><td><code>preprod.myinvois.hasil.gov.my</code></td></tr>
-          <tr><td style="font-weight:600">API base</td><td><code>api.myinvois.hasil.gov.my</code></td><td><code>preprod-api.myinvois.hasil.gov.my</code></td></tr>
-          <tr><td style="font-weight:600">Identity</td><td><code>api.myinvois.hasil.gov.my</code></td><td><code>preprod-api.myinvois.hasil.gov.my</code></td></tr>
+          <tr><td style="font-weight:600" data-i18n="tbl.portal">Portal</td><td><code>myinvois.hasil.gov.my</code></td><td><code>preprod.myinvois.hasil.gov.my</code></td></tr>
+          <tr><td style="font-weight:600" data-i18n="tbl.apiBase">API base</td><td><code>api.myinvois.hasil.gov.my</code></td><td><code>preprod-api.myinvois.hasil.gov.my</code></td></tr>
+          <tr><td style="font-weight:600" data-i18n="tbl.identity">Identity</td><td><code>api.myinvois.hasil.gov.my</code></td><td><code>preprod-api.myinvois.hasil.gov.my</code></td></tr>
         </tbody>
       </table>
 
-      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Troubleshooting quick links</h2>
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600" data-i18n="home.troubleshoot">Troubleshooting quick links</h2>
       <table class="env-table">
-        <thead><tr><th>You got this</th><th>Go to</th></tr></thead>
+        <thead><tr><th data-i18n="tbl.gotThis">You got this</th><th data-i18n="tbl.goTo">Go to</th></tr></thead>
         <tbody>
           <tr><td>HTTP 4xx / 5xx</td><td><a href="#" onclick="navigateTo('12-cookbook/01-http-status-codes.md',event)" style="color:var(--accent)">HTTP Status Codes</a></td></tr>
           <tr><td><code>DS3xx</code> error</td><td><a href="#" onclick="navigateTo('12-cookbook/02-signature-errors.md',event)" style="color:var(--accent)">Signature Errors</a></td></tr>
           <tr><td>Duplicate submission</td><td><a href="#" onclick="navigateTo('12-cookbook/09-duplicate-detection.md',event)" style="color:var(--accent)">Duplicate Detection</a></td></tr>
           <tr><td><code>Invalid Structure</code></td><td><a href="#" onclick="navigateTo('12-cookbook/03-submission-errors.md',event)" style="color:var(--accent)">Submission Errors</a></td></tr>
           <tr><td>HTTP 429</td><td><a href="#" onclick="navigateTo('12-cookbook/04-rate-limits.md',event)" style="color:var(--accent)">Rate Limits</a></td></tr>
-          <tr><td>Anything weird</td><td><a href="#" onclick="navigateTo('12-cookbook/05-common-pitfalls.md',event)" style="color:var(--accent)">Common Pitfalls</a></td></tr>
+          <tr><td data-i18n="tbl.weird">Anything weird</td><td><a href="#" onclick="navigateTo('12-cookbook/05-common-pitfalls.md',event)" style="color:var(--accent)">Common Pitfalls</a></td></tr>
         </tbody>
       </table>
 
-      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600">Official sources</h2>
+      <h2 style="font-size:1rem;margin:28px 0 12px;font-weight:600" data-i18n="home.official">Official sources</h2>
       <table class="env-table">
-        <thead><tr><th>Purpose</th><th>URL</th></tr></thead>
+        <thead><tr><th data-i18n="tbl.purpose">Purpose</th><th data-i18n="tbl.url">URL</th></tr></thead>
         <tbody>
           <tr><td>MyInvois SDK portal</td><td><a href="https://sdk.myinvois.hasil.gov.my/" target="_blank" style="color:var(--accent)">sdk.myinvois.hasil.gov.my</a></td></tr>
           <tr><td>IRBM e-Invoice microsite</td><td><a href="https://www.hasil.gov.my/en/e-invoice/" target="_blank" style="color:var(--accent)">hasil.gov.my/en/e-invoice</a></td></tr>
@@ -677,7 +707,7 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
       </table>
 
       <div style="margin-top:32px;padding:16px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:var(--radius);font-size:.84rem;color:var(--text-2)">
-        <strong style="color:var(--text)">⚠️ Not an official LHDN publication.</strong> For authoritative guidance always consult
+        <strong style="color:var(--text)">⚠️ <span data-i18n="home.warning">Not an official LHDN publication.</span></strong> For authoritative guidance always consult
         <a href="https://sdk.myinvois.hasil.gov.my/" target="_blank" style="color:var(--accent)">sdk.myinvois.hasil.gov.my</a> and the
         <a href="https://www.hasil.gov.my/en/e-invoice/" target="_blank" style="color:var(--accent)">IRBM e-Invoice microsite</a>.
       </div>
@@ -687,7 +717,7 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
   <!-- ===== GUIDELINES/PDF PAGE ===== -->
   <div id="guidelinesPage" style="display:none">
     <div class="pdf-viewer-section">
-      <h1 style="font-size:1.4rem;font-weight:700;margin-bottom:4px;letter-spacing:-.02em">LHDN e-Invoice Guidelines</h1>
+      <h1 style="font-size:1.4rem;font-weight:700;margin-bottom:4px;letter-spacing:-.02em"data-i18n="pdf.title">LHDN e-Invoice Guidelines</h1>
       <p style="color:var(--text-2);font-size:.88rem;margin-bottom:20px">
         Official IRBM e-Invoicing guidelines. Download the PDFs or read them right here.
       </p>
@@ -702,8 +732,8 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
         <div class="pdf-card">
           <div class="pdf-card-icon">PDF</div>
           <div class="pdf-card-info">
-            <h3>e-Invoice Guideline v4.8</h3>
-            <p>General guideline covering overall e-Invoice workflow, portal usage, API integration, document lifecycle, and compliance requirements. Published 30 August 2026.</p>
+            <h3 data-i18n="pdf.general.title">e-Invoice Guideline v4.8</h3>
+            <p><span data-i18n="pdf.general.desc">General guideline covering overall e-Invoice workflow, portal usage, API integration, document lifecycle, and compliance requirements. Published 30 August 2026.</span></p>
             <div class="pdf-card-actions">
               <a class="pdf-btn-dl pdf-btn-primary" href="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Guideline.pdf" target="_blank">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -719,8 +749,8 @@ body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:
         <div class="pdf-card">
           <div class="pdf-card-icon">PDF</div>
           <div class="pdf-card-info">
-            <h3>e-Invoice Specific Guideline v4.8</h3>
-            <p>Detailed scenarios: cross-border transactions, self-billed invoices, e-commerce, employment perquisites, foreign income, SVDP, and appendices. Published 7 July 2026.</p>
+            <h3 data-i18n="pdf.specific.title">e-Invoice Specific Guideline v4.8</h3>
+            <p><span data-i18n="pdf.specific.desc">Detailed scenarios: cross-border transactions, self-billed invoices, e-commerce, employment perquisites, foreign income, SVDP, and appendices. Published 7 July 2026.</span></p>
             <div class="pdf-card-actions">
               <a class="pdf-btn-dl pdf-btn-primary" href="https://www.hasil.gov.my/wp-content/uploads/IRBM-e-Invoice-Specific-Guideline.pdf" target="_blank">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -1152,22 +1182,158 @@ window.addEventListener('hashchange',handleHash);
     const status=await r.json();
     const files=Object.keys(status);
     if(!files.length)return;
-    // Find the most recent check and update dates
     let lastChecked='',lastUpdated='';
     files.forEach(f=>{
       const s=status[f];
       if(s.last_checked>lastChecked)lastChecked=s.last_checked;
       if(s.updated>lastUpdated)lastUpdated=s.updated;
     });
-    const fmtDate=d=>{try{return new Date(d).toLocaleDateString('en-MY',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kuala_Lumpur'})}catch(e){return d}};
+    const fmtDate=(d,short)=>{try{
+      const opts=short?{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Kuala_Lumpur'}:{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Kuala_Lumpur'};
+      return new Date(d).toLocaleDateString('en-MY',opts);
+    }catch(e){return d}};
+    // Guidelines page box
     const box=document.getElementById('pdfStatusBox');
     const txt=document.getElementById('pdfStatusText');
     if(box&&txt){
       box.style.display='';
-      txt.innerHTML=`Last checked: <strong>${fmtDate(lastChecked)}</strong> MYT. Last PDF content change: <strong>${fmtDate(lastUpdated)}</strong> MYT.`;
+      txt.innerHTML=`Last checked: <strong>${fmtDate(lastChecked)}</strong> MYT. Last content change: <strong>${fmtDate(lastUpdated)}</strong> MYT.`;
     }
+    // Home page badge
+    const badge=document.getElementById('lastCheckedBadge');
+    if(badge){badge.style.display='';badge.textContent='PDFs checked '+fmtDate(lastChecked,true);}
   }catch(e){}
 })();
+
+// ===== INTERNATIONALIZATION =====
+const T = {
+  en: {
+    'nav.home':'Home','nav.guidelines':'LHDN Guidelines (PDF)',
+    'nav.sec.start':'Getting Started','nav.sec.api':'API Reference','nav.sec.docs':'Document Types',
+    'nav.sec.ref':'Reference','nav.sec.res':'Resources','nav.sec.irbm':'IRBM Guidelines (Markdown)',
+    'nav.sec.cookbook':'Cookbook & Operations','nav.sec.meta':'Meta',
+    'nav.grp.intro':'Introduction','nav.grp.platformApi':'Platform API','nav.grp.einvoiceApi':'e-Invoice API',
+    'nav.grp.invoice':'Invoice','nav.grp.creditNote':'Credit Note','nav.grp.debitNote':'Debit Note',
+    'nav.grp.refundNote':'Refund Note','nav.grp.sbInvoice':'Self-Billed Invoice',
+    'nav.grp.sbCreditNote':'Self-Billed Credit Note','nav.grp.sbDebitNote':'Self-Billed Debit Note',
+    'nav.grp.sbRefundNote':'Self-Billed Refund Note','nav.grp.codeTables':'Code Tables',
+    'nav.grp.signature':'Digital Signature','nav.grp.faq':'FAQ','nav.grp.errorCookbook':'Error Cookbook',
+    'nav.grp.prodPlaybook':'Production Playbook','nav.grp.communitySDKs':'Community SDKs','nav.grp.releaseNotes':'Release Notes',
+    'nav.link.overview':'Overview','nav.link.stdHeaders':'Standard Headers','nav.link.errorResp':'Error Responses','nav.link.intPractices':'Integration Practices',
+    'nav.link.loginTaxpayer':'Login as Taxpayer','nav.link.loginIntermediary':'Login as Intermediary','nav.link.getAllDocTypes':'Get All Document Types','nav.link.getDocType':'Get Document Type','nav.link.getDocTypeVer':'Get Document Type Version','nav.link.getNotif':'Get Notifications',
+    'nav.link.validateTin':'Validate Taxpayer TIN','nav.link.submitDocs':'Submit Documents','nav.link.cancelDoc':'Cancel Document','nav.link.rejectDoc':'Reject Document','nav.link.getRecent':'Get Recent Documents','nav.link.getSubmission':'Get Submission','nav.link.getDoc':'Get Document','nav.link.getDocDetails':'Get Document Details','nav.link.searchDocs':'Search Documents','nav.link.searchTin':'Search Taxpayer TIN','nav.link.qrCode':'QR Code',
+    'nav.link.invV10':'Invoice v1.0','nav.link.invV11':'Invoice v1.1','nav.link.cnV10':'Credit Note v1.0','nav.link.cnV11':'Credit Note v1.1','nav.link.dnV10':'Debit Note v1.0','nav.link.dnV11':'Debit Note v1.1','nav.link.rnV10':'Refund Note v1.0','nav.link.rnV11':'Refund Note v1.1',
+    'nav.link.sbiV10':'Self-Billed Invoice v1.0','nav.link.sbiV11':'Self-Billed Invoice v1.1','nav.link.sbcnV10':'Self-Billed Credit Note v1.0','nav.link.sbcnV11':'Self-Billed Credit Note v1.1','nav.link.sbdnV10':'Self-Billed Debit Note v1.0','nav.link.sbdnV11':'Self-Billed Debit Note v1.1','nav.link.sbrnV10':'Self-Billed Refund Note v1.0','nav.link.sbrnV11':'Self-Billed Refund Note v1.1',
+    'nav.link.classCodes':'Classification Codes','nav.link.countryCodes':'Country Codes','nav.link.currCodes':'Currency Codes','nav.link.einvTypes':'e-Invoice Types','nav.link.msicCodes':'MSIC Codes','nav.link.payMethods':'Payment Methods','nav.link.stateCodes':'State Codes','nav.link.taxTypes':'Tax Types','nav.link.unitTypes':'Unit Types',
+    'nav.link.sigOverview':'Signature Overview','nav.link.sigXml':'Signature Creation (XML)','nav.link.sigJson':'Signature Creation (JSON)','nav.link.mathMap':'Mathematical Mappings',
+    'nav.link.valRules':'Validation Rules','nav.link.sdkFaq':'SDK FAQ','nav.link.lhdnFaq':'LHDN General FAQ','nav.link.postman':'Postman Collection','nav.link.samples':'Sample Documents','nav.link.specGuideline':'Specific Guideline v4.8','nav.link.genGuideline':'General Guideline v4.8',
+    'nav.link.httpCodes':'HTTP Status Codes','nav.link.sigErrors':'Signature Errors (DS300-DS338)','nav.link.subErrors':'Submission Errors','nav.link.rateLimits':'Rate Limits','nav.link.pitfalls':'Common Pitfalls','nav.link.fieldRules':'Field Validation Rules','nav.link.specialChars':'Special Characters','nav.link.antiPatterns':'Integration Anti-Patterns','nav.link.dupDetect':'Duplicate Detection','nav.link.timeline':'Implementation Timeline','nav.link.certs':'Digital Certificates','nav.link.sandbox':'Sandbox Setup','nav.link.reqFields':'Required Fields Reference','nav.link.valLifecycle':'Validation Status Lifecycle','nav.link.prodReady':'Production Readiness','nav.link.observability':'Observability & Operations','nav.link.autoUpdate':'Automated Update Checking','nav.link.curlRef':'API cURL Reference','nav.link.realWorld':'Real-World Lessons (Hotel)',
+    'nav.link.sdkCompare':'SDK Comparison','nav.link.phpSdk':'PHP SDK (klsheng)','nav.link.csharpSdk':'C# SDK (mokth)','nav.link.pythonSdk':'Python/Frappe (ERPGulf)','nav.link.nodeSdk':'Node.js SDK (syukranDev)','nav.link.b4xSdk':'B4X SDK (pyhoon)','nav.link.contacts':'Contacts','nav.link.sdk10':'SDK 1.0','nav.link.sdkBeta':'SDK Beta','nav.link.changelog':'Changelog','nav.link.contributing':'Contributing',
+    'hero.title':'MyInvois Developer Documentation','hero.desc':'Community-maintained reference for Malaysia\'s LHDN e-Invoice system. APIs, digital certificates, SDKs, validation errors, and production playbooks in one place.',
+    'home.startHere':'Start here','home.envUrls':'Environment URLs','home.troubleshoot':'Troubleshooting quick links','home.official':'Official sources','home.warning':'Not an official LHDN publication.','home.sdkBanner':'Official <strong>MyInvois SDK Portal</strong> at sdk.myinvois.hasil.gov.my',
+    'card.start.t':'Getting Started','card.start.d':'Architecture overview, who\'s in scope, authentication model, and base URLs.','card.pdf.t':'LHDN Guidelines (PDF)','card.pdf.d':'View and download the official e-Invoice Guideline v4.8 and Specific Guideline v4.8.','card.sandbox.t':'Sandbox Setup','card.sandbox.d':'Register on preprod, get credentials, and make your first API call.','card.certs.t':'Digital Certificates','card.certs.d':'Compare 4 certificate vendors: PosDigicert, MSC Trustgate, Rafftech, TM Applied.','card.submit.t':'Submit Documents API','card.submit.d':'The core submission endpoint: request format, batch limits, response structure.','card.sig.t':'Digital Signature','card.sig.d':'XAdES signature spec, creation guides for XML and JSON, certificate profile.','card.sigErr.t':'Signature Errors','card.sigErr.d':'Complete DS300 to DS338 table with remediation for every error code.','card.prod.t':'Production Readiness','card.prod.d':'130+ item checklist across 13 sections. Go live with confidence.','card.sdks.t':'Community SDKs','card.sdks.d':'PHP, Node.js, Python, C#, and B4X compared side by side.',
+    'tbl.prod':'Production','tbl.sandbox':'Sandbox','tbl.portal':'Portal','tbl.apiBase':'API base','tbl.identity':'Identity','tbl.gotThis':'You got this','tbl.goTo':'Go to','tbl.purpose':'Purpose','tbl.url':'URL','tbl.weird':'Anything weird',
+    'pdf.title':'LHDN e-Invoice Guidelines','pdf.desc':'Official IRBM e-Invoicing guidelines. Download the PDFs or read them right here.','pdf.general.title':'e-Invoice Guideline v4.8','pdf.specific.title':'e-Invoice Specific Guideline v4.8','pdf.general.desc':'General guideline covering overall e-Invoice workflow, portal usage, API integration, document lifecycle, and compliance requirements. Published 30 August 2026.','pdf.specific.desc':'Detailed scenarios: cross-border transactions, self-billed invoices, e-commerce, employment perquisites, foreign income, SVDP, and appendices. Published 7 July 2026.','pdf.download':'Download PDF','pdf.viewInline':'View inline',
+    'doc.edit':'Edit this page on GitHub','search.placeholder':'Search documentation...','search.modalPlaceholder':'Search all documentation...','search.empty':'Type to search across all documentation','search.noResults':'No results found','loading':'Loading...',
+  },
+  ms: {
+    'nav.home':'Laman Utama','nav.guidelines':'Garis Panduan LHDN (PDF)',
+    'nav.sec.start':'Bermula','nav.sec.api':'Rujukan API','nav.sec.docs':'Jenis Dokumen','nav.sec.ref':'Rujukan','nav.sec.res':'Sumber','nav.sec.irbm':'Garis Panduan IRBM (Markdown)','nav.sec.cookbook':'Buku Panduan & Operasi','nav.sec.meta':'Meta',
+    'nav.grp.intro':'Pengenalan','nav.grp.platformApi':'API Platform','nav.grp.einvoiceApi':'API e-Invois','nav.grp.invoice':'Invois','nav.grp.creditNote':'Nota Kredit','nav.grp.debitNote':'Nota Debit','nav.grp.refundNote':'Nota Bayaran Balik','nav.grp.sbInvoice':'Invois Bil Sendiri','nav.grp.sbCreditNote':'Nota Kredit Bil Sendiri','nav.grp.sbDebitNote':'Nota Debit Bil Sendiri','nav.grp.sbRefundNote':'Nota Bayaran Balik Bil Sendiri','nav.grp.codeTables':'Jadual Kod','nav.grp.signature':'Tandatangan Digital','nav.grp.faq':'Soalan Lazim','nav.grp.errorCookbook':'Panduan Ralat','nav.grp.prodPlaybook':'Panduan Pengeluaran','nav.grp.communitySDKs':'SDK Komuniti','nav.grp.releaseNotes':'Nota Keluaran',
+    'nav.link.overview':'Gambaran Keseluruhan','nav.link.stdHeaders':'Pengepala Piawai','nav.link.errorResp':'Respons Ralat','nav.link.intPractices':'Amalan Integrasi',
+    'nav.link.loginTaxpayer':'Log Masuk Pembayar Cukai','nav.link.loginIntermediary':'Log Masuk Perantara','nav.link.getAllDocTypes':'Dapatkan Semua Jenis Dokumen','nav.link.getDocType':'Dapatkan Jenis Dokumen','nav.link.getDocTypeVer':'Dapatkan Versi Jenis Dokumen','nav.link.getNotif':'Dapatkan Pemberitahuan',
+    'nav.link.validateTin':'Sahkan TIN Pembayar Cukai','nav.link.submitDocs':'Hantar Dokumen','nav.link.cancelDoc':'Batal Dokumen','nav.link.rejectDoc':'Tolak Dokumen','nav.link.getRecent':'Dapatkan Dokumen Terkini','nav.link.getSubmission':'Dapatkan Penyerahan','nav.link.getDoc':'Dapatkan Dokumen','nav.link.getDocDetails':'Dapatkan Butiran Dokumen','nav.link.searchDocs':'Cari Dokumen','nav.link.searchTin':'Cari TIN Pembayar Cukai','nav.link.qrCode':'Kod QR',
+    'nav.link.invV10':'Invois v1.0','nav.link.invV11':'Invois v1.1','nav.link.cnV10':'Nota Kredit v1.0','nav.link.cnV11':'Nota Kredit v1.1','nav.link.dnV10':'Nota Debit v1.0','nav.link.dnV11':'Nota Debit v1.1','nav.link.rnV10':'Nota Bayaran Balik v1.0','nav.link.rnV11':'Nota Bayaran Balik v1.1',
+    'nav.link.sbiV10':'Invois Bil Sendiri v1.0','nav.link.sbiV11':'Invois Bil Sendiri v1.1','nav.link.sbcnV10':'Nota Kredit Bil Sendiri v1.0','nav.link.sbcnV11':'Nota Kredit Bil Sendiri v1.1','nav.link.sbdnV10':'Nota Debit Bil Sendiri v1.0','nav.link.sbdnV11':'Nota Debit Bil Sendiri v1.1','nav.link.sbrnV10':'Nota Bayaran Balik Bil Sendiri v1.0','nav.link.sbrnV11':'Nota Bayaran Balik Bil Sendiri v1.1',
+    'nav.link.classCodes':'Kod Pengelasan','nav.link.countryCodes':'Kod Negara','nav.link.currCodes':'Kod Mata Wang','nav.link.einvTypes':'Jenis e-Invois','nav.link.msicCodes':'Kod MSIC','nav.link.payMethods':'Kaedah Pembayaran','nav.link.stateCodes':'Kod Negeri','nav.link.taxTypes':'Jenis Cukai','nav.link.unitTypes':'Jenis Unit',
+    'nav.link.sigOverview':'Gambaran Tandatangan','nav.link.sigXml':'Penciptaan Tandatangan (XML)','nav.link.sigJson':'Penciptaan Tandatangan (JSON)','nav.link.mathMap':'Pemetaan Matematik',
+    'nav.link.valRules':'Peraturan Pengesahan','nav.link.sdkFaq':'Soalan Lazim SDK','nav.link.lhdnFaq':'Soalan Lazim Am LHDN','nav.link.postman':'Koleksi Postman','nav.link.samples':'Dokumen Contoh','nav.link.specGuideline':'Garis Panduan Spesifik v4.8','nav.link.genGuideline':'Garis Panduan Am v4.8',
+    'nav.link.httpCodes':'Kod Status HTTP','nav.link.sigErrors':'Ralat Tandatangan (DS300-DS338)','nav.link.subErrors':'Ralat Penyerahan','nav.link.rateLimits':'Had Kadar','nav.link.pitfalls':'Perangkap Biasa','nav.link.fieldRules':'Peraturan Pengesahan Medan','nav.link.specialChars':'Aksara Khas','nav.link.antiPatterns':'Anti-Corak Integrasi','nav.link.dupDetect':'Pengesanan Pendua','nav.link.timeline':'Garis Masa Pelaksanaan','nav.link.certs':'Sijil Digital','nav.link.sandbox':'Persediaan Sandbox','nav.link.reqFields':'Rujukan Medan Wajib','nav.link.valLifecycle':'Kitaran Hayat Status Pengesahan','nav.link.prodReady':'Kesediaan Pengeluaran','nav.link.observability':'Pemerhatian & Operasi','nav.link.autoUpdate':'Semakan Kemas Kini Automatik','nav.link.curlRef':'Rujukan cURL API','nav.link.realWorld':'Pengajaran Dunia Sebenar (Hotel)',
+    'nav.link.sdkCompare':'Perbandingan SDK','nav.link.phpSdk':'SDK PHP (klsheng)','nav.link.csharpSdk':'SDK C# (mokth)','nav.link.pythonSdk':'Python/Frappe (ERPGulf)','nav.link.nodeSdk':'SDK Node.js (syukranDev)','nav.link.b4xSdk':'SDK B4X (pyhoon)','nav.link.contacts':'Kenalan','nav.link.sdk10':'SDK 1.0','nav.link.sdkBeta':'SDK Beta','nav.link.changelog':'Log Perubahan','nav.link.contributing':'Sumbangan',
+    'hero.title':'Dokumentasi Pembangun MyInvois','hero.desc':'Rujukan yang diselenggara oleh komuniti untuk sistem e-Invois LHDN Malaysia. API, sijil digital, SDK, ralat pengesahan, dan panduan pengeluaran di satu tempat.',
+    'home.startHere':'Mula di sini','home.envUrls':'URL Persekitaran','home.troubleshoot':'Pautan pantas penyelesaian masalah','home.official':'Sumber rasmi','home.warning':'Ini bukan penerbitan rasmi LHDN.','home.sdkBanner':'Portal rasmi <strong>MyInvois SDK</strong> di sdk.myinvois.hasil.gov.my',
+    'card.start.t':'Bermula','card.start.d':'Gambaran seni bina, skop, model pengesahan, dan URL asas.','card.pdf.t':'Garis Panduan LHDN (PDF)','card.pdf.d':'Lihat dan muat turun Garis Panduan e-Invois v4.8 dan Garis Panduan Spesifik v4.8.','card.sandbox.t':'Persediaan Sandbox','card.sandbox.d':'Daftar di preprod, dapatkan kelayakan, dan buat panggilan API pertama.','card.certs.t':'Sijil Digital','card.certs.d':'Bandingkan 4 pembekal sijil: PosDigicert, MSC Trustgate, Rafftech, TM Applied.','card.submit.t':'API Hantar Dokumen','card.submit.d':'Titik akhir penyerahan teras: format permintaan, had kelompok, struktur respons.','card.sig.t':'Tandatangan Digital','card.sig.d':'Spesifikasi tandatangan XAdES, panduan penciptaan untuk XML dan JSON, profil sijil.','card.sigErr.t':'Ralat Tandatangan','card.sigErr.d':'Jadual lengkap DS300 hingga DS338 dengan pemulihan untuk setiap kod ralat.','card.prod.t':'Kesediaan Pengeluaran','card.prod.d':'Senarai semak 130+ item merentasi 13 bahagian. Lancar dengan yakin.','card.sdks.t':'SDK Komuniti','card.sdks.d':'PHP, Node.js, Python, C#, dan B4X dibandingkan sebelah menyebelah.',
+    'tbl.prod':'Pengeluaran','tbl.sandbox':'Sandbox','tbl.portal':'Portal','tbl.apiBase':'Pangkalan API','tbl.identity':'Identiti','tbl.gotThis':'Anda dapat ini','tbl.goTo':'Pergi ke','tbl.purpose':'Tujuan','tbl.url':'URL','tbl.weird':'Sesuatu yang pelik',
+    'pdf.title':'Garis Panduan e-Invois LHDN','pdf.desc':'Garis panduan rasmi e-Invois IRBM. Muat turun PDF atau baca terus di sini.','pdf.general.title':'Garis Panduan e-Invois v4.8','pdf.specific.title':'Garis Panduan Spesifik e-Invois v4.8','pdf.general.desc':'Garis panduan am merangkumi aliran kerja e-Invois, penggunaan portal, integrasi API, kitaran hayat dokumen, dan keperluan pematuhan. Diterbitkan 30 Ogos 2026.','pdf.specific.desc':'Senario terperinci: transaksi rentas sempadan, invois bil sendiri, e-dagang, manfaat pekerjaan, pendapatan luar negara, SVDP, dan lampiran. Diterbitkan 7 Julai 2026.','pdf.download':'Muat turun PDF','pdf.viewInline':'Papar dalam halaman',
+    'doc.edit':'Sunting halaman ini di GitHub','search.placeholder':'Cari dokumentasi...','search.modalPlaceholder':'Cari semua dokumentasi...','search.empty':'Taip untuk mencari seluruh dokumentasi','search.noResults':'Tiada hasil ditemui','loading':'Memuatkan...',
+  },
+  id: {
+    'nav.home':'Beranda','nav.guidelines':'Pedoman LHDN (PDF)',
+    'nav.sec.start':'Mulai di Sini','nav.sec.api':'Referensi API','nav.sec.docs':'Tipe Dokumen','nav.sec.ref':'Referensi','nav.sec.res':'Sumber Daya','nav.sec.irbm':'Pedoman IRBM (Markdown)','nav.sec.cookbook':'Buku Panduan & Operasional','nav.sec.meta':'Meta',
+    'nav.grp.intro':'Pendahuluan','nav.grp.platformApi':'API Platform','nav.grp.einvoiceApi':'API e-Invoice','nav.grp.invoice':'Faktur','nav.grp.creditNote':'Nota Kredit','nav.grp.debitNote':'Nota Debit','nav.grp.refundNote':'Nota Pengembalian','nav.grp.sbInvoice':'Faktur Tagihan Sendiri','nav.grp.sbCreditNote':'Nota Kredit Tagihan Sendiri','nav.grp.sbDebitNote':'Nota Debit Tagihan Sendiri','nav.grp.sbRefundNote':'Nota Pengembalian Tagihan Sendiri','nav.grp.codeTables':'Tabel Kode','nav.grp.signature':'Tanda Tangan Digital','nav.grp.faq':'FAQ','nav.grp.errorCookbook':'Panduan Error','nav.grp.prodPlaybook':'Panduan Produksi','nav.grp.communitySDKs':'SDK Komunitas','nav.grp.releaseNotes':'Catatan Rilis',
+    'nav.link.overview':'Gambaran Umum','nav.link.stdHeaders':'Header Standar','nav.link.errorResp':'Respons Error','nav.link.intPractices':'Praktik Integrasi',
+    'nav.link.loginTaxpayer':'Masuk sebagai Wajib Pajak','nav.link.loginIntermediary':'Masuk sebagai Perantara','nav.link.getAllDocTypes':'Dapatkan Semua Tipe Dokumen','nav.link.getDocType':'Dapatkan Tipe Dokumen','nav.link.getDocTypeVer':'Dapatkan Versi Tipe Dokumen','nav.link.getNotif':'Dapatkan Notifikasi',
+    'nav.link.validateTin':'Validasi TIN Wajib Pajak','nav.link.submitDocs':'Kirim Dokumen','nav.link.cancelDoc':'Batalkan Dokumen','nav.link.rejectDoc':'Tolak Dokumen','nav.link.getRecent':'Dapatkan Dokumen Terbaru','nav.link.getSubmission':'Dapatkan Pengiriman','nav.link.getDoc':'Dapatkan Dokumen','nav.link.getDocDetails':'Dapatkan Detail Dokumen','nav.link.searchDocs':'Cari Dokumen','nav.link.searchTin':'Cari TIN Wajib Pajak','nav.link.qrCode':'Kode QR',
+    'nav.link.invV10':'Faktur v1.0','nav.link.invV11':'Faktur v1.1','nav.link.cnV10':'Nota Kredit v1.0','nav.link.cnV11':'Nota Kredit v1.1','nav.link.dnV10':'Nota Debit v1.0','nav.link.dnV11':'Nota Debit v1.1','nav.link.rnV10':'Nota Pengembalian v1.0','nav.link.rnV11':'Nota Pengembalian v1.1',
+    'nav.link.sbiV10':'Faktur Tagihan Sendiri v1.0','nav.link.sbiV11':'Faktur Tagihan Sendiri v1.1','nav.link.sbcnV10':'Nota Kredit Tagihan Sendiri v1.0','nav.link.sbcnV11':'Nota Kredit Tagihan Sendiri v1.1','nav.link.sbdnV10':'Nota Debit Tagihan Sendiri v1.0','nav.link.sbdnV11':'Nota Debit Tagihan Sendiri v1.1','nav.link.sbrnV10':'Nota Pengembalian Tagihan Sendiri v1.0','nav.link.sbrnV11':'Nota Pengembalian Tagihan Sendiri v1.1',
+    'nav.link.classCodes':'Kode Klasifikasi','nav.link.countryCodes':'Kode Negara','nav.link.currCodes':'Kode Mata Uang','nav.link.einvTypes':'Tipe e-Invoice','nav.link.msicCodes':'Kode MSIC','nav.link.payMethods':'Metode Pembayaran','nav.link.stateCodes':'Kode Negara Bagian','nav.link.taxTypes':'Jenis Pajak','nav.link.unitTypes':'Jenis Unit',
+    'nav.link.sigOverview':'Gambaran Tanda Tangan','nav.link.sigXml':'Pembuatan Tanda Tangan (XML)','nav.link.sigJson':'Pembuatan Tanda Tangan (JSON)','nav.link.mathMap':'Pemetaan Matematis',
+    'nav.link.valRules':'Aturan Validasi','nav.link.sdkFaq':'FAQ SDK','nav.link.lhdnFaq':'FAQ Umum LHDN','nav.link.postman':'Koleksi Postman','nav.link.samples':'Dokumen Contoh','nav.link.specGuideline':'Pedoman Spesifik v4.8','nav.link.genGuideline':'Pedoman Umum v4.8',
+    'nav.link.httpCodes':'Kode Status HTTP','nav.link.sigErrors':'Error Tanda Tangan (DS300-DS338)','nav.link.subErrors':'Error Pengiriman','nav.link.rateLimits':'Batas Laju','nav.link.pitfalls':'Kesalahan Umum','nav.link.fieldRules':'Aturan Validasi Field','nav.link.specialChars':'Karakter Khusus','nav.link.antiPatterns':'Anti-Pola Integrasi','nav.link.dupDetect':'Deteksi Duplikat','nav.link.timeline':'Jadwal Implementasi','nav.link.certs':'Sertifikat Digital','nav.link.sandbox':'Pengaturan Sandbox','nav.link.reqFields':'Referensi Field Wajib','nav.link.valLifecycle':'Siklus Status Validasi','nav.link.prodReady':'Kesiapan Produksi','nav.link.observability':'Observabilitas & Operasional','nav.link.autoUpdate':'Pengecekan Pembaruan Otomatis','nav.link.curlRef':'Referensi cURL API','nav.link.realWorld':'Pelajaran Dunia Nyata (Hotel)',
+    'nav.link.sdkCompare':'Perbandingan SDK','nav.link.phpSdk':'SDK PHP (klsheng)','nav.link.csharpSdk':'SDK C# (mokth)','nav.link.pythonSdk':'Python/Frappe (ERPGulf)','nav.link.nodeSdk':'SDK Node.js (syukranDev)','nav.link.b4xSdk':'SDK B4X (pyhoon)','nav.link.contacts':'Kontak','nav.link.sdk10':'SDK 1.0','nav.link.sdkBeta':'SDK Beta','nav.link.changelog':'Log Perubahan','nav.link.contributing':'Kontribusi',
+    'hero.title':'Dokumentasi Developer MyInvois','hero.desc':'Referensi yang dikelola komunitas untuk sistem e-Invoice LHDN Malaysia. API, sertifikat digital, SDK, error validasi, dan panduan produksi dalam satu tempat.',
+    'home.startHere':'Mulai di sini','home.envUrls':'URL Lingkungan','home.troubleshoot':'Tautan cepat pemecahan masalah','home.official':'Sumber resmi','home.warning':'Ini bukan publikasi resmi LHDN.','home.sdkBanner':'Portal resmi <strong>MyInvois SDK</strong> di sdk.myinvois.hasil.gov.my',
+    'card.start.t':'Mulai di Sini','card.start.d':'Gambaran arsitektur, ruang lingkup, model autentikasi, dan URL dasar.','card.pdf.t':'Pedoman LHDN (PDF)','card.pdf.d':'Lihat dan unduh Pedoman e-Invoice v4.8 dan Pedoman Spesifik v4.8.','card.sandbox.t':'Pengaturan Sandbox','card.sandbox.d':'Daftar di preprod, dapatkan kredensial, dan lakukan panggilan API pertama.','card.certs.t':'Sertifikat Digital','card.certs.d':'Bandingkan 4 vendor sertifikat: PosDigicert, MSC Trustgate, Rafftech, TM Applied.','card.submit.t':'API Kirim Dokumen','card.submit.d':'Endpoint pengiriman inti: format permintaan, batas batch, struktur respons.','card.sig.t':'Tanda Tangan Digital','card.sig.d':'Spesifikasi tanda tangan XAdES, panduan pembuatan untuk XML dan JSON, profil sertifikat.','card.sigErr.t':'Error Tanda Tangan','card.sigErr.d':'Tabel lengkap DS300 sampai DS338 dengan solusi untuk setiap kode error.','card.prod.t':'Kesiapan Produksi','card.prod.d':'Daftar periksa 130+ item di 13 bagian. Go live dengan percaya diri.','card.sdks.t':'SDK Komunitas','card.sdks.d':'PHP, Node.js, Python, C#, dan B4X dibandingkan secara berdampingan.',
+    'tbl.prod':'Produksi','tbl.sandbox':'Sandbox','tbl.portal':'Portal','tbl.apiBase':'Base API','tbl.identity':'Identitas','tbl.gotThis':'Anda mendapat ini','tbl.goTo':'Pergi ke','tbl.purpose':'Tujuan','tbl.url':'URL','tbl.weird':'Sesuatu yang aneh',
+    'pdf.title':'Pedoman e-Invoice LHDN','pdf.desc':'Pedoman resmi e-Invoice IRBM. Unduh PDF atau baca langsung di sini.','pdf.general.title':'Pedoman e-Invoice v4.8','pdf.specific.title':'Pedoman Spesifik e-Invoice v4.8','pdf.general.desc':'Pedoman umum mencakup alur kerja e-Invoice, penggunaan portal, integrasi API, siklus dokumen, dan persyaratan kepatuhan. Diterbitkan 30 Agustus 2026.','pdf.specific.desc':'Skenario terperinci: transaksi lintas batas, faktur tagihan sendiri, e-commerce, tunjangan karyawan, pendapatan luar negeri, SVDP, dan lampiran. Diterbitkan 7 Juli 2026.','pdf.download':'Unduh PDF','pdf.viewInline':'Lihat di halaman',
+    'doc.edit':'Edit halaman ini di GitHub','search.placeholder':'Cari dokumentasi...','search.modalPlaceholder':'Cari semua dokumentasi...','search.empty':'Ketik untuk mencari di seluruh dokumentasi','search.noResults':'Tidak ada hasil','loading':'Memuat...',
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function t(key){ return (T[currentLang] && T[currentLang][key]) || T.en[key] || key; }
+
+function applyLang(lang){
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang === 'ms' ? 'ms' : lang === 'id' ? 'id' : 'en';
+
+  // Update all elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val) el.textContent = val;
+  });
+
+  // Update placeholders
+  const si = document.getElementById('searchInput');
+  if(si) si.placeholder = t('search.placeholder');
+  const smi = document.getElementById('searchModalInput');
+  if(smi) smi.placeholder = t('search.modalPlaceholder');
+
+  // Update lang picker button
+  const labels = {en:'EN',ms:'BM',id:'BI'};
+  const btn = document.getElementById('langBtn');
+  if(btn) btn.textContent = (labels[lang]||'EN') + ' ▾';
+
+  // Update active state in menu
+  document.querySelectorAll('.lang-picker-item').forEach(item => {
+    item.classList.toggle('active', item.textContent.toLowerCase().includes(
+      lang === 'en' ? 'english' : lang === 'ms' ? 'melayu' : 'indonesia'
+    ));
+  });
+}
+
+function toggleLangMenu(){
+  const menu = document.getElementById('langMenu');
+  menu.classList.toggle('open');
+  // Close on outside click
+  if(menu.classList.contains('open')){
+    setTimeout(()=>{
+      const close = (e)=>{ if(!e.target.closest('.lang-picker')){menu.classList.remove('open');document.removeEventListener('click',close)} };
+      document.addEventListener('click',close);
+    },10);
+  }
+}
+
+function setLang(lang){
+  applyLang(lang);
+  document.getElementById('langMenu').classList.remove('open');
+}
+
+// Apply saved language on load
+if(currentLang !== 'en') applyLang(currentLang);
 </script>
 </body>
 </html>
